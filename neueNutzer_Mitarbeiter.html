@@ -1,0 +1,172 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Breuninger</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.css"/>
+		<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+		<script src="js/main.js"></script>
+		<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.js"></script>
+
+		<!-- jQuery Easing -->
+		<script src="js/jquery.easing.1.3.js"></script>
+		<!-- Bootstrap -->
+		<script src="js/bootstrap.min.js"></script>
+		<!-- Waypoints -->
+		<script src="js/jquery.waypoints.min.js"></script>
+		<!-- Flexslider -->
+		<script src="js/jquery.flexslider-min.js"></script>
+		<!-- Magnific Popup -->
+		<script src="js/jquery.magnific-popup.min.js"></script>
+		<script src="js/magnific-popup-options.js"></script>
+		<!-- Counters -->
+		<script src="js/jquery.countTo.js"></script>
+		<!-- Main -->
+
+	<link href="https://fonts.googleapis.com/css?family=Oxygen:300,400" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700" rel="stylesheet">
+		<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+	
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="css/animate.css">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="css/icomoon.css">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<!-- Magnific Popup -->
+	<link rel="stylesheet" href="css/magnific-popup.css">
+
+	<!-- Flexslider  -->
+	<link rel="stylesheet" href="css/flexslider.css">
+
+	<!-- Theme style  -->
+	<link rel="stylesheet" href="css/style.css">
+
+	<!-- Modernizr JS -->
+	<script src="js/modernizr-2.6.2.min.js"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+		<script src="app.js"></script>
+
+	</head>
+	<body>
+	<div class="fh5co-loader"></div>
+	<div id="page">
+	<nav class="fh5co-nav" role="navigation">
+		<div class="container-wrap" style="height: 120px;">
+			<div class="top-menu">
+				<div class="row">
+					<div class="col-xs-2">
+						<div ><a href="Startseite_Mitarbeiter.html" ><img src="images/logo-breuninger.jpeg" style="padding-bottom:10px; width: 200px; height:70px;"></a></div>
+					</div>
+					<div class="col-xs-10 text-right menu-1">
+						<ul>
+							<li class="active"><a href="Startseite_Mitarbeiter.html"><span class="fa fa-home"></span> Startseite</a></li>
+							<li><a href="Benutzerverwaltung_Mitarbeiter.html"><span class="fa fa-user"></span> Benutzerverwaltung</a></li>
+							<li><a href="Torverwaltung_Mitarbeiter.html"><span class="fas fa-archway"></span> Torverwaltung</a></li>
+							<li><a href="work.html"><span class="fa fa-power-off"></span> Logout</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</nav>
+	</div>
+	<div class="container-wrap">
+		<div class="flexslider">
+			<div>
+				<h2>Neuer Benutzer</h2>
+			<form>
+				<div class=" form-group card" style="padding-top: 10px; padding-left: 30px;">
+					<div class="ui-widget">
+						<select id="pick"style=" font-size: large; width: 300px">
+							<option value="0">Benutzer wählen..</option>
+							<option value="1">Spediteur</option>
+							<option value="2">Breuninger</option>
+						</select>
+					</div>
+
+					<label for="username" class="username" style="padding-top: 30px;">Username</label>
+					<input type="text" class="form-control username" id="username"  style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Username">
+
+					<label for="name" class="name" style="padding-top: 10px;">Name</label>
+					<input type="text" class="form-control name" id="name" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Name des Nutzers">
+
+					<label for="nachname" class="nachname"style="padding-top: 10px;">Nachname</label>
+					<input type="text" class="form-control nachname" id="nachname"  style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Nachname des Nutzers">
+
+					<label for="zugehoerigkeit" class="zugehörigkeit" style="padding-top: 10px;">Zugehörigkeit</label>
+					<input type="text" class="form-control zugehörigkeit" id="zugehoerigkeit" style="border-radius: 10px; height: 35px; width:300px;" placeholder="Zugehörigkeit">
+
+					<label for="division" class="division" style="padding-top: 10px;">Division</label>
+					<input type="text" class="form-control division" id="division"  style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Division">
+
+					<label for="strasse" class="strasse" style="padding-top: 10px;">Straße</label>
+					<input type="text" class="form-control strasse" id="strasse"  style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Straße des Standorts">
+
+					<label for="plz" class="plz" style="padding-top: 10px;">PLZ</label>
+					<input type="text" class="form-control plz" id="plz"  style="border-radius: 10px; height: 35px; width: 300px;" placeholder="PLZ">
+
+					<label for="stadt" class="stadt" style="padding-top: 10px;">Stadt</label>
+					<input type="text" class="form-control stadt" id="stadt"  style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Stadt">
+
+					<label class="land" style="padding-top: 10px;">Land
+					<p><select id="pickingland" style="font-size: large; width: 300px">
+						<option>DE</option>
+						<option>EN</option> </select></label></p>
+
+					<label for="telefon" class="telefon" style="padding-top: 10px;">Telefon</label>
+					<input type="text" class="form-control telefon" id="telefon"  style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Telefon">
+
+					<label for="email" class="email" style="padding-top: 10px;">Email</label>
+					<input type="email" class="form-control email" id="email"  style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Email">
+
+					<label for="passwort" class="passwort" style="padding-top: 10px;">Passwort</label>
+					<input type="password" class="form-control passwort" id="passwort"  style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Passwort">
+
+					<label for="reppass" class="reppass" style="padding-top: 10px;">Passwort wiederholen</label>
+					<input type="password" class="form-control reppass" id="reppass"  style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Passwort wiederholen">
+
+					<label for="submit" class="submit" style="padding-top: 10px;"></label>
+					<input type="submit" class="form-control submit" id="submit" style="border-radius: 10px; height: 35px; width: 300px;" value="Speichern">
+					</div>
+			</form>
+		</div>
+	</div><!-- END container-wrap -->
+	</div>
+	<script>
+
+		$(document).ready(function () {
+			$('#example').DataTable({
+				searching: false,
+				bInfo: false,
+				paging: false,
+			});
+			$('.nachname, .zugehörigkeit,.division, .strasse,.plz, .stadt, .username, .name, .land, .telefon, .email, .passwort, .reppass').hide();
+
+			$('#pick').change(function () {
+				if($('#pick').val() == 1){
+					$('.username, .name, .land, .telefon, .email, .passwort, .reppass').show();
+					$('.nachname, .zugehörigkeit,.division, .strasse,.plz, .stadt').hide();
+
+				}
+				else if($('#pick').val() == 2){
+					$('.username, .name, .nachname, .zugehörigkeit, .division, .strasse, .plz, .stadt, .land, .telefon ,.email, .passwort, .reppass').show();
+
+				}
+				else {
+					$('.nachname, .zugehörigkeit,.division, .strasse,.plz, .stadt, .username, .name, .land, .telefon, .email, .passwort, .reppass').hide();
+				}
+			});
+		});
+	</script>
+	</body>
+</html>
+

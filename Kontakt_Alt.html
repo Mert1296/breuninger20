@@ -1,0 +1,163 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.css"/>
+    <link rel="stylesheet" type="text/css" href="Benutzerverwaltung.css"/>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="js/main.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.js"></script>
+
+
+    <!-- jQuery Easing -->
+    <script src="js/jquery.easing.1.3.js"></script>
+    <!-- Bootstrap -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Waypoints -->
+    <script src="js/jquery.waypoints.min.js"></script>
+    <!-- Flexslider -->
+    <script src="js/jquery.flexslider-min.js"></script>
+    <!-- Magnific Popup -->
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/magnific-popup-options.js"></script>
+    <!-- Counters -->
+    <script src="js/jquery.countTo.js"></script>
+    <!-- Main -->
+
+
+    <link href="https://fonts.googleapis.com/css?family=Oxygen:300,400" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700" rel="stylesheet">
+
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="css/animate.css">
+    <!-- Icomoon Icon Fonts-->
+    <link rel="stylesheet" href="css/icomoon.css">
+    <!-- Bootstrap  -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+
+
+    <!-- Magnific Popup -->
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Flexslider  -->
+    <link rel="stylesheet" href="css/flexslider.css">
+
+    <!-- Theme style  -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Modernizr JS -->
+    <script src="js/modernizr-2.6.2.min.js"></script>
+    <!-- FOR IE9 below -->
+    <!--[if lt IE 9]>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+
+<div class="fh5co-loader"></div>
+
+<div id="page">
+    <nav class="fh5co-nav" role="navigation">
+        <div class="container-wrap" style="height: 120px;">
+            <div class="top-menu">
+                <div class="row">
+                    <div class="col-xs-2">
+                        <div ><a href="Startseite_Mitarbeiter.html" ><img src="images/logo-breuninger.jpeg" style="padding-bottom:10px; width: 200px; height:70px;"></a></div>
+                    </div>
+                    <div class="col-xs-10 text-right menu-1">
+                        <ul>
+                            <li><a href="Startseite_Mitarbeiter.html"><span class="fa fa-home"></span> Startseite</a></li>
+                            <li class="active"><a href="Benutzerverwaltung_Mitarbeiter.html"><span class="fa fa-user"></span> Benutzerverwaltung</a></li>
+                            <li><a href="Torverwaltung_Mitarbeiter.html"><span class="fa fa-archway"></span> Torverwaltung</a></li>
+                            <li><a href="work.html"><span class="fa fa-power-off"></span> Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+    <div class="container-wrap">
+        <div class="flexslider">
+            <h1> Benutzer anlegen</h1>
+
+            <!-- Basic dropdown -->
+
+            <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Nutzer
+                    <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Breuninger Mitarbeiter</a></li>
+                    <li><a href="#">Spediteur</a></li>
+                </ul>
+            </div>
+            <!-- Basic dropdown -->
+            <table id="tabelle" class="cell-border"  class="table table-striped" cellspacing="0" width="100%">
+                <tbody>
+                <tr>
+                    <td>UserID</td>
+                    <td><input type="text" id="user"/></td>
+                </tr>
+                <tr>
+                    <td>Nachname, Vorname</td>
+                    <td><input type="text" id="name"/></td>
+                </tr>
+                <tr>
+                    <td>Zugehörigkeit</td>
+                    <td><input type="text" id="zugehörigkeit"/></td>
+                </tr>
+                <tr>
+                    <td>Division</td>
+                    <td><input type="text" id="division"/></td>
+                </tr>
+                <tr>
+                    <td>Adresse</td>
+                    <td><input type="text" id="adresse"/></td>
+                </tr>
+                <tr>
+                    <td>Country Code</td>
+                    <td><select size="1" id="countycode" name="countrycode">
+                        <option value="DE" selected="selected">
+                            DE
+                        </option>
+                        <option value="CH">
+                            CH
+                        </option>
+                        <option value="AU">AU</option>
+                        <option value="FR">FR</option>
+                        <option value="IT">IT</option>
+                    </select>
+                </tr>
+                <tr>
+                    <td>Telefon</td>
+                    <td><input type="text" id="telefon"/></td>
+                </tr>
+                <tr>
+                    <td>E-Mail Adresse</td>
+                    <td><input type="text" id="email"/></td>
+                </tr>
+                <tr>
+                    <td>Passwort</td>
+                    <td><input type="password" name="passwort"/></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div><!-- END container-wrap -->
+</div>
+<script>
+    $(document).ready(function () {
+        $('#tabelle').DataTable({
+            searching:false,
+            bInfo: false,
+            paging: false,
+            ordering: false,
+        });
+    });
+</script>
+</body>
+</html>
+>
