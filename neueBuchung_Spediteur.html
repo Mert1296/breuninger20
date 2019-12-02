@@ -1,34 +1,35 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
+<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Breuninger</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.css"/>
-		<script src="https://code.jquery.com/jquery-latest.min.js"></script>
-		<script src="js/main.js"></script>
-		<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.css"/>
+	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="js/main.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.js"></script>
 
-		<!-- jQuery Easing -->
-		<script src="js/jquery.easing.1.3.js"></script>
-		<!-- Bootstrap -->
-		<script src="js/bootstrap.min.js"></script>
-		<!-- Waypoints -->
-		<script src="js/jquery.waypoints.min.js"></script>
-		<!-- Flexslider -->
-		<script src="js/jquery.flexslider-min.js"></script>
-		<!-- Magnific Popup -->
-		<script src="js/jquery.magnific-popup.min.js"></script>
-		<script src="js/magnific-popup-options.js"></script>
-		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"   integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="   crossorigin="anonymous"></script>
-		<!-- Counters -->
-		<script src="js/jquery.countTo.js"></script>
-		<!-- Main -->
+	<!-- jQuery Easing -->
+	<script src="js/jquery.easing.1.3.js"></script>
+	<!-- Bootstrap -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Waypoints -->
+	<script src="js/jquery.waypoints.min.js"></script>
+	<!-- Flexslider -->
+	<script src="js/jquery.flexslider-min.js"></script>
+	<!-- Magnific Popup -->
+	<script src="js/jquery.magnific-popup.min.js"></script>
+	<script src="js/magnific-popup-options.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"   integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="   crossorigin="anonymous"></script>
+	<!-- Counters -->
+	<script src="js/jquery.countTo.js"></script>
+	<!-- Main -->
 
 	<link href="https://fonts.googleapis.com/css?family=Oxygen:300,400" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+	<link href="client/css/jquery-ui/jquery-ui.min.css" rel="stylesheet">
 
 	<!-- Animate.css -->
 	<link rel="stylesheet" href="css/animate.css">
@@ -53,16 +54,47 @@
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
+
+	<script src="client/js/jquery-ui.js"></script>
+	<script src="client/js/jquery-1.9.1.min.js"></script>
+	<script src="client/js/jquery.tools-1.2.7.min.js"></script>
+
 	<style>
+
+		.next{
+			text-decoration: none;
+			display: inline-block;
+			padding: 8px 16px;
+		}
+		.next:hover {
+			background-color: #ddd;
+			color: black;
+		}
+		.next {
+			background-color: #f1f1f1;
+			color: black;
+			float:right;
+			margin-right: 0px;
+			margin-bottom: 0px;
+		}
+
+		.input-container  input[type=text]{
+			padding-left: 40px;
+		}
 		.input-container {
-			display: -ms-flexbox;
-			display: flex;
+			position:relative;
+		}
+		#datepicker1 {
+			position:absolute;
+			left:0;
+			padding:9px 8px;
+
 		}
 	</style>
-	</head>
-	<body>
-	<div class="fh5co-loader"></div>
-	<div id="page">
+</head>
+<body>
+<div class="fh5co-loader"></div>
+<div id="page">
 	<nav class="fh5co-nav" role="navigation">
 		<div class="container-wrap" style="height: 120px;">
 			<div class="top-menu">
@@ -81,85 +113,149 @@
 			</div>
 		</div>
 	</nav>
-	</div>
-	<div class="container-wrap">
-			<div class="flexslider">
-			<div>
-				<h2>Neue Buchung</h2>
+</div>
+<div class="container-wrap">
+	<div class="flexslider">
+		<div>
+			<h2>Neue Buchung</h2>
 			<form>
 				<div class="form group card" style="padding-top: 10px; padding-left:30px;">
-				<div class="ui-widget">
-				<select id="pick" style=" font-size:large; width: 300px">
-				<option value="0">Sendungsstruktur wählen..</option>
-				<option value="1">SPN - Liegeversand</option>
-				<option value="2">KEP - Paketversand</option>
-				<option value="3">HW - Liegeversand/Hängeversand</option>
-				</select>
-				</div>
+					<div class="ui-widget">
+						<select id="pick" style=" font-size:large; width: 300px">
+							<option value="0">Sendungsstruktur wählen..</option>
+							<option value="1">SPN - Liegeversand</option>
+							<option value="2">KEP - Paketversand</option>
+							<option value="3">HW - Liegeversand/Hängeversand</option>
+						</select>
+					</div>
 
-				<label for="datepicker" class="datepicker" style="padding-top: 30px;"> Datum</label>
-				<div class="input-container">
-					<i class="far fa-calendar-alt" id="datepicker1" style="padding:10px;"></i>
-					<input type="text"  class="form-control datepicker" id="datepicker" style="border-radius: 10px; height: 35px; width: 267px">
-				</div>
+					<label for="datepicker" class="datepicker" style="padding-top: 30px;"> Datum</label>
+					<div class="input-container">
+						<i class="far fa-calendar-alt" id="datepicker1" style="padding:10px;" aria-hidden="true"></i>
+						<input type="text"  class="form-control datepicker" id="datepicker" style="border-radius: 10px; height: 35px; width: 300px">
+					</div>
 
-				<label for="sendungen" class="sendungen" style="padding-top: 10px;">Anzahl der geladenen Sendungen</label>
-				<input type="text" class="form-control sendungen" id="sendungen"  style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Anzahl der Sendungen angeben">
+					<label for="sendungen" class="sendungen" style="padding-top: 10px;">Anzahl der geladenen Sendungen</label>
+					<input type="text" class="form-control sendungen" id="sendungen"  style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Anzahl der Sendungen angeben">
 
-				<label for="EUP" class="EUP" style="padding-top: 10px;">Anzahl der geladenen EUP</label>
-				<input type="text" class="form-control EUP" id="EUP" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Anzahl der EUP angeben">
+					<label for="EUP" class="EUP" style="padding-top: 10px;">Anzahl der geladenen EUP</label>
+					<input type="text" class="form-control EUP" id="EUP" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Anzahl der EUP angeben">
 
-				<label for="EWP" class="EWP" style="padding-top: 10px;">Anzahl der geladenen EWP</label>
-				<input type="text" class="form-control EWP" id="EWP"  style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Anzahl der EWP angeben">
+					<label for="EWP" class="EWP" style="padding-top: 10px;">Anzahl der geladenen EWP</label>
+					<input type="text" class="form-control EWP" id="EWP"  style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Anzahl der EWP angeben">
 
-				<label for="pakete" class="pakete" style="padding-top: 10px;">Anzahl der geladenen Pakete (lose) </label>
-				<input type="text" class="form-control pakete" id="pakete" style="border-radius: 10px; height: 35px; width:300px;" placeholder="Anzahl der losen Pakete angeben">
+					<label for="pakete" class="pakete" style="padding-top: 10px;">Anzahl der geladenen Pakete (lose) </label>
+					<input type="text" class="form-control pakete" id="pakete" style="border-radius: 10px; height: 35px; width:300px;" placeholder="Anzahl der losen Pakete angeben">
 
-				<label for="bemerkung" class="bemerkung" style="padding-top: 10px;">Bemerkung</label>
-				<input type="text" class="form-control bemerkung" id="bemerkung"  style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Bemerkung angeben">
+					<label for="bemerkung" class="bemerkung" style="padding-top: 10px;">Bemerkung</label>
+					<input type="text" class="form-control bemerkung" id="bemerkung"  style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Bemerkung angeben">
 
-				<label for="teile" class="teile" style="padding-top: 10px;">Anzahl der Teile</label>
-				<input type="text" class="form-control teile" id="teile"  style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Anzahl der Teile angeben">
+					<label for="teile" class="teile" style="padding-top: 10px;">Anzahl der Teile</label>
+					<input type="text" class="form-control teile" id="teile"  style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Anzahl der Teile angeben">
 
-				<label for="submit" class="submit" style="padding-top: 10px;"></label>
-				<input type="submit" class="form-control submit" id="submit" style="border-radius: 10px; height: 35px; width: 300px;" value="Berechnen">
+					<label for="submit" class="submit" style="padding-top: 10px;"></label>
+					<input type="submit" class="form-control submit" id="submit" style="border-radius: 10px; height: 35px; width: 300px;" value="Berechnen">
 
-				<label for="zeit" class="zeit" style="padding-top: 40px">Benötigte Entladezeit</label>
+					<label for="zeit" class="zeit" style="padding-top: 40px">Benötigte Entladezeit</label>
+					<a href="Torauswahl_Spediteur.html" class="next">Weiter &raquo;</a>
+
+					<label class="leer" style="padding-top: 350px"></label>
 				</div>
 			</form></div>
-		</div>
-	</div><!-- END container-wrap -->
-
-	<div class="gototop js-top">
-		<a href="#" class="js-gotop"><i class="icon-arrow-up2"></i></a>
 	</div>
-	<script>
-		$(document).ready(function () {
-			$('#example').DataTable({
-				searching: false,
-				bInfo: false,
-				paging: false,
-			});
-			$("#datepicker").datepicker();
+</div><!-- END container-wrap -->
+<div class="container-wrap">
+	<footer id="fh5co-footer" role="contentinfo">
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<h4>Kontaktinformation</h4>
+				<div class="fh5co-footer">
+					<p> E. Breuninger GmbH & Co. <br> Eschenbrünnlestraße 11, 71065 Sindelfingen
+						<br>Tel-Nr. <a href="tel://1234567920">+ 49 1235 2355 98</a>&nbsp;
+						<br><a href="mailto:info@yoursite.com">info@breuninger.com</a>
+						<br><a href="http://gettemplates.co">www.breuninger.com</a>
+					</p>
+				</div>
 
-			$('.input-container,.datepicker, .sendungen, .EUP, .EWP, .pakete, .bemerkung, .teile , .submit, .zeit').hide();
-			$('#pick').change(function () {
-				if ($('#pick').val() == 1) {
-					$('.input-container,.datepicker,.sendungen, .EUP, .EWP, .pakete, .bemerkung,.submit ,.zeit').show();
-					$('.teile').hide();
-
-				} else if ($('#pick').val() == 2) {
-					$('.input-container, .datepicker, .sendungen, .pakete, .bemerkung, .submit, .zeit').show();
-					$('.EUP, .EWP, .teile').hide();
-
-				} else if ($('#pick').val() == 3) {
-					$('.input-container,.datepicker, .sendungen, .EUP, .EWP, .pakete, .teile, .bemerkung ,.submit, .zeit').show();
-				} else {
-					$('.input-container, .datepicker, .sendungen, .EUP, .EWP, .pakete, .bemerkung, .teile,.submit, .zeit').hide();
-				}
-			});
+			</div>
+			<div class="row copyright">
+				<div class="col-md-12 text-center">
+					<p>
+						<small class="block">&copy; 2020 Breuninger. All Rights Reserved.</small>
+					</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+</div><!-- END container-wrap -->
+</div>
+<div class="gototop js-top">
+	<a href="#" class="js-gotop"><i class="icon-arrow-up2"></i></a>
+</div>
+<script>
+	$(document).ready(function () {
+		$('#example').DataTable({
+			searching: false,
+			bInfo: false,
+			paging: false,
 		});
-	</script>
-	</body>
+
+		$('#datepicker').datepicker();
+
+		$('.input-container,.datepicker, .sendungen, .EUP, .EWP, .pakete, .bemerkung, .teile , .submit, .zeit ,.next').hide();
+
+		$('#pick').change(function () {
+			if ($('#pick').val() == 1) {
+				$('.input-container,.datepicker,.sendungen, .EUP, .EWP, .pakete, .bemerkung,.submit ,.zeit, .next').show();
+				$('.teile, .leer').hide();
+
+			} else if ($('#pick').val() == 2) {
+				$('.input-container, .datepicker, .sendungen, .pakete, .bemerkung, .submit, .zeit, .next').show();
+				$('.EUP, .EWP, .teile, .leer').hide();
+
+			} else if ($('#pick').val() == 3) {
+				$('.input-container,.datepicker, .sendungen, .EUP, .EWP, .pakete, .teile, .bemerkung ,.submit, .zeit,.next').show();
+			} else {
+				$('.input-container, .datepicker, .sendungen, .EUP, .EWP, .pakete, .bemerkung, .teile,.submit, .zeit, .next').hide();
+				$('.leer').show();
+			}
+		});
+
+		function setdefaults() {
+			$("#datepicker").datepicker({
+				changeMonth: true,
+				changeYear: true,
+				firstDay: 1,
+				showAnim: 'slideDown',
+				dateFormat: 'dd.mm.yy',
+			});
+			$("#datepicker").datepicker("setDate", new Date());
+		}
+
+		jQuery(function ($) {
+			$.datepicker.regional['de'] = {
+				clearText: 'löschen', clearStatus: 'aktuelles Datum löschen',
+				closeText: 'schließen', closeStatus: 'ohne Änderungen schließen',
+				prevText: '<zurück', prevStatus: 'letzten Monat zeigen',
+				nextText: 'Vor>', nextStatus: 'nächsten Monat zeigen',
+				currentText: 'heute', currentStatus: '',
+				monthNames: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni',
+					'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'],
+				monthNamesShort: ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun',
+					'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'],
+				monthStatus: 'anderen Monat anzeigen', yearStatus: 'anderes Jahr anzeigen',
+				weekHeader: 'Wo', weekStatus: 'Woche des Monats',
+				dayNames: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
+				dayNamesShort: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
+				dayNamesMin: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
+				dayStatus: 'Setze DD als ersten Wochentag', dateStatus: 'Wähle D, M d',
+				dateFormat: 'dd.mm.yy', firstDay: 1,
+				initStatus: 'Wähle ein Datum', isRTL: false
+			};
+			$.datepicker.setDefaults($.datepicker.regional['de']);
+		});
+	});
+</script>
+</body>
 </html>
 

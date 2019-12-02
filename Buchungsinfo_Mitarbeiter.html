@@ -3,13 +3,13 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Breuninger</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.css"/>
-    <link rel="stylesheet" type="text/css" href="Benutzerverwaltung.css"/>
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
     <script src="js/main.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.js"></script>
-
 
     <!-- jQuery Easing -->
     <script src="js/jquery.easing.1.3.js"></script>
@@ -26,7 +26,6 @@
     <script src="js/jquery.countTo.js"></script>
     <!-- Main -->
 
-
     <link href="https://fonts.googleapis.com/css?family=Oxygen:300,400" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700" rel="stylesheet">
 
@@ -36,11 +35,12 @@
     <link rel="stylesheet" href="css/icomoon.css">
     <!-- Bootstrap  -->
     <link rel="stylesheet" href="css/bootstrap.css">
-
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
 
     <!-- Magnific Popup -->
     <link rel="stylesheet" href="css/magnific-popup.css">
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
     <!-- Flexslider  -->
     <link rel="stylesheet" href="css/flexslider.css">
 
@@ -53,7 +53,8 @@
     <!--[if lt IE 9]>
     <script src="js/respond.min.js"></script>
     <![endif]-->
-
+    <style>
+    </style>
 </head>
 <body>
 
@@ -70,9 +71,9 @@
                     <div class="col-xs-10 text-right menu-1">
                         <ul>
                             <li><a href="Startseite_Mitarbeiter.html"><span class="fa fa-home"></span> Startseite</a></li>
-                            <li class="active"><a href="Benutzerverwaltung_Mitarbeiter.html"><span class="fa fa-user"></span> Benutzerverwaltung</a></li>
-                            <li><a href="Torverwaltung_Mitarbeiter.html"><span class="fa fa-archway"></span> Torverwaltung</a></li>
-                            <li><a href="work.html"><span class="fa fa-power-off"></span> Logout</a></li>
+                            <li><a href="Benutzerverwaltung_Mitarbeiter.html"><span class="fa fa-user"></span> Benutzerverwaltung</a></li>
+                            <li><a href="Torverwaltung_Mitarbeiter.html"><span class="fas fa-archway"></span> Torverwaltung</a></li>
+                            <li><a href=""><span class="fa fa-power-off"></span> Logout</a></li>
                         </ul>
                     </div>
                 </div>
@@ -82,82 +83,102 @@
     </nav>
     <div class="container-wrap">
         <div class="flexslider">
-            <h1> Benutzer anlegen</h1>
+            <h1> Buchungsinformation</h1>
 
-            <!-- Basic dropdown -->
-
-            <div class="dropdown">
-                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Nutzer
-                    <span class="caret"></span></button>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Breuninger Mitarbeiter</a></li>
-                    <li><a href="#">Spediteur</a></li>
-                </ul>
-            </div>
-            <!-- Basic dropdown -->
-            <table id="tabelle" class="cell-border"  class="table table-striped" cellspacing="0" width="100%">
+            <table id="tabelle" class="cell-border"  class="table table-striped" cellspacing="10" >
+                <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
+                </tr>
+                </thead>
                 <tbody>
                 <tr>
-                    <td>UserID</td>
-                    <td><input type="text" id="user"/></td>
+                    <td>Spediteur</td>
+                    <td contenteditable="false">DHL</td>
                 </tr>
                 <tr>
-                    <td>Nachname, Vorname</td>
-                    <td><input type="text" id="name"/></td>
+                    <td>Buchungsdatum</td>
+                    <td><input type="date" class="date"></td>
                 </tr>
                 <tr>
-                    <td>Zugehörigkeit</td>
-                    <td><input type="text" id="zugehörigkeit"/></td>
+                    <td>Uhrzeit</td>
+                    <td><input type="time" class="time"></td>
+                </tr>
+                <!-- dann muss das auch bei neueNutzer die Torfreigabe!! -->
+                <tr>
+                    <td>Tor</td>
+                    <td contenteditable="false">2</td>
                 </tr>
                 <tr>
-                    <td>Division</td>
-                    <td><input type="text" id="division"/></td>
+                    <td>Sendungsstruktur</td>
+                    <td>HW</td>
                 </tr>
                 <tr>
-                    <td>Adresse</td>
-                    <td><input type="text" id="adresse"/></td>
+                    <td>Anzahl der geladenen Sendung</td>
+                    <td contenteditable="true"></td>
                 </tr>
                 <tr>
-                    <td>Country Code</td>
-                    <td><select size="1" id="countycode" name="countrycode">
-                        <option value="DE" selected="selected">
-                            DE
-                        </option>
-                        <option value="CH">
-                            CH
-                        </option>
-                        <option value="AU">AU</option>
-                        <option value="FR">FR</option>
-                        <option value="IT">IT</option>
-                    </select>
+                    <td>Anzahl der geladenen EUP</td>
+                    <td contenteditable="true"></td>
                 </tr>
                 <tr>
-                    <td>Telefon</td>
-                    <td><input type="text" id="telefon"/></td>
+                    <td>Anzahl der geladenen EWP</td>
+                    <td contenteditable="true"></td>
                 </tr>
                 <tr>
-                    <td>E-Mail Adresse</td>
-                    <td><input type="text" id="email"/></td>
+                    <td>Anzahl der geladenen Pakete (lose)</td>
+                    <td contenteditable="true"></td>
                 </tr>
                 <tr>
-                    <td>Passwort</td>
-                    <td><input type="password" name="passwort"/></td>
+                    <td>Kommentar</td>
+                    <td contenteditable="true"></td>
                 </tr>
                 </tbody>
             </table>
         </div>
     </div><!-- END container-wrap -->
+    <div class="container-wrap">
+        <footer id="fh5co-footer" role="contentinfo">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h4>Kontaktinformation</h4>
+                    <div class="fh5co-footer">
+                        <p> E. Breuninger GmbH & Co. <br> Eschenbrünnlestraße 11, 71065 Sindelfingen
+                            <br>Tel-Nr. <a href="tel://1234567920">+ 49 1235 2355 98</a>&nbsp;
+                            <br><a href="mailto:info@yoursite.com">info@breuninger.com</a>
+                            <br><a href="http://gettemplates.co">www.breuninger.com</a>
+                        </p>
+                    </div>
+
+                </div>
+                <div class="row copyright">
+                    <div class="col-md-12 text-center">
+                        <p>
+                            <small class="block">&copy; 2020 Breuninger. All Rights Reserved.</small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div><!-- END container-wrap -->
+</div>
 </div>
 <script>
     $(document).ready(function () {
         $('#tabelle').DataTable({
-            searching:false,
+            searching: false,
             bInfo: false,
             paging: false,
             ordering: false,
         });
+
+
     });
+
+</script>
+<script type="text/javascript">
+    function click(link){return false;}
 </script>
 </body>
 </html>
->
