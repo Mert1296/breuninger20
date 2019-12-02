@@ -11,6 +11,6 @@ app.set('view engine', 'ejs');
 app.use('/', require('./routes'));
 app.use('/users', require('./routes/users'));
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 
 app.listen(PORT, console.log(`Server started on port ${PORT}`));
