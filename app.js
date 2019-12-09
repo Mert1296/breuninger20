@@ -8,8 +8,8 @@ app.use(expressLayouts);
 app.set('view engine', 'ejs');
 
 //Routes
-app.use('/', require('./routes'));
-app.use('/users', require('./routes/users'));
+app.use('/', require('./routes/index.js'));
+app.use('/', require('./routes/users.js'));
 
 const PORT = process.env.PORT || 5001;
 
