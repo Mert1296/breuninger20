@@ -3,6 +3,6 @@ const router = express.Router();
 
 
 // Register Page
-router.get('/register', forwardAuthenticated, (req, res) => res.render('register'));
+router.get('/register', (req, res) => res.render('register'));
 
 module.exports = router;
