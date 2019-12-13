@@ -17,8 +17,8 @@ app.use(expressLayouts);
 app.set('view engine', 'ejs');
 
 //Routes
-app.use('/', require('./routes/index.js'));
-app.use('/', require('./routes/users.js'));
+app.use('/', require('./Node_Passport_Login/routes/index'));
+app.use('/', require('./Node_Passport_Login/routes/users.js'));
 
 const PORT = process.env.PORT || 5000;
 
