@@ -117,7 +117,6 @@
 	</style>
 
 
-
 </head>
 <body>
 
@@ -129,13 +128,18 @@
 			<div class="top-menu">
 				<div class="row">
 					<div class="col-xs-2">
-						<div ><a href="Startseite_Mitarbeiter.html" ><img src="images/logo-breuninger.jpeg" style="padding-bottom:10px; width: 200px; height:70px;"></a></div>
+						<div><a href="Startseite_Mitarbeiter.html"><img src="images/logo-breuninger.jpeg"
+																		style="padding-bottom:10px; width: 200px; height:70px;"></a>
+						</div>
 					</div>
 					<div class="col-xs-10 text-right menu-1">
 						<ul>
-							<li><a href="Startseite_Mitarbeiter.html"><span class="fa fa-home"></span> Startseite</a></li>
-							<li><a href="Benutzerverwaltung_Mitarbeiter.html"><span class="fa fa-user"></span> Benutzerverwaltung</a></li>
-							<li class="active"><a href="Torverwaltung_Mitarbeiter.html"><span class="fas fa-archway"></span> Torverwaltung</a></li>
+							<li><a href="Startseite_Mitarbeiter.html"><span class="fa fa-home"></span> Startseite</a>
+							</li>
+							<li><a href="Benutzerverwaltung_Mitarbeiter.html"><span class="fa fa-user"></span>
+								Benutzerverwaltung</a></li>
+							<li class="active"><a href="Torverwaltung_Mitarbeiter.html"><span
+									class="fas fa-archway"></span> Torverwaltung</a></li>
 							<li><a href=""><span class="fa fa-power-off"></span> Logout</a></li>
 						</ul>
 					</div>
@@ -146,7 +150,6 @@
 	</nav>
 	<div class="container-wrap">
 		<div class="flexslider">
-			<h1>Torverwaltung</h1>
 			<table id="tore" class="cell-border">
 				<thead>
 				<tr>
@@ -156,37 +159,37 @@
 				</tr>
 				</thead>
 				<tbody>
-				<tr>
+				<tr data-index="0">
 					<td>1</td>
 					<td class="sperren"></td>
 					<td class="bemerkung"></td>
 				</tr>
-				<tr>
+				<tr data-index="1">
 					<td>2</td>
 					<td class="sperren"></td>
 					<td class="bemerkung"></td>
 				</tr>
-				<tr>
+				<tr data-index="2">
 					<td>3</td>
 					<td class="sperren"></td>
 					<td class="bemerkung"></td>
 				</tr>
-				<tr>
+				<tr data-index="3">
 					<td>6</td>
 					<td class="sperren"></td>
 					<td class="bemerkung"></td>
 				</tr>
-				<tr>
+				<tr data-index="4">
 					<td>7</td>
 					<td class="sperren"></td>
 					<td class="bemerkung"></td>
 				</tr>
-				<tr>
+				<tr data-index="5">
 					<td>9</td>
 					<td class="sperren"></td>
 					<td class="bemerkung"></td>
 				</tr>
-				<tr>
+				<tr data-index="5">
 					<td>10</td>
 					<td class="sperren"></td>
 					<td class="bemerkung"></td>
@@ -225,7 +228,8 @@
 </div>
 
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+	 aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -237,7 +241,7 @@
 			<div class="modal-body">
 				<form>
 					<div class="form-group">
-						Sie sind dabei ein Tor zu sperren. <br>Falls Sie sich sicher sind, verfassen Sie den Grund.
+						Sie sind dabei ein Tor zu sperren. <br>Falls Sie sich sicher sind, verfassen Sie einen Grund.
 					</div>
 					<div class="form-group">
 						<label for="message-text" class="col-form-label ">Bemerkung:</label>
@@ -246,8 +250,8 @@
 				</form>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
-				<button type="button" class="btn btn-primary torsperren">Tor sperren</button>
+				<button type="button" class="btn btn-secondary abbrechen" data-index="0" data-dismiss="modal">Abbrechen</button>
+				<button type="button" class="btn btn-primary torsperren" data-index="0">Tor sperren</button>
 			</div>
 		</div>
 	</div>
@@ -255,36 +259,58 @@
 </body>
 <script>
 	$(document).ready(function () {
+
 		$('#tore').DataTable({
 			searching: false,
 			bInfo: false,
 			paging: false,
 			ordering: false
-
 		});
 
 		$('.sperren').each(function () {
-			$(this).append('<label class="switch">'+
-					'<input type="checkbox" class="sperrung">'+
-					'<span class="slider round"></span>'+
+			$(this).append('<label class="switch">' +
+					'<input type="checkbox" class="sperrung">' +
+					'<span class="slider round"></span>' +
 					'</label>'
 			);
 
 		});
 		$('.slider').change(function () {
 			if ($(this).is(':checked')) {
-				alert("test"); //checked
+
 			}
 		});
 
-		$('input[type="checkbox"]').on('change', function(e){
-			if(e.target.checked){
-				$('#exampleModal').modal();
+		// open modal on slide change
+		$('input[type="checkbox"]').on('change', function (e) {
+			// get index from `tr`
+			var index = $(this).parents('tr').data().index;
+			if (e.target.checked) {
+				var modalinstance = $('#exampleModal');
+				// assign index
+				modalinstance.find('.torsperren').attr('data-index', index);
+				modalinstance.find('.abbrechen').attr('data-index', index);
+				// open modal
+				modalinstance.modal('show');
+				// reset value
+				modalinstance.find('.torbemerkung').val('');
+			} else {
+				// clear data by selecting the row with the given index
+				$('#tore').find('tr[data-index="' + index + '"]').find('.bemerkung').text("");
 			}
 		});
 
+		// textarea example
 		$('.torsperren').click(function () {
-			$('.bemerkung').text($('.torbemerkung').val());
+			var index = $(this).attr('data-index');
+			// find element by index and assign the given value
+			$('#tore').find('tr[data-index="' + index + '"]').find('.bemerkung').text($('.torbemerkung').val());
+			$('#exampleModal').modal('hide');
+		});
+
+		$('.abbrechen').click(function () {
+			var index = $(this).attr('data-index');
+			$('#tore').find('tr[data-index="' + index + '"]').find('input[type="checkbox"]').prop('checked', false);
 		});
 
 
