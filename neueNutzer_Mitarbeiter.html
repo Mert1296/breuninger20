@@ -194,6 +194,111 @@
 			}
 		});
 	});
+
+	$('.username, .name, .nachname, .zugehörigkeit, .division, .strasse, .plz, .stadt, .telefon, .email, .passwort, .reppass').keyup(function(){
+		var input = $(this).val();
+		if( input.length >= 5 ){
+			$('#length').addClass('valide');
+		} else {
+			$('#length').removeClass('valide');
+		}
+		if( input.match(/[A-z]/) ){
+			$('#letter').addClass('valide');
+		} else {
+			$('#letter').removeClass('valide');
+		} if( input.match(/[A-Z]/) ){
+			$('#capital').addClass('valide');
+		} else {
+			$('#capital').removeClass('valide');
+		} if( input.match(/\d/) ){
+			$('#number').addClass('valide');
+		} else {
+			$('#number').removeClass('valide');
+		} if( input.match(/[!@#$%\^&*(){}[\]<>?/|\-+]/) ){
+			$('#special').addClass('valide');
+		} else {
+			$('#special').removeClass('valide');
+		}
+	});
+
+	// Telefon
+	$(' .telefon').keyup(function(){
+		var input = $(this).val();
+		if( input.length >= 8 ){
+			$('#length').addClass('valide');
+		} else {
+			$('#length').removeClass('valide');
+		}
+		if( input.match(/[A-z]/) ){
+			$('#letter').addClass('valide');
+		} else {
+			$('#letter').removeClass('valide');
+		} if( input.match(/[A-Z]/) ){
+			$('#capital').addClass('valide');
+		} else {
+			$('#capital').removeClass('valide');
+		} if( input.match(/\d/) ){
+			$('#number').addClass('valide');
+		} else {
+			$('#number').removeClass('valide');
+		} if( input.match(/[!@#$%\^&*(){}[\]<>?/|\-+]/) ){
+			$('#special').addClass('valide');
+		} else {
+			$('#special').removeClass('valide');
+		}
+	});
+
+	// E-Mail
+	$(' .email ').keyup(function(){
+		var input = $(this).val();
+		if( input.length >= 10 ){
+			$('#length').addClass('valide');
+		} else {
+			$('#length').removeClass('valide');
+		}
+		if( input.match(/[A-z]/) ){
+			$('#letter').addClass('valide');
+		} else {
+			$('#letter').removeClass('valide');
+
+		} if( input.match(/\d/) ){
+			$('#number').addClass('valide');
+		} else {
+			$('#number').removeClass('valide');
+
+		} if( input.match(/[@_]/) ){
+			$('#special').addClass('valide');
+		} else {
+			$('#special').removeClass('valide');
+		}
+	});
+
+	// Passwort
+	$(' .passwort, .reppass').keyup(function(){
+		var input = $(this).val();
+		if( input.length >= 8 ){
+			$('#length').addClass('valide');
+		} else {
+			$('#length').removeClass('valide');
+		}
+		if( input.match(/[A-z]/) ){
+			$('#letter').addClass('valide');
+		} else {
+			$('#letter').removeClass('valide');
+		} if( input.match(/[A-Z]/) ){
+			$('#capital').addClass('valide');
+		} else {
+			$('#capital').removeClass('valide');
+		} if( input.match(/\d/) ){
+			$('#number').addClass('valide');
+		} else {
+			$('#number').removeClass('valide');
+		} if( input.match(/[!@#$%\^&*(){}[\]<>?/|\-+]/) ){
+			$('#special').addClass('valide');
+		} else {
+			$('#special').removeClass('valide');
+		}
+	});
 </script>
 </body>
 </html>
