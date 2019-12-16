@@ -150,10 +150,12 @@
 	</nav>
 	<div class="container-wrap">
 		<div class="flexslider">
+			<h2>Torverwaltung</h2>
 			<table id="tore" class="cell-border">
 				<thead>
 				<tr>
-					<th>Tore</th>
+					<th>Tor</th>
+					<th>Status</th>
 					<th>Sperren/Entsperren</th>
 					<th>Bemerkung</th>
 				</tr>
@@ -161,42 +163,50 @@
 				<tbody>
 				<tr data-index="0">
 					<td>1</td>
+					<td class="status"></td>
 					<td class="sperren"></td>
 					<td class="bemerkung"></td>
 				</tr>
 				<tr data-index="1">
 					<td>2</td>
+					<td class="status"></td>
 					<td class="sperren"></td>
 					<td class="bemerkung"></td>
 				</tr>
 				<tr data-index="2">
 					<td>3</td>
+					<td class="status"></td>
 					<td class="sperren"></td>
 					<td class="bemerkung"></td>
 				</tr>
 				<tr data-index="3">
 					<td>6</td>
+					<td class="status"></td>
 					<td class="sperren"></td>
 					<td class="bemerkung"></td>
 				</tr>
 				<tr data-index="4">
 					<td>7</td>
+					<td class="status"></td>
 					<td class="sperren"></td>
 					<td class="bemerkung"></td>
 				</tr>
 				<tr data-index="5">
 					<td>9</td>
+					<td class="status"></td>
 					<td class="sperren"></td>
 					<td class="bemerkung"></td>
 				</tr>
 				<tr data-index="5">
 					<td>10</td>
+					<td class="status"></td>
 					<td class="sperren"></td>
 					<td class="bemerkung"></td>
 				</tr>
 
 				</tbody>
 			</table>
+			<label class="leer" style="padding-top: 50px"></label>
 		</div>
 	</div><!-- END container-wrap -->
 
@@ -280,7 +290,7 @@
 
 			}
 		});
-
+		$('#tore').find('.status').text("in Betrieb");
 		// open modal on slide change
 		$('input[type="checkbox"]').on('change', function (e) {
 			// get index from `tr`
@@ -297,14 +307,17 @@
 			} else {
 				// clear data by selecting the row with the given index
 				$('#tore').find('tr[data-index="' + index + '"]').find('.bemerkung').text("");
+				$('#tore').find('tr[data-index="' + index + '"]').find('.status').text("in Betrieb");
 			}
 		});
+
 
 		// textarea example
 		$('.torsperren').click(function () {
 			var index = $(this).attr('data-index');
 			// find element by index and assign the given value
 			$('#tore').find('tr[data-index="' + index + '"]').find('.bemerkung').text($('.torbemerkung').val());
+			$('#tore').find('tr[data-index="' + index + '"]').find('.status').text("gesperrt");
 			$('#exampleModal').modal('hide');
 		});
 
