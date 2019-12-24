@@ -16,9 +16,15 @@ mongoose.connect(db, { useNewUrlParser: true})
 app.use(expressLayouts);
 app.set('view engine', 'ejs');
 
+app.use(express.static(__dirname + '/css'));
+app.use(express.static(__dirname + '/js'));
+app.use(express.static(__dirname + '/fonts'));
+app.use(express.static(__dirname + '/images'));
+
+
 //Routes
-app.use('/', require('./Node_Passport_Login/routes/index'));
-app.use('/', require('./Node_Passport_Login/routes/users.js'));
+app.use('/', require('./routes/index.js'));
+app.use('/', require('./routes/users.js'));
 
 const PORT = process.env.PORT || 5000;
 
