@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 
 
 /*
-
 const http = require('http');
 const fs = require('fs'); */
 
@@ -20,19 +19,13 @@ mongoose.connect(db, { useNewUrlParser: true})
     .catch(err=> console.log(err));
 
 //EJS
+app.use(expressLayouts);
 app.use('/css', express.static('css') );
 app.set('view engine', 'ejs');
 
-app.use(express.static(__dirname + '/css'));
-app.use(express.static(__dirname + '/js'));
-app.use(express.static(__dirname + '/fonts'));
-app.use(express.static(__dirname + '/images'));
-
-
 //Routes
-
-app.use('/', require('./routes/index'));
-app.use('/', require('./routes/users'));
+app.use('/', require('./routes/index.js'));
+app.use('/users', require('./routes/users.js'));
 
 app.use(express.static(__dirname + '/css'));
 app.use(express.static(__dirname + '/js'));
