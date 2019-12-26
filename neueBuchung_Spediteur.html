@@ -21,7 +21,8 @@
 	<!-- Magnific Popup -->
 	<script src="js/jquery.magnific-popup.min.js"></script>
 	<script src="js/magnific-popup-options.js"></script>
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"   integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="   crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+			integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
 	<!-- Counters -->
 	<script src="js/jquery.countTo.js"></script>
 	<!-- Main -->
@@ -61,33 +62,37 @@
 
 	<style>
 
-		.next{
+		.next {
 			text-decoration: none;
 			display: inline-block;
 			padding: 8px 16px;
 		}
+
 		.next:hover {
 			background-color: #ddd;
 			color: black;
 		}
+
 		.next {
 			background-color: #f1f1f1;
 			color: black;
-			float:right;
+			float: right;
 			margin-right: 0px;
 			margin-bottom: 0px;
 		}
 
-		.input-container  input[type=text]{
+		.input-container input[type=text] {
 			padding-left: 40px;
 		}
+
 		.input-container {
-			position:relative;
+			position: relative;
 		}
+
 		#datepicker1 {
-			position:absolute;
-			left:0;
-			padding:9px 8px;
+			position: absolute;
+			left: 0;
+			padding: 9px 8px;
 
 		}
 	</style>
@@ -100,12 +105,16 @@
 			<div class="top-menu">
 				<div class="row">
 					<div class="col-xs-2">
-						<div ><a href="Startseite_Mitarbeiter.html" ><img src="images/logo-breuninger.jpeg" style="padding-bottom:10px; width: 200px; height:70px;"></a></div>
+						<div><a href="Startseite_Spediteur.html"><img src="images/logo-breuninger.jpeg"
+																	  style="padding-bottom:10px; width: 200px; height:70px;"></a>
+						</div>
 					</div>
 					<div class="col-xs-10 text-right menu-1">
 						<ul>
-							<li class="active"><a href="Startseite_Spediteur.html"><span class="fa fa-home"></span> Startseite</a></li>
-							<li><a href="Benutzerinfo_Spediteur.html"><span class="fa fa-user"></span> Benutzerinformation</a></li>
+							<li class="active"><a href="Startseite_Spediteur.html"><span class="fa fa-home"></span>
+								Startseite</a></li>
+							<li><a href="Benutzerinfo_Spediteur.html"><span class="fa fa-user"></span>
+								Benutzerinformation</a></li>
 							<li><a href="work.html"><span class="fa fa-power-off"></span> Logout</a></li>
 						</ul>
 					</div>
@@ -117,9 +126,10 @@
 <div class="container-wrap">
 	<div class="flexslider">
 		<div>
-			<h2>Neue Buchung</h2>
-			<form>
+
+			<form id="myForm">
 				<div class="form group card" style="padding-top: 10px; padding-left:30px;">
+					<h2 style="font-weight: lighter">Neue Buchung</h2>
 					<div class="ui-widget">
 						<select id="pick" style=" font-size:large; width: 300px">
 							<option value="0">Sendungsstruktur wählen..</option>
@@ -132,36 +142,53 @@
 					<label for="datepicker" class="datepicker" style="padding-top: 30px;"> Datum</label>
 					<div class="input-container">
 						<i class="far fa-calendar-alt" id="datepicker1" style="padding:10px;" aria-hidden="true"></i>
-						<input type="text"  class="form-control datepicker" id="datepicker" style="border-radius: 10px; height: 35px; width: 300px">
+						<input type="text" class="form-control datepicker" id="datepicker"
+							   style="border-radius: 10px; height: 35px; width: 300px">
 					</div>
 
-					<label for="sendungen" class="sendungen" style="padding-top: 10px;">Anzahl der geladenen Sendungen</label>
-					<input type="text" class="form-control sendungen" id="sendungen"  style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Anzahl der Sendungen angeben">
+					<label for="sendungen" class="sendungen" style="padding-top: 10px;">Anzahl der geladenen
+						Sendungen</label>
+					<input data-result="" data-time="5" type="text" class="form-control sendungen" id="sendungen"
+						   style="border-radius: 10px; height: 35px; width: 300px;"
+						   placeholder="Anzahl der Sendungen angeben">
 
 					<label for="EUP" class="EUP" style="padding-top: 10px;">Anzahl der geladenen EUP</label>
-					<input type="text" class="form-control EUP" id="EUP" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Anzahl der EUP angeben">
+					<input data-result="" data-time="2" type="text" class="form-control EUP" id="EUP"
+						   style="border-radius: 10px; height: 35px; width: 300px;"
+						   placeholder="Anzahl der EUP angeben">
 
 					<label for="EWP" class="EWP" style="padding-top: 10px;">Anzahl der geladenen EWP</label>
-					<input type="text" class="form-control EWP" id="EWP"  style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Anzahl der EWP angeben">
+					<input data-result="" data-time="2" type="text" class="form-control EWP" id="EWP"
+						   style="border-radius: 10px; height: 35px; width: 300px;"
+						   placeholder="Anzahl der EWP angeben">
 
-					<label for="pakete" class="pakete" style="padding-top: 10px;">Anzahl der geladenen Pakete (lose) </label>
-					<input type="text" class="form-control pakete" id="pakete" style="border-radius: 10px; height: 35px; width:300px;" placeholder="Anzahl der losen Pakete angeben">
+					<label for="pakete" class="pakete" style="padding-top: 10px;">Anzahl der geladenen Pakete
+						(lose) </label>
+					<input data-result="" data-time="1" type="text" class="form-control pakete" id="pakete"
+						   style="border-radius: 10px; height: 35px; width:300px;"
+						   placeholder="Anzahl der losen Pakete angeben">
 
-					<label for="bemerkung" class="bemerkung" style="padding-top: 10px;">Bemerkung</label>
-					<input type="text" class="form-control bemerkung" id="bemerkung"  style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Bemerkung angeben">
+					<label for="bemerkung" class="bemerkung" style="padding-top: 10px;">Referenz</label>
+					<input type="text" class="form-control bemerkung" id="bemerkung"
+						   style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Referenz angeben">
 
 					<label for="teile" class="teile" style="padding-top: 10px;">Anzahl der Teile</label>
-					<input type="text" class="form-control teile" id="teile"  style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Anzahl der Teile angeben">
+					<input data-result="" data-time="1" type="text" class="form-control teile" id="teile"
+						   style="border-radius: 10px; height: 35px; width: 300px;"
+						   placeholder="Anzahl der Teile angeben">
 
 					<label for="submit" class="submit" style="padding-top: 10px;"></label>
-					<input type="submit" class="form-control submit" id="submit" style="border-radius: 10px; height: 35px; width: 300px;" value="Berechnen">
+					<input type="submit" class="form-control submit" id="submit"
+						   style="border-radius: 10px; height: 35px; width: 300px;" value="Berechnen">
 
-					<label for="zeit" class="zeit" style="padding-top: 40px">Benötigte Entladezeit</label>
+					<label class="zeit" style="padding-top: 40px">Benötigte Entladezeit:&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <strong
+							style="text-decoration: underline; color: #861a22;" class="zeit-value"></strong></label>
 					<a href="Torauswahl_Spediteur.html" class="next">Weiter &raquo;</a>
 
 					<label class="leer" style="padding-top: 350px"></label>
 				</div>
-			</form></div>
+			</form>
+		</div>
 	</div>
 </div><!-- END container-wrap -->
 <div class="container-wrap">
@@ -202,23 +229,65 @@
 
 		$('#datepicker').datepicker();
 
-		$('.input-container,.datepicker, .sendungen, .EUP, .EWP, .pakete, .bemerkung, .teile , .submit, .zeit ,.next').hide();
+		$('.input-container,.datepicker, .sendungen, .EUP, .EWP, .pakete, .bemerkung, .teile , .submit, .zeit ,.next').removeClass('active').hide();
 
 		$('#pick').change(function () {
-			if ($('#pick').val() == 1) {
-				$('.input-container,.datepicker,.sendungen, .EUP, .EWP, .pakete, .bemerkung,.submit ,.zeit, .next').show();
+			var self = $(this);
+			if (self.val() == 1) {
+				$('.input-container,.datepicker,.sendungen, .EUP, .EWP, .pakete, .bemerkung,.submit ,.zeit, .next').addClass('active').show();
 				$('.teile, .leer').hide();
 
-			} else if ($('#pick').val() == 2) {
-				$('.input-container, .datepicker, .sendungen, .pakete, .bemerkung, .submit, .zeit, .next').show();
-				$('.EUP, .EWP, .teile, .leer').hide();
+			} else if (self.val() == 2) {
+				$('.input-container, .datepicker, .sendungen, .pakete, .bemerkung, .submit, .zeit, .next').addClass('active').show();
+				$('.EUP, .EWP, .teile, .leer').removeClass('active').hide();
 
-			} else if ($('#pick').val() == 3) {
-				$('.input-container,.datepicker, .sendungen, .EUP, .EWP, .pakete, .teile, .bemerkung ,.submit, .zeit,.next').show();
+			} else if (self.val() == 3) {
+				$('.input-container,.datepicker, .sendungen, .EUP, .EWP, .pakete, .teile, .bemerkung ,.submit, .zeit,.next').addClass('active').show();
 			} else {
-				$('.input-container, .datepicker, .sendungen, .EUP, .EWP, .pakete, .bemerkung, .teile,.submit, .zeit, .next').hide();
+				$('.input-container, .datepicker, .sendungen, .EUP, .EWP, .pakete, .bemerkung, .teile,.submit, .zeit, .next').removeClass('active').hide();
 				$('.leer').show();
 			}
+
+			$('.zeit-value').text('');
+			$('input[data-time]').val('');
+		});
+
+		$("#myForm").submit(function (event) {
+			event.preventDefault();
+			var timeResult = 0;
+			var minValue;
+			var selectedValue = $('#pick').val();
+			var totalResult;
+
+			if (selectedValue === 1) {
+				minValue = 20;
+			} else {
+				minValue = 15;
+			}
+
+			var results = [];
+
+			$('input[data-time]').each(function (index, elem) {
+
+				if ($(elem).hasClass('active')) {
+					var time = $(this).attr('data-time'),
+							val = $(this).val();
+					var result = time * val;
+					$(this).attr('data-result', result);
+					if (time) {
+						results.push(result);
+					}
+				}
+			});
+
+			// sum elements within array
+			totalResult = results.reduce((a, b) => a + b, 0);
+
+			if (totalResult < minValue) {
+				totalResult = minValue;
+			}
+
+			$('.zeit-value').text(totalResult + " Minuten");
 		});
 
 		function setdefaults() {
@@ -230,6 +299,7 @@
 				dateFormat: 'dd.mm.yy',
 			});
 			$("#datepicker").datepicker("setDate", new Date());
+
 		}
 
 		jQuery(function ($) {
@@ -258,4 +328,3 @@
 </script>
 </body>
 </html>
-

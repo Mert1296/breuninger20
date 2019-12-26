@@ -136,6 +136,15 @@ h1, h2, h3, h4, h5, h6, figure {
   padding: 0;
   margin: 5px 0 0 0;
 }
+
+.fh5co-ueberschrift {
+  font-family: "Source Sans Pro", sans-serif;
+  list-style: none;
+  display: inline;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
 .fh5co-nav ul li {
   font-family: "Source Sans Pro", sans-serif;
   padding: 0;

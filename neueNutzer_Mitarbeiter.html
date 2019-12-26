@@ -54,7 +54,29 @@
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
 	<script src="app.js"></script>
+<style>
+	.form .password-requirements svg {
+		margin-right: 5px;
+		fill: #888;
+		stroke:#888
+	}
 
+	.form .password-requirements .req {
+		color: #888;
+		transition:300ms
+	}
+
+	.form .password-requirements .req--valid {
+		color:#13aa52
+	}
+
+	.form .password-requirements .req--valid svg {
+		animation-name: keyframes-bounce-large;
+		animation-duration: 400ms;
+		fill: #13aa52;
+		stroke:#13aa52
+	}
+</style>
 </head>
 <body>
 <div class="fh5co-loader"></div>
@@ -138,6 +160,7 @@
 					<input type="submit" class="form-control submit" id="submit" style="border-radius: 10px; height: 35px; width: 300px;" value="Speichern">
 				</div>
 				<label class="leer" style="padding-top: 350px"></label>
+				<!-- <div class="m-t-10 password-requirements "><small class="disp-block req "><svg height="9" width="9" viewBox="0 0 32 32"><path d="M27 4l-15 15-7-7-5 5 12 12 20-20z"></path></svg> <span>8 characters minimum</span></small></div></label> -->
 			</form>
 		</div>
 	</div>
@@ -193,6 +216,111 @@
 				$('.leer').show();
 			}
 		});
+	});
+
+	$('.username, .name, .nachname, .zugehörigkeit, .division, .strasse, .plz, .stadt, .telefon, .email, .passwort, .reppass').keyup(function(){
+		var input = $(this).val();
+		if( input.length >= 5 ){
+			$('#length').addClass('valide');
+		} else {
+			$('#length').removeClass('valide');
+		}
+		if( input.match(/[A-z]/) ){
+			$('#letter').addClass('valide');
+		} else {
+			$('#letter').removeClass('valide');
+		} if( input.match(/[A-Z]/) ){
+			$('#capital').addClass('valide');
+		} else {
+			$('#capital').removeClass('valide');
+		} if( input.match(/\d/) ){
+			$('#number').addClass('valide');
+		} else {
+			$('#number').removeClass('valide');
+		} if( input.match(/[!@#$%\^&*(){}[\]<>?/|\-+]/) ){
+			$('#special').addClass('valide');
+		} else {
+			$('#special').removeClass('valide');
+		}
+	});
+
+	// Telefon
+	$(' .telefon').keyup(function(){
+		var input = $(this).val();
+		if( input.length >= 8 ){
+			$('#length').addClass('valide');
+		} else {
+			$('#length').removeClass('valide');
+		}
+		if( input.match(/[A-z]/) ){
+			$('#letter').addClass('valide');
+		} else {
+			$('#letter').removeClass('valide');
+		} if( input.match(/[A-Z]/) ){
+			$('#capital').addClass('valide');
+		} else {
+			$('#capital').removeClass('valide');
+		} if( input.match(/\d/) ){
+			$('#number').addClass('valide');
+		} else {
+			$('#number').removeClass('valide');
+		} if( input.match(/[!@#$%\^&*(){}[\]<>?/|\-+]/) ){
+			$('#special').addClass('valide');
+		} else {
+			$('#special').removeClass('valide');
+		}
+	});
+
+	// E-Mail
+	$(' .email ').keyup(function(){
+		var input = $(this).val();
+		if( input.length >= 10 ){
+			$('#length').addClass('valide');
+		} else {
+			$('#length').removeClass('valide');
+		}
+		if( input.match(/[A-z]/) ){
+			$('#letter').addClass('valide');
+		} else {
+			$('#letter').removeClass('valide');
+
+		} if( input.match(/\d/) ){
+			$('#number').addClass('valide');
+		} else {
+			$('#number').removeClass('valide');
+
+		} if( input.match(/[@_]/) ){
+			$('#special').addClass('valide');
+		} else {
+			$('#special').removeClass('valide');
+		}
+	});
+
+	// Passwort
+	$(' .passwort, .reppass').keyup(function(){
+		var input = $(this).val();
+		if( input.length >= 8 ){
+			$('#length').addClass('valide');
+		} else {
+			$('#length').removeClass('valide');
+		}
+		if( input.match(/[A-z]/) ){
+			$('#letter').addClass('valide');
+		} else {
+			$('#letter').removeClass('valide');
+		} if( input.match(/[A-Z]/) ){
+			$('#capital').addClass('valide');
+		} else {
+			$('#capital').removeClass('valide');
+		} if( input.match(/\d/) ){
+			$('#number').addClass('valide');
+		} else {
+			$('#number').removeClass('valide');
+		} if( input.match(/[!@#$%\^&*(){}[\]<>?/|\-+]/) ){
+			$('#special').addClass('valide');
+		} else {
+			$('#special').removeClass('valide');
+		}
 	});
 </script>
 </body>
