@@ -27,12 +27,16 @@ app.set('view engine', 'ejs');
 app.use('/', require('./routes/index.js'));
 app.use('/users', require('./routes/users.js'));
 
+/*app.get('/register', (req, res) =>{
+    res.render('register');
+});*/
+
 app.use(express.static(__dirname + '/css'));
 app.use(express.static(__dirname + '/js'));
 app.use(express.static(__dirname + '/fonts'));
 app.use(express.static(__dirname + '/images'));
 
- /*
+/*
 //Connection Server
 var server = http.createServer(function (req,res) {
     console.log('requiest was made: ' + req.url);
