@@ -28,6 +28,11 @@ app.set('view engine', 'ejs');
 app.use('/', require('./Node_Passport_Login/routes/index'));
 app.use('/', require('./Node_Passport_Login/routes/users'));
 
+app.use(express.static(__dirname + '/css'));
+app.use(express.static(__dirname + '/js'));
+app.use(express.static(__dirname + '/fonts'));
+app.use(express.static(__dirname + '/images'));
+
  /*
 //Connection Server
 var server = http.createServer(function (req,res) {
