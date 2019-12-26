@@ -3,9 +3,9 @@ const expressLayouts = require('express-ejs-layouts');
 const mongoose = require('mongoose');
 
 
-/*
+
 const http = require('http');
-const fs = require('fs'); */
+const fs = require('fs');
 
 
 const app = express();
@@ -34,7 +34,9 @@ app.use('/users', require('./routes/users.js'));
 app.use(express.static(__dirname + '/css'));
 app.use(express.static(__dirname + '/js'));
 app.use(express.static(__dirname + '/fonts'));
-app.use(express.static(__dirname + '/images'));
+app.use('/images/', express.static('./images'));
+
+
 
 /*
 //Connection Server

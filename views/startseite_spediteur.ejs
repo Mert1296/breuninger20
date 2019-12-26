@@ -1,0 +1,200 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <style>
+
+        .button {
+            border: none;
+            background:#861a22;
+            padding: 8px;
+            width: 180px;
+            display: flex;
+            overflow: hidden;
+            color: white;
+            font-weight: bold;
+            margin: auto;
+        }
+
+        .button__inner-wrapper {
+            width: 200%;
+            white-space: nowrap;
+            transform: translateX(-100%);
+            transition: transform .3s ease;
+        }
+
+        .button__content {
+            width: 100%;
+            display: inline-block;
+        }
+
+        .button:hover .button__inner-wrapper {
+            transform: translateX(0);
+        }
+    </style>
+</head>
+<body>
+
+<div id="page">
+    <nav class="fh5co-nav" role="navigation">
+        <div class="container-wrap" style="height: 120px;">
+            <div class="top-menu">
+                <div class="row">
+                    <div class="col-xs-2">
+                        <div> <a href="Startseite_Spediteur.html"><img src="../images/logo-breuninger.jpeg" style="padding-bottom:10px; width: 200px; height:70px;"></a></div>
+                    </div>
+                    <div class="col-xs-10 text-right menu-1">
+                        <ul>
+                            <li class="active"><a href="Startseite_Spediteur.html"><span class="fa fa-home"></span> Startseite</a></li>
+                            <li><a href="Benutzerinfo_Spediteur.html"><span class="fa fa-user"></span> Benutzerinformation</a></li>
+                            <li><a href=""><span class="fa fa-power-off"></span> Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-wrap" style="background-color: lightgray">
+        <div class="flexslider">
+            <table id="example" class="display">
+                <thead>
+                <tr>
+                    <th>Sendungsstruktur</th>
+                    <th>Tor</th>
+                    <th>Buchungsdatum</th>
+                    <th>Uhrzeit</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>KEP</td>
+                    <td>2</td>
+                    <td>29.10.19</td>
+                    <td>11:00-11:20</td>
+                </tr>
+                <tr>
+                    <td>SPN</td>
+                    <td>3</td>
+                    <td>29.10.19</td>
+                    <td>11:10-11:30</td>
+                </tr>
+                <tr>
+                    <td>SPN</td>
+                    <td>3</td>
+                    <td>29.10.19</td>
+                    <td>11:10-12:20</td>
+                </tr>
+                <tr>
+                    <td>HW</td>
+                    <td>7</td>
+                    <td>30.10.19</td>
+                    <td>15:00-15:20</td>
+                </tr>
+                <tr>
+                    <td>SPN</td>
+                    <td>3</td>
+                    <td>29.10.19</td>
+                    <td>11:10-11:30</td>
+                </tr>
+                <tr>
+                    <td>SPN</td>
+                    <td>3</td>
+                    <td>29.10.19</td>
+                    <td>11:30-12:20</td>
+                </tr>
+                <tr>
+                    <td>HW</td>
+                    <td>7</td>
+                    <td>30.10.19</td>
+                    <td>15:00-15:20</td>
+                </tr>
+                <tr>
+                    <td>SPN</td>
+                    <td>3</td>
+                    <td>29.10.19</td>
+                    <td>11:10-11:30</td>
+                </tr>
+                <tr>
+                    <td>SPN</td>
+                    <td>3</td>
+                    <td>29.10.19</td>
+                    <td>11:30-12:20</td>
+                </tr>
+                <tr>
+                    <td>HW</td>
+                    <td>7</td>
+                    <td>30.10.19</td>
+                    <td>15:00-15:20</td>
+                </tr>
+                </tbody>
+            </table>
+            <div>
+                <form action="neueBuchung_Spediteur.html" style="padding: 25px"><button class="button">
+				<span class="button__inner-wrapper">
+     				 <span class="button__icon button__content">
+						<i class="fas fa-plus"></i>
+					 </span>
+				<span class="button__label button__content">
+       				Buchung hinzufügen
+				</span>
+				</span>
+
+                    </button></form>
+            </div>
+        </div>
+    </div><!-- END container-wrap -->
+    <div class="container-wrap">
+        <footer id="fh5co-footer" role="contentinfo">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h4>Kontaktinformation</h4>
+                    <div class="fh5co-footer">
+                        <p><br> E. Breuninger GmbH & Co. <br> <i class="fas fa-home"></i> &nbsp Eschenbrünnlestraße 11, 71065 Sindelfingen
+                            <br><i class="fas fa-phone-alt"></i><a href="tel://1234567920"> &nbsp +49 (0) 1235 / 2355 98</a>&nbsp;
+                            <br>Mo-Fr 8:00 bis 13:00 Uhr
+                            <br><i class="fas fa-print"></i><a href="tel://1234567920"> &nbsp +49 (0) 1235 / 2355 </a>&nbsp;
+                            <br><i class="fas fa-envelope"></i><a href="mailto:info@breuninger.com"> &nbsp info@breuninger.com</a>
+                            <br><a href="https://www.breuninger.com/de/"> www.breuninger.com</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row copyright">
+                <div class="col-md-12 text-center"style="margin-bottom: 10px">
+                    <p>
+                        <small class="block">&copy; 2020 Breuninger. All Rights Reserved.</small>
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div><!-- END container-wrap -->
+</div>
+<script>
+    $(document).ready(function () {
+        var table = $('#example').DataTable({
+            bInfo: false,
+            paging:false,
+            searching: false,
+            scrollY: "300px",
+            ScrollCollapse: true,
+            aaSortingFixed: [[2,'asc'],[3,'asc']]
+        });
+
+        $('#example tbody').on( 'click', 'tr', function () {
+            if ( $(this).hasClass('selected') ) {
+                $(this).removeClass('selected');
+            }
+            else {
+                table.$('tr.selected').removeClass('selected');
+                $(this).addClass('selected');
+            }
+        } );
+
+        $('#button').click( function () {
+            table.row('.selected').remove().draw( false );
+        } );
+
+    } );
+</script>
+</body>
+</html>
