@@ -31,8 +31,8 @@ app.use(express.static(__dirname + '/images'));
 
 //Routes
 
-app.use('/', require('./Node_Passport_Login/routes/index'));
-app.use('/', require('./Node_Passport_Login/routes/users'));
+app.use('/', require('./routes/index'));
+app.use('/', require('./routes/users'));
 
 app.use(express.static(__dirname + '/css'));
 app.use(express.static(__dirname + '/js'));
