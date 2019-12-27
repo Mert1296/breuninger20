@@ -3,10 +3,9 @@ const expressLayouts = require('express-ejs-layouts');
 const mongoose = require('mongoose');
 
 
-/*
 
 const http = require('http');
-const fs = require('fs'); */
+const fs = require('fs');
 
 
 const app = express();
@@ -20,15 +19,26 @@ mongoose.connect(db, { useNewUrlParser: true})
     .catch(err=> console.log(err));
 
 //EJS
+app.use(expressLayouts);
 app.use('/css', express.static('css') );
 app.set('view engine', 'ejs');
 
 //Routes
+app.use('/', require('./routes/index.js'));
+app.use('/users', require('./routes/users.js'));
 
-app.use('/', require('./Node_Passport_Login/routes/index'));
-app.use('/', require('./Node_Passport_Login/routes/users'));
+/*app.get('/register', (req, res) =>{
+    res.render('register');
+});*/
 
- /*
+app.use(express.static(__dirname + '/css'));
+app.use(express.static(__dirname + '/js'));
+app.use(express.static(__dirname + '/fonts'));
+app.use('/images/', express.static('./images'));
+
+
+
+/*
 //Connection Server
 var server = http.createServer(function (req,res) {
     console.log('requiest was made: ' + req.url);
