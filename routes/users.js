@@ -16,9 +16,14 @@ router.get('/startseite_spediteur', (req, res) => res.render('startseite_spedite
 router.get ('/Benutzerverwaltung_Mitarbeiter', (req, res) => res.render ('Benutzerverwaltung_Mitarbeiter'));
 //New User MA
 router.get ('/neuerUser_MA', (req, res) => res.render ('neuerUser_MA'));
+router.post('/neuerUser_MA', (req, res) =>{
+    console.log(req.body);
+    res.send('hello');
+});
 
 //Test
-router.post('/neuerUser_MA', (req, res) =>{
+router.get ('/test', (req, res) => res.render ('test'));
+router.post('/test', (req, res) =>{
     console.log(req.body);
     res.send('hello');
 });

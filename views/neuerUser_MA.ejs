@@ -32,7 +32,7 @@
             <div class="top-menu">
                 <div class="row">
                     <div class="col-xs-2">
-                        <div ><a href="Startseite_Mitarbeiter.html" ><img src="../images/logo-breuninger.jpeg" style="padding-bottom:10px; width: 200px; height:70px;"></a></div>
+                        <div ><a href="/users/test" ><img src="../images/logo-breuninger.jpeg" style="padding-bottom:10px; width: 200px; height:70px;"></a></div>
                     </div>
                     <div class="col-xs-10 text-right menu-1">
                         <ul>
@@ -47,11 +47,11 @@
         </div>
     </nav>
 </div>
+<form action="/users/neuerUser_MA" method="POST">
 <div class="container-wrap">
     <div class="flexslider">
         <div>
             <h2>Neuer Benutzer</h2>
-            <form action="/users/neuerUser_MA" method="POST">
                 <div class=" form-group card" style="padding-top: 10px; padding-left: 30px;">
                     <div class="ui-widget">
                         <select id="pick"style=" font-size: large; width: 300px">
@@ -60,7 +60,6 @@
                             <option value="2">Breuninger</option>
                         </select>
                     </div>
-
                     <label for="username" class="username" style="padding-top: 30px;">Username</label>
                     <input type="text" class="form-control username" id="username"  style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Username">
 
@@ -107,10 +106,10 @@
                 </div>
                 <label class="leer" style="padding-top: 350px"></label>
                 <!-- <div class="m-t-10 password-requirements "><small class="disp-block req "><svg height="9" width="9" viewBox="0 0 32 32"><path d="M27 4l-15 15-7-7-5 5 12 12 20-20z"></path></svg> <span>8 characters minimum</span></small></div></label> -->
-            </form>
         </div>
     </div>
 </div><!-- END container-wrap -->
+</form>
 <div class="container-wrap">
     <footer id="fh5co-footer" role="contentinfo">
         <div class="row">
@@ -136,7 +135,6 @@
         </div>
     </footer>
 </div><!-- END container-wrap -->
-</div>
 <script>
 
     $(document).ready(function () {

@@ -30,10 +30,14 @@ app.use(expressLayouts);
 app.use('/css', express.static('css') );
 app.set('view engine', 'ejs');
 
-// Express body parser
+//express body parser
+app.use(express.urlencoded({ extended: false}));
+
+//body parser
+/*
 app.use(bodyParser.urlencoded({
     extended: true
-}));
+}));*/
 
 // Express session
 app.use(
