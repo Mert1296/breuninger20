@@ -1,0 +1,274 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <style>
+        .form .password-requirements svg {
+            margin-right: 5px;
+            fill: #888;
+            stroke:#888
+        }
+
+        .form .password-requirements .req {
+            color: #888;
+            transition:300ms
+        }
+
+        .form .password-requirements .req--valid {
+            color:#13aa52
+        }
+
+        .form .password-requirements .req--valid svg {
+            animation-name: keyframes-bounce-large;
+            animation-duration: 400ms;
+            fill: #13aa52;
+            stroke:#13aa52
+        }
+    </style>
+</head>
+<body>
+<div id="page">
+    <nav class="fh5co-nav" role="navigation">
+        <div class="container-wrap" style="height: 120px;">
+            <div class="top-menu">
+                <div class="row">
+                    <div class="col-xs-2">
+                        <div ><a href="Startseite_Mitarbeiter.html" ><img src="../images/logo-breuninger.jpeg" style="padding-bottom:10px; width: 200px; height:70px;"></a></div>
+                    </div>
+                    <div class="col-xs-10 text-right menu-1">
+                        <ul>
+                            <li class="active"><a href="Startseite_Mitarbeiter.html"><span class="fa fa-home"></span> Startseite</a></li>
+                            <li><a href="Benutzerverwaltung_Mitarbeiter.html"><span class="fa fa-user"></span> Benutzerverwaltung</a></li>
+                            <li><a href="Torverwaltung_Mitarbeiter.html"><span class="fas fa-archway"></span> Torverwaltung</a></li>
+                            <li><a href=""><span class="fa fa-power-off"></span> Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+<div class="container-wrap">
+    <div class="flexslider">
+        <div>
+            <h2>Neuer Benutzer</h2>
+            <form action="/users/neuerUser_MA" method="POST">
+                <div class=" form-group card" style="padding-top: 10px; padding-left: 30px;">
+                    <div class="ui-widget">
+                        <select id="pick"style=" font-size: large; width: 300px">
+                            <option value="0">Benutzer wählen..</option>
+                            <option value="1">Spediteur</option>
+                            <option value="2">Breuninger</option>
+                        </select>
+                    </div>
+
+                    <label for="username" class="username" style="padding-top: 30px;">Username</label>
+                    <input type="text" class="form-control username" id="username"  style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Username">
+
+                    <label for="name" class="name" style="padding-top: 10px;">Name</label>
+                    <input type="text" class="form-control name" id="name" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Name">
+
+                    <label for="nachname" class="nachname"style="padding-top: 10px;">Nachname</label>
+                    <input type="text" class="form-control nachname" id="nachname"  style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Nachname">
+
+                    <label for="zugehoerigkeit" class="zugehörigkeit" style="padding-top: 10px;">Zugehörigkeit</label>
+                    <input type="text" class="form-control zugehörigkeit" id="zugehoerigkeit" style="border-radius: 10px; height: 35px; width:300px;" placeholder="Zugehörigkeit">
+
+                    <label for="division" class="division" style="padding-top: 10px;">Division</label>
+                    <input type="text" class="form-control division" id="division"  style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Division">
+
+                    <label for="strasse" class="strasse" style="padding-top: 10px;">Straße</label>
+                    <input type="text" class="form-control strasse" id="strasse"  style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Straße des Standorts">
+
+                    <label for="plz" class="plz" style="padding-top: 10px;">PLZ</label>
+                    <input type="text" class="form-control plz" id="plz"  style="border-radius: 10px; height: 35px; width: 300px;" placeholder="PLZ">
+
+                    <label for="stadt" class="stadt" style="padding-top: 10px;">Stadt</label>
+                    <input type="text" class="form-control stadt" id="stadt"  style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Stadt">
+
+                    <label class="land" style="padding-top: 10px;">Land
+                        <p><select id="pickingland" style="font-size: large; width: 300px">
+                                <option>DE</option>
+                                <option>EN</option> </select></label></p>
+
+                    <label for="telefon" class="telefon" style="padding-top: 10px;">Telefon</label>
+                    <input type="text" class="form-control telefon" id="telefon"  style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Telefon">
+
+                    <label for="email" class="email" style="padding-top: 10px;">Email</label>
+                    <input type="email" class="form-control email" id="email"  style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Email">
+
+                    <label for="passwort" class="passwort" style="padding-top: 10px;">Passwort</label>
+                    <input type="password" class="form-control passwort" id="passwort"  style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Passwort">
+
+                    <label for="reppass" class="reppass" style="padding-top: 10px;">Passwort wiederholen</label>
+                    <input type="password" class="form-control reppass" id="reppass"  style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Passwort wiederholen">
+
+                    <label for="submit" class="submit" style="padding-top: 10px;"></label>
+                    <input type="submit" class="form-control submit" id="submit" style="border-radius: 10px; height: 35px; width: 300px;" value="Speichern">
+                </div>
+                <label class="leer" style="padding-top: 350px"></label>
+                <!-- <div class="m-t-10 password-requirements "><small class="disp-block req "><svg height="9" width="9" viewBox="0 0 32 32"><path d="M27 4l-15 15-7-7-5 5 12 12 20-20z"></path></svg> <span>8 characters minimum</span></small></div></label> -->
+            </form>
+        </div>
+    </div>
+</div><!-- END container-wrap -->
+<div class="container-wrap">
+    <footer id="fh5co-footer" role="contentinfo">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h4>Kontaktinformation</h4>
+                <div class="fh5co-footer">
+                    <p><br> E. Breuninger GmbH & Co. <br> <i class="fas fa-home"></i> &nbsp Eschenbrünnlestraße 11, 71065 Sindelfingen
+                        <br><i class="fas fa-phone-alt"></i><a href="tel://1234567920"> &nbsp +49 (0) 1235 / 2355 98</a>&nbsp;
+                        <br>Mo-Fr 8:00 bis 13:00 Uhr
+                        <br><i class="fas fa-print"></i><a href="tel://1234567920"> &nbsp +49 (0) 1235 / 2355 </a>&nbsp;
+                        <br><i class="fas fa-envelope"></i><a href="mailto:info@breuninger.com"> &nbsp info@breuninger.com</a>
+                        <br><a href="https://www.breuninger.com/de/"> www.breuninger.com</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row copyright">
+            <div class="col-md-12 text-center"style="margin-bottom: 10px">
+                <p>
+                    <small class="block">&copy; 2020 Breuninger. All Rights Reserved.</small>
+                </p>
+            </div>
+        </div>
+    </footer>
+</div><!-- END container-wrap -->
+</div>
+<script>
+
+    $(document).ready(function () {
+        $('#example').DataTable({
+            searching: false,
+            bInfo: false,
+            paging: false,
+        });
+        $('.nachname, .zugehörigkeit,.division, .strasse,.plz, .stadt, .username, .name, .land, .telefon, .email, .passwort, .reppass').hide();
+
+        $('#pick').change(function () {
+            if($('#pick').val() == 1){
+                $('.username, .name, .land, .telefon, .email, .passwort, .reppass').show();
+                $('.nachname, .zugehörigkeit,.division, .strasse,.plz, .stadt, .leer').hide();
+
+            }
+            else if($('#pick').val() == 2){
+                $('.username, .name, .nachname, .zugehörigkeit, .division, .strasse, .plz, .stadt, .land, .telefon ,.email, .passwort, .reppass').show();
+                $('.leer').hide();
+
+            }
+            else {
+                $('.nachname, .zugehörigkeit,.division, .strasse,.plz, .stadt, .username, .name, .land, .telefon, .email, .passwort, .reppass').hide();
+                $('.leer').show();
+            }
+        });
+    });
+
+    $('.username, .name, .nachname, .zugehörigkeit, .division, .strasse, .plz, .stadt, .telefon, .email, .passwort, .reppass').keyup(function(){
+        var input = $(this).val();
+        if( input.length >= 5 ){
+            $('#length').addClass('valide');
+        } else {
+            $('#length').removeClass('valide');
+        }
+        if( input.match(/[A-z]/) ){
+            $('#letter').addClass('valide');
+        } else {
+            $('#letter').removeClass('valide');
+        } if( input.match(/[A-Z]/) ){
+            $('#capital').addClass('valide');
+        } else {
+            $('#capital').removeClass('valide');
+        } if( input.match(/\d/) ){
+            $('#number').addClass('valide');
+        } else {
+            $('#number').removeClass('valide');
+        } if( input.match(/[!@#$%\^&*(){}[\]<>?/|\-+]/) ){
+            $('#special').addClass('valide');
+        } else {
+            $('#special').removeClass('valide');
+        }
+    });
+
+    // Telefon
+    $(' .telefon').keyup(function(){
+        var input = $(this).val();
+        if( input.length >= 8 ){
+            $('#length').addClass('valide');
+        } else {
+            $('#length').removeClass('valide');
+        }
+        if( input.match(/[A-z]/) ){
+            $('#letter').addClass('valide');
+        } else {
+            $('#letter').removeClass('valide');
+        } if( input.match(/[A-Z]/) ){
+            $('#capital').addClass('valide');
+        } else {
+            $('#capital').removeClass('valide');
+        } if( input.match(/\d/) ){
+            $('#number').addClass('valide');
+        } else {
+            $('#number').removeClass('valide');
+        } if( input.match(/[!@#$%\^&*(){}[\]<>?/|\-+]/) ){
+            $('#special').addClass('valide');
+        } else {
+            $('#special').removeClass('valide');
+        }
+    });
+
+    // E-Mail
+    $(' .email ').keyup(function(){
+        var input = $(this).val();
+        if( input.length >= 10 ){
+            $('#length').addClass('valide');
+        } else {
+            $('#length').removeClass('valide');
+        }
+        if( input.match(/[A-z]/) ){
+            $('#letter').addClass('valide');
+        } else {
+            $('#letter').removeClass('valide');
+
+        } if( input.match(/\d/) ){
+            $('#number').addClass('valide');
+        } else {
+            $('#number').removeClass('valide');
+
+        } if( input.match(/[@_]/) ){
+            $('#special').addClass('valide');
+        } else {
+            $('#special').removeClass('valide');
+        }
+    });
+
+    // Passwort
+    $(' .passwort, .reppass').keyup(function(){
+        var input = $(this).val();
+        if( input.length >= 8 ){
+            $('#length').addClass('valide');
+        } else {
+            $('#length').removeClass('valide');
+        }
+        if( input.match(/[A-z]/) ){
+            $('#letter').addClass('valide');
+        } else {
+            $('#letter').removeClass('valide');
+        } if( input.match(/[A-Z]/) ){
+            $('#capital').addClass('valide');
+        } else {
+            $('#capital').removeClass('valide');
+        } if( input.match(/\d/) ){
+            $('#number').addClass('valide');
+        } else {
+            $('#number').removeClass('valide');
+        } if( input.match(/[!@#$%\^&*(){}[\]<>?/|\-+]/) ){
+            $('#special').addClass('valide');
+        } else {
+            $('#special').removeClass('valide');
+        }
+    });
+</script>
+</body>
+</html>
