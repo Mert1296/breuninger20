@@ -21,9 +21,9 @@ var buchungSchema = mongoose.Schema({
 
 });
 
-var buchung = module.exports = mongoose.model('Buchung', buchungSchema);
+var Buchung = module.exports = mongoose.model('Buchung', buchungSchema);
 
 //Get Buchungen
 module.exports.getBuchungen = function (callback) {
-    buchung.find(callback);
+    Buchung.find(callback);
 };

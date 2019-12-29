@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const flash = require('connect-flash');
 const session = require('express-session');
-const bodyParser = require('body-parser');
 
 /*
 const http = require('http');
@@ -17,13 +16,13 @@ const app = express();
 const db = require('./DB/config/keys').MongoURI;
 
 /// Connect to MongoDB
-mongoose
-    .connect(
+mongoose.connect(
         db,
         { useNewUrlParser: true }
     )
     .then(() => console.log('MongoDB Connected'))
     .catch(err => console.log(err));
+
 
 // EJS
 app.use(expressLayouts);
@@ -75,7 +74,6 @@ app.use(express.static(__dirname + '/css'));
 app.use(express.static(__dirname + '/js'));
 app.use(express.static(__dirname + '/fonts'));
 app.use('/images/', express.static('./images'));
-
 
 
 /*
