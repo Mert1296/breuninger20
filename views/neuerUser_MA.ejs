@@ -43,14 +43,14 @@
                         <label for="username" class="username" style="padding-top: 30px;">Username</label>
                         <input type="text" minlength="3" class="form-control username" required id="username" name="username" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Username">
 
-                        <label for="name" class="name" style="padding-top: 10px;">Name</label>
-                        <input type="text" required class="form-control name" id="name" name="name" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Name">
+                        <label for="vorname" class="vorname" style="padding-top: 10px;">Name</label>
+                        <input type="text" required class="form-control vorname" id="vorname" name="vorname" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Name">
 
-                        <label for="nachname" class="nachname"style="padding-top: 10px;">Nachname</label>
-                        <input type="text" class="form-control nachname" id="nachname" name="nachname" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Nachname">
+                        <label for="name" class="name"style="padding-top: 10px;">Nachname</label>
+                        <input type="text" class="form-control name" id="name" name="name" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Nachname">
 
-                        <label for="zugehoerigkeit" class="zugehörigkeit" style="padding-top: 10px;">Zugehörigkeit</label>
-                        <input type="text" class="form-control zugehörigkeit" id="zugehoerigkeit" name="zugehoerigkeit" style="border-radius: 10px; height: 35px; width:300px;" placeholder="Zugehörigkeit">
+                        <label for="zugehoerigkeit" class="zugehoerigkeit" style="padding-top: 10px;">Zugehörigkeit</label>
+                        <input type="text" class="form-control zugehoerigkeit" id="zugehoerigkeit" name="zugehoerigkeit" style="border-radius: 10px; height: 35px; width:300px;" placeholder="Zugehörigkeit">
 
                         <label for="division" class="division" style="padding-top: 10px;">Division</label>
                         <input type="text" class="form-control division" id="division" name="division" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Division">
@@ -58,11 +58,11 @@
                         <label for="strasse" class="strasse" style="padding-top: 10px;">Straße</label>
                         <input type="text" class="form-control strasse" id="strasse" name="strasse" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Straße des Standorts">
 
-                        <label for="plz" class="plz" style="padding-top: 10px;">PLZ</label>
-                        <input type="text" class="form-control plz" id="plz" name="plz" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="PLZ">
+                        <label for="PLZ" class="PLZ" style="padding-top: 10px;">PLZ</label>
+                        <input type="text" class="form-control PLZ" id="PLZ" name="PLZ" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="PLZ">
 
                         <label for="stadt" class="stadt" style="padding-top: 10px;">Stadt</label>
-                        <input type="text" class="form-control stadt" id="stadt" name="zugehoerigkeit" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Stadt">
+                        <input type="text" class="form-control stadt" id="stadt" name="stadt" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Stadt">
 
                         <label class="land" style="padding-top: 10px;">Land
                             <p><select id="pickingland" style="font-size: large; width: 300px">
@@ -75,8 +75,8 @@
                         <label for="email" class="email" style="padding-top: 10px;">Email</label>
                         <input type="email" class="form-control email" id="email" name="email" required pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)+$" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Email">
 
-                        <label for="passwort" class="passwort" style="padding-top: 10px;">Passwort</label>
-                        <input type="password" required minlength="8" class="form-control passwort" id="passwort" name="passwort" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Passwort">
+                        <label for="password" class="password" style="padding-top: 10px;">Passwort</label>
+                        <input type="password" required minlength="8" class="form-control password" id="password" name="password" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Passwort">
 
                         <label for="reppass" class="reppass" style="padding-top: 10px;">Passwort wiederholen</label>
                         <input type="password" required minlength="8" class="form-control reppass" id="reppass" name="reppass" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Passwort wiederholen">
@@ -122,21 +122,21 @@
             bInfo: false,
             paging: false,
         });
-        $('.nachname, .zugehörigkeit,.division, .strasse,.plz, .stadt, .username, .name, .land, .telefon, .email, .passwort, .reppass, .submit').hide();
+        $('.name, .zugehoerigkeit,.division, .strasse,.PLZ, .stadt, .username, .vorname, .land, .telefon, .email, .password, .reppass, .submit').hide();
 
         $('#pick').change(function () {
             if($('#pick').val() == 1){
-                $('.username, .name, .land, .telefon, .email, .passwort, .reppass, .submit').show();
-                $('.nachname, .zugehörigkeit,.division, .strasse,.plz, .stadt, .leer').hide();
+                $('.username, .vorname, .land, .telefon, .email, .password, .reppass, .submit').show();
+                $('.name, .zugehoerigkeit,.division, .strasse,.PLZ, .stadt, .leer').hide();
 
             }
             else if($('#pick').val() == 2){
-                $('.username, .name, .nachname, .zugehörigkeit, .division, .strasse, .plz, .stadt, .land, .telefon ,.email, .passwort, .reppass, .submit').show();
+                $('.username, .vorname, .name, .zugehoerigkeit, .division, .strasse, .PLZ, .stadt, .land, .telefon ,.email, .password, .reppass, .submit').show();
                 $('.leer').hide();
 
             }
             else {
-                $('.nachname, .zugehörigkeit,.division, .strasse,.plz, .stadt, .username, .name, .land, .telefon, .email, .passwort, .reppass, .submit').hide();
+                $('.name, .zugehoerigkeit,.division, .strasse,.PLZ, .stadt, .username, .vorname, .land, .telefon, .email, .password, .reppass, .submit').hide();
                 $('.leer').show();
             }
         });
