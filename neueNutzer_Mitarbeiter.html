@@ -6,7 +6,6 @@
 	<title>Breuninger</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.css"/>
 	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
 	<script src="js/main.js"></script>
@@ -54,31 +53,13 @@
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
 	<script src="app.js"></script>
+
 <style>
-	.form .password-requirements svg {
-		margin-right: 5px;
-		fill: #888;
-		stroke:#888
-	}
 
-	.form .password-requirements .req {
-		color: #888;
-		transition:300ms
-	}
-
-	.form .password-requirements .req--valid {
-		color:#13aa52
-	}
-
-	.form .password-requirements .req--valid svg {
-		animation-name: keyframes-bounce-large;
-		animation-duration: 400ms;
-		fill: #13aa52;
-		stroke:#13aa52
-	}
 </style>
 </head>
 <body>
+
 <div class="fh5co-loader"></div>
 <div id="page">
 	<nav class="fh5co-nav" role="navigation">
@@ -105,7 +86,7 @@
 	<div class="flexslider">
 		<div>
 			<h2>Neuer Benutzer</h2>
-			<form>
+			<form class="">
 				<div class=" form-group card" style="padding-top: 10px; padding-left: 30px;">
 					<div class="ui-widget">
 						<select id="pick"style=" font-size: large; width: 300px">
@@ -114,53 +95,77 @@
 							<option value="2">Breuninger</option>
 						</select>
 					</div>
-
+					<div>
 					<label for="username" class="username" style="padding-top: 30px;">Username</label>
-					<input type="text" class="form-control username" id="username"  style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Username">
+					<input minlength="3" type="text" required class="form-control username" id="username"  style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Username">
+					</div>
 
+					<div>
 					<label for="name" class="name" style="padding-top: 10px;">Name</label>
-					<input type="text" class="form-control name" id="name" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Name">
+					<input type="text" required class="form-control name" id="name" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Name">
+					</div>
 
+					<div>
 					<label for="nachname" class="nachname"style="padding-top: 10px;">Nachname</label>
-					<input type="text" class="form-control nachname" id="nachname"  style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Nachname">
+					<input type="text" required class="form-control nachname" id="nachname"  style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Nachname">
+					</div>
 
+					<div>
 					<label for="zugehoerigkeit" class="zugehörigkeit" style="padding-top: 10px;">Zugehörigkeit</label>
 					<input type="text" class="form-control zugehörigkeit" id="zugehoerigkeit" style="border-radius: 10px; height: 35px; width:300px;" placeholder="Zugehörigkeit">
+					</div>
 
+					<div>
 					<label for="division" class="division" style="padding-top: 10px;">Division</label>
 					<input type="text" class="form-control division" id="division"  style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Division">
+					</div>
 
+					<div>
 					<label for="strasse" class="strasse" style="padding-top: 10px;">Straße</label>
-					<input type="text" class="form-control strasse" id="strasse"  style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Straße des Standorts">
+					<input type="text" required class="form-control strasse" id="strasse"  style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Straße des Standorts">
+					</div>
 
+					<div>
 					<label for="plz" class="plz" style="padding-top: 10px;">PLZ</label>
-					<input type="text" class="form-control plz" id="plz"  style="border-radius: 10px; height: 35px; width: 300px;" placeholder="PLZ">
+					<input pattern="[0-9]{5}"  minlength="5" maxlength="5" type="text" required class="form-control plz" id="plz"  style="border-radius: 10px; height: 35px; width: 300px;" placeholder="PLZ">
+					</div>
 
+					<div>
 					<label for="stadt" class="stadt" style="padding-top: 10px;">Stadt</label>
-					<input type="text" class="form-control stadt" id="stadt"  style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Stadt">
+					<input type="text" required class="form-control stadt" id="stadt"  style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Stadt">
+					</div>
 
-					<label class="land" style="padding-top: 10px;">Land
-						<p><select id="pickingland" style="font-size: large; width: 300px">
+					<div>
+					<label class="land" style="padding-top: 10px;">Land</label>
+						<p><select required id="pickingland" class="land" style="font-size: large; width: 300px">
 							<option>DE</option>
-							<option>EN</option> </select></label></p>
+							<option>EN</option> </select></p>
+						</div>
 
+					<div>
 					<label for="telefon" class="telefon" style="padding-top: 10px;">Telefon</label>
-					<input type="text" class="form-control telefon" id="telefon"  style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Telefon">
+					<input type="text" required class="form-control telefon" id="telefon" pattern='[\+]\d{2}[\(]\d{2}[\)]\d{4}[\-]\d{4}'style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Telefon">
+					</div>
 
+					<div>
 					<label for="email" class="email" style="padding-top: 10px;">Email</label>
-					<input type="email" class="form-control email" id="email"  style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Email">
+						<input type="email" required class="form-control email" pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)+$" required id="email"  style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Email"></div>
 
+					<div>
 					<label for="passwort" class="passwort" style="padding-top: 10px;">Passwort</label>
-					<input type="password" class="form-control passwort" id="passwort"  style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Passwort">
+					<input type="password" equired class="form-control passwort" id="passwort" maxlength="40" minlength="8" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Passwort">
+					</div>
 
+					<div>
 					<label for="reppass" class="reppass" style="padding-top: 10px;">Passwort wiederholen</label>
-					<input type="password" class="form-control reppass" id="reppass"  style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Passwort wiederholen">
+					<input type="password" required class="form-control reppass" id="reppass" maxlength="40" minlength="8"  style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Passwort wiederholen">
+					</div>
 
+					<div>
 					<label for="submit" class="submit" style="padding-top: 10px;"></label>
-					<input type="submit" class="form-control submit" id="submit" style="border-radius: 10px; height: 35px; width: 300px;" value="Speichern">
+						<input type="submit" required class="form-control submit" id="submit" style="border-radius: 10px; height: 35px; width: 300px; text-align: center" value="Speichern"></div>
 				</div>
 				<label class="leer" style="padding-top: 350px"></label>
-				<!-- <div class="m-t-10 password-requirements "><small class="disp-block req "><svg height="9" width="9" viewBox="0 0 32 32"><path d="M27 4l-15 15-7-7-5 5 12 12 20-20z"></path></svg> <span>8 characters minimum</span></small></div></label> -->
 			</form>
 		</div>
 	</div>
@@ -190,6 +195,7 @@
 	</footer>
 </div><!-- END container-wrap -->
 </div>
+
 <script>
 
 	$(document).ready(function () {
@@ -198,129 +204,24 @@
 			bInfo: false,
 			paging: false,
 		});
-		$('.nachname, .zugehörigkeit,.division, .strasse,.plz, .stadt, .username, .name, .land, .telefon, .email, .passwort, .reppass').hide();
+		$('.nachname, .zugehörigkeit,.division, .strasse,.plz, .stadt, .username, .name, .land, .telefon, .email, .passwort, .reppass, .submit').hide();
 
 		$('#pick').change(function () {
 			if($('#pick').val() == 1){
-				$('.username, .name, .land, .telefon, .email, .passwort, .reppass').show();
+				$('.username, .name, .land, .telefon, .email, .passwort, .reppass, .submit').show();
 				$('.nachname, .zugehörigkeit,.division, .strasse,.plz, .stadt, .leer').hide();
 
 			}
 			else if($('#pick').val() == 2){
-				$('.username, .name, .nachname, .zugehörigkeit, .division, .strasse, .plz, .stadt, .land, .telefon ,.email, .passwort, .reppass').show();
+				$('.username, .name, .nachname, .zugehörigkeit, .division, .strasse, .plz, .stadt, .land, .telefon ,.email, .passwort, .reppass, .submit').show();
 				$('.leer').hide();
 
 			}
 			else {
-				$('.nachname, .zugehörigkeit,.division, .strasse,.plz, .stadt, .username, .name, .land, .telefon, .email, .passwort, .reppass').hide();
+				$('.nachname, .zugehörigkeit,.division, .strasse,.plz, .stadt, .username, .name, .land, .telefon, .email, .passwort, .reppass, .submit').hide();
 				$('.leer').show();
 			}
 		});
-	});
-
-	$('.username, .name, .nachname, .zugehörigkeit, .division, .strasse, .plz, .stadt, .telefon, .email, .passwort, .reppass').keyup(function(){
-		var input = $(this).val();
-		if( input.length >= 5 ){
-			$('#length').addClass('valide');
-		} else {
-			$('#length').removeClass('valide');
-		}
-		if( input.match(/[A-z]/) ){
-			$('#letter').addClass('valide');
-		} else {
-			$('#letter').removeClass('valide');
-		} if( input.match(/[A-Z]/) ){
-			$('#capital').addClass('valide');
-		} else {
-			$('#capital').removeClass('valide');
-		} if( input.match(/\d/) ){
-			$('#number').addClass('valide');
-		} else {
-			$('#number').removeClass('valide');
-		} if( input.match(/[!@#$%\^&*(){}[\]<>?/|\-+]/) ){
-			$('#special').addClass('valide');
-		} else {
-			$('#special').removeClass('valide');
-		}
-	});
-
-	// Telefon
-	$(' .telefon').keyup(function(){
-		var input = $(this).val();
-		if( input.length >= 8 ){
-			$('#length').addClass('valide');
-		} else {
-			$('#length').removeClass('valide');
-		}
-		if( input.match(/[A-z]/) ){
-			$('#letter').addClass('valide');
-		} else {
-			$('#letter').removeClass('valide');
-		} if( input.match(/[A-Z]/) ){
-			$('#capital').addClass('valide');
-		} else {
-			$('#capital').removeClass('valide');
-		} if( input.match(/\d/) ){
-			$('#number').addClass('valide');
-		} else {
-			$('#number').removeClass('valide');
-		} if( input.match(/[!@#$%\^&*(){}[\]<>?/|\-+]/) ){
-			$('#special').addClass('valide');
-		} else {
-			$('#special').removeClass('valide');
-		}
-	});
-
-	// E-Mail
-	$(' .email ').keyup(function(){
-		var input = $(this).val();
-		if( input.length >= 10 ){
-			$('#length').addClass('valide');
-		} else {
-			$('#length').removeClass('valide');
-		}
-		if( input.match(/[A-z]/) ){
-			$('#letter').addClass('valide');
-		} else {
-			$('#letter').removeClass('valide');
-
-		} if( input.match(/\d/) ){
-			$('#number').addClass('valide');
-		} else {
-			$('#number').removeClass('valide');
-
-		} if( input.match(/[@_]/) ){
-			$('#special').addClass('valide');
-		} else {
-			$('#special').removeClass('valide');
-		}
-	});
-
-	// Passwort
-	$(' .passwort, .reppass').keyup(function(){
-		var input = $(this).val();
-		if( input.length >= 8 ){
-			$('#length').addClass('valide');
-		} else {
-			$('#length').removeClass('valide');
-		}
-		if( input.match(/[A-z]/) ){
-			$('#letter').addClass('valide');
-		} else {
-			$('#letter').removeClass('valide');
-		} if( input.match(/[A-Z]/) ){
-			$('#capital').addClass('valide');
-		} else {
-			$('#capital').removeClass('valide');
-		} if( input.match(/\d/) ){
-			$('#number').addClass('valide');
-		} else {
-			$('#number').removeClass('valide');
-		} if( input.match(/[!@#$%\^&*(){}[\]<>?/|\-+]/) ){
-			$('#special').addClass('valide');
-		} else {
-			$('#special').removeClass('valide');
-		}
 	});
 </script>
 </body>
