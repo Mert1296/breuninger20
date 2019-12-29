@@ -20,7 +20,7 @@
     "express-session": "^1.17.0",
     "mongoose": "^5.7.12",
     "mysql": "^2.17.1",
-    "passport": "^0.4.0",
+    "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "path": "^0.12.7",
     "path-__dirname": "^2.1.0",

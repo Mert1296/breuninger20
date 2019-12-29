@@ -14,7 +14,7 @@ const fs = require('fs');
 const app = express();
 
 //DB Config
-const db = require('./Node_Passport_Login/config/keys').MongoURI;
+const db = require('./DB/config/keys').MongoURI;
 
 /// Connect to MongoDB
 mongoose
