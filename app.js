@@ -17,9 +17,9 @@ const db = require('./DB/config/keys').MongoURI;
 
 /// Connect to MongoDB
 mongoose.connect(
-        db,
-        { useNewUrlParser: true }
-    )
+    db,
+    { useNewUrlParser: true }
+)
     .then(() => console.log('MongoDB Connected'))
     .catch(err => console.log(err));
 
@@ -85,7 +85,6 @@ var server = http.createServer(function (req,res) {
     var myReadStream = fs.createReadStream(__dirname + '/Startseite_Mitarbeiter.html', 'utf8');
     myReadStream.pipe(res);
 });
-
 server.listen(3000, '127.0.0.1');
 console.log('listening to port 3000');
 */
