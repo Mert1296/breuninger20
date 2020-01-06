@@ -1,6 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
+const passport = require('passport');
+// Load User model
+const User = require('../DB/models/User');
+const { forwardAuthenticated } = require('../DB/config/auth');
 
 //User Models
 //const User = require('../DB/models/user');
@@ -30,50 +34,68 @@ router.get ('/neuerUser_MA', (req, res) => res.render ('neuerUser_MA'));
 });*/
 
 // Register
-router.post('/neuerUser_MA', (req, res) => {
-    const {username, name, vorname, division, strasse, plz, stadt, pickingland, telefon, email, password, reppass} = req.body;
-    console.log(req.body);
+router.post('/neuerUSer_MA', (req, res) => {
+    const { username, vorname, name, division, strasse, PLZ, stadt, land, telefon, email, password, password2 } = req.body;
     let errors = [];
 
-    //Check password match
-    if (password !== reppass) {
-        errors.push({msg: 'Passwords do not match'});
-
-    } else {
-        res.send('pass');
+    if (password != password2) {
+        errors.push({ msg: 'Passwords do not match' });
     }
 
-        /*
+    if (password.length < 6) {
+        errors.push({ msg: 'Password must be at least 6 characters' });
+    }
+
+    if (errors.length > 0) {
+        res.render('neuerUser_MA', {
+            errors,
+            username,
+            vorname,
+            name,
+            division,
+            strasse,
+            PLZ,
+            stadt,
+            land,
+            telefon,
+            email,
+            password,
+            password2
+        });
+    } else {
         User.findOne({ email: email }).then(user => {
             if (user) {
                 errors.push({ msg: 'Email already exists' });
-                res.render('register', {
+                res.render('neuerUser_MA', {
                     errors,
                     username,
+                    vorname,
                     name,
-                    nachname,
-                    //zugehoerigkeit,
                     division,
                     strasse,
-                    plz,
+                    PLZ,
                     stadt,
-                    pickingland,
+                    land,
                     telefon,
                     email,
-                    passwort,
-                    reppass
+                    password,
+                    password2
                 });
             } else {
                 const newUser = new User({
                     username,
+                    vorname,
+                    name,
+                    division,
+                    strasse,
+                    PLZ,
+                    stadt,
+                    land,
+                    telefon,
                     email,
-                    passwort
+                    password
                 });
 
-*/
-
-
-                /*
                 bcrypt.genSalt(10, (err, salt) => {
                     bcrypt.hash(newUser.password, salt, (err, hash) => {
                         if (err) throw err;
@@ -92,7 +114,16 @@ router.post('/neuerUser_MA', (req, res) => {
                 });
             }
         });
-    }*/
+    }
+});
+
+// Login
+router.post('/login', (req, res, next) => {
+    passport.authenticate('local', {
+        successRedirect: '/startseite_breuninger',
+        failureRedirect: '/users/login',
+        failureFlash: true
+    })(req, res, next);
 });
 
 module.exports = router;

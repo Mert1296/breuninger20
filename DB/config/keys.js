@@ -1,3 +1,5 @@
+dbPassword = 'mongodb+srv://mili:'+ encodeURIComponent('mili123') + '@test-cluster1-zk2s8.mongodb.net/test?retryWrites=true&w=majority';
+
 module.exports = {
-    MongoURI: 'mongodb+srv://sunxca:Passwort123!@breuninger-ymnkl.mongodb.net/test?retryWrites=true&w=majority'
-}
+    MongoURI: dbPassword
+};

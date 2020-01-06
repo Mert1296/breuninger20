@@ -5,29 +5,26 @@ const passport = require('passport');
 const flash = require('connect-flash');
 const session = require('express-session');
 
-/*
-const http = require('http');
-const fs = require('fs');
- */
-
 const app = express();
 
-//DB Config
+// Passport Config
+require('./DB/config/passport')(passport);
+
+// DB Config
 const db = require('./DB/config/keys').MongoURI;
 
-/// Connect to MongoDB
+// Connect to MongoDB
 mongoose.connect(
     db,
     { useNewUrlParser: true }
 )
     .then(() => console.log('MongoDB Connected'))
-    .catch(err => console.log(err));
-
+.catch(err => console.log(err));
 
 // EJS
 app.use(expressLayouts);
-app.use('/css', express.static('css') );
 app.set('view engine', 'ejs');
+app.use('/css', express.static('css') );
 
 //express body parser
 app.use(express.urlencoded({ extended: false}));

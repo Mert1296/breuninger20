@@ -5,41 +5,37 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    name: {
-        type: String,
-        required: true
-    },
     vorname: {
         type: String,
-        required: true
+        required: false
     },
-    /*zugehoerigkeit: {
+    name: {
         type: String,
-        required: true
-    },*/
+        required: false
+    },
     division: {
         type: String,
-        required: true
+        required: false
     },
     strasse: {
         type: String,
-        required: true
+        required: false
     },
-    plz: {
+    PLZ: {
         type: String,
-        required: true
+        required: false
     },
     stadt: {
         type: String,
-        required: true
+        required: false
     },
-    pickingland: {
+    land: {
         type: String,
-        required: true
+        required: false
     },
     telefon: {
         type: String,
-        required: true
+        required: false
     },
     email: {
         type: String,
