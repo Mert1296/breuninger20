@@ -25,7 +25,7 @@
 	<!-- Counters -->
 	<script src="js/jquery.countTo.js"></script>
 	<!-- Main -->
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
 	<link rel="stylesheet" href="https://www.jqwidgets.com/public/jqwidgets/styles/jqx.base.css" type="text/css" />
 	<link rel="stylesheet" href="https://www.jqwidgets.com/public/jqwidgets/styles/jqx.energyblue.css" type="text/css" />
 	<script type="text/javascript" src="https://www.jqwidgets.com/public/jqwidgets/jqx-all.js"></script>
@@ -512,7 +512,7 @@
 			description: "George brings projector for presentations.",
 			location: "",
 			subject: "Quarterly Project Review Meeting",
-			calendar: "Room 1",
+			calendar: "Tor 1",
 			start: new Date(2015, 10, 23, 9, 0, 0),
 			end: new Date(2015, 10, 23, 16, 0, 0)
 		}
@@ -522,7 +522,7 @@
 			description: "",
 			location: "",
 			subject: "IT Group Mtg.",
-			calendar: "Room 2",
+			calendar: "Tor 2",
 			start: new Date(2015, 10, 24, 10, 0, 0),
 			end: new Date(2015, 10, 24, 15, 0, 0)
 		}
@@ -532,7 +532,7 @@
 			description: "",
 			location: "",
 			subject: "Course Social Media",
-			calendar: "Room 3",
+			calendar: "Tor 3",
 			start: new Date(2015, 10, 27, 11, 0, 0),
 			end: new Date(2015, 10, 27, 13, 0, 0)
 		}
@@ -542,7 +542,7 @@
 			description: "",
 			location: "",
 			subject: "New Projects Planning",
-			calendar: "Room 2",
+			calendar: "Tor 2",
 			start: new Date(2015, 10, 23, 16, 0, 0),
 			end: new Date(2015, 10, 23, 18, 0, 0)
 		}
@@ -552,7 +552,7 @@
 			description: "",
 			location: "",
 			subject: "Interview with James",
-			calendar: "Room 1",
+			calendar: "Tor 1",
 			start: new Date(2015, 10, 25, 15, 0, 0),
 			end: new Date(2015, 10, 25, 17, 0, 0)
 		}
@@ -562,7 +562,7 @@
 			description: "",
 			location: "",
 			subject: "Interview with Nancy",
-			calendar: "Room 4",
+			calendar: "Tor 2",
 			start: new Date(2015, 10, 26, 14, 0, 0),
 			end: new Date(2015, 10, 26, 16, 0, 0)
 		}
@@ -581,7 +581,6 @@
 					dataFields: [
 						{ name: 'id', type: 'string' },
 						{ name: 'description', type: 'string' },
-						{ name: 'location', type: 'string' },
 						{ name: 'subject', type: 'string' },
 						{ name: 'calendar', type: 'string' },
 						{ name: 'start', type: 'date' },
@@ -593,18 +592,20 @@
 		var adapter = new $.jqx.dataAdapter(source);
 		$("#scheduler").jqxScheduler({
 			date: new $.jqx.date(2015, 11, 23),
-			width: 850,
+			width: 1050,
 			height: 600,
+			dayNameFormat: "abbr",
 			source: adapter,
-			view: 'weekView',
+			view: 'dayView',
 			showLegend: true,
 			ready: function () {
 				$("#scheduler").jqxScheduler('ensureAppointmentVisible', 'id1');
 			},
 			resources:
 					{
-						colorScheme: "scheme05",
+						colorScheme: "scheme09",
 						dataField: "calendar",
+						orientation: "horizontal",
 						source:  new $.jqx.dataAdapter(source)
 					},
 			appointmentDataFields:
@@ -612,16 +613,15 @@
 						from: "start",
 						to: "end",
 						id: "id",
-						description: "description",
-						location: "place",
+						description: "about",
 						subject: "subject",
 						resourceId: "calendar"
 					},
 			views:
 					[
-						'dayView',
-						'weekView',
-						'monthView'
+						{ type: "dayView", showWeekends: false, timeRuler: { hidden: false } },
+						{ type: "weekView", showWeekends: false, timeRuler: { hidden: true } },
+						{ type: "monthView", showWeekends: false }
 					]
 		});
 	});
