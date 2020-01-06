@@ -620,10 +620,11 @@
 			views:
 					[
 						{ type: "dayView", showWeekends: false, timeRuler: { hidden: false } },
-						{ type: "weekView", showWeekends: false, timeRuler: { hidden: true } },
-						{ type: "monthView", showWeekends: false }
+						{ type: "weekView", showWeekends: false, },
+						{ type: "monthView", showWeekends: false  }
 					]
 		});
+	$('#jqx-scheduler-toolbar-details').hide();
 	});
 </script>
 </html>
