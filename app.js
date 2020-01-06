@@ -29,12 +29,6 @@ app.use('/css', express.static('css') );
 //express body parser
 app.use(express.urlencoded({ extended: false}));
 
-//body parser
-/*
-app.use(bodyParser.urlencoded({
-    extended: true
-}));*/
-
 // Express session
 app.use(
     session({
@@ -64,27 +58,10 @@ app.use('/', require('./routes/index.js'));
 app.use('/users', require('./routes/users.js'));
 app.use('/buchungen', require('./routes/buchungen.js'));
 
-/*app.get('/register', (req, res) =>{
-    res.render('register');
-});*/
-
 app.use(express.static(__dirname + '/css'));
 app.use(express.static(__dirname + '/js'));
 app.use(express.static(__dirname + '/fonts'));
 app.use('/images/', express.static('./images'));
-
-
-/*
-//Connection Server
-var server = http.createServer(function (req,res) {
-    console.log('requiest was made: ' + req.url);
-    res.writeHead(200, {'Content-Type': 'text/html'});
-    var myReadStream = fs.createReadStream(__dirname + '/Startseite_Mitarbeiter.html', 'utf8');
-    myReadStream.pipe(res);
-});
-server.listen(3000, '127.0.0.1');
-console.log('listening to port 3000');
-*/
 
 const PORT = process.env.PORT || 5000;
 

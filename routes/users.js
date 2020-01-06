@@ -18,7 +18,6 @@ router.get('/register', (req, res) => res.render('register'));
 // Startseite
 //router.get('/startseite_breuninger', (req, res) => res.render('startseite_breuninger'));
 
-
 router.get('/startseite_spediteur', (req, res) => res.render('startseite_spediteur'));
 
 //Benutzerverwaltung_MA
@@ -120,7 +119,7 @@ router.post('/neuerUSer_MA', (req, res) => {
 // Login
 router.post('/login', (req, res, next) => {
     passport.authenticate('local', {
-        successRedirect: '/startseite_breuninger',
+        successRedirect: '/buchungen/startseite_breuninger',
         failureRedirect: '/users/login',
         failureFlash: true
     })(req, res, next);
