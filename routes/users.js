@@ -15,26 +15,15 @@ router.get('/login', (req, res) => res.render('login'));
 // Kontaktinformation Breuninger
 router.get('/register', (req, res) => res.render('register'));
 
-// Startseite
-//router.get('/startseite_breuninger', (req, res) => res.render('startseite_breuninger'));
-
-router.get('/startseite_spediteur', (req, res) => res.render('startseite_spediteur'));
-
 //Benutzerverwaltung_MA
 router.get ('/Benutzerverwaltung_Mitarbeiter', (req, res) => res.render ('Benutzerverwaltung_Mitarbeiter'));
 
 //New User MA
 router.get ('/neuerUser_MA', (req, res) => res.render ('neuerUser_MA'));
 
-//Test_Ausgabe
-/*router.post('/neuerUser_MA', (req, res) =>{
-    console.log(req.body);
-    res.send('hello');
-});*/
-
 // Register
 router.post('/neuerUSer_MA', (req, res) => {
-    const { username, vorname, name, division, strasse, PLZ, stadt, land, telefon, email, password, password2 } = req.body;
+    const { username, vorname, name, division, strasse, PLZ, stadt, land, telefon, email, admin, password, password2 } = req.body;
     let errors = [];
 
     if (password != password2) {
@@ -58,13 +47,14 @@ router.post('/neuerUSer_MA', (req, res) => {
             land,
             telefon,
             email,
+            admin,
             password,
             password2
         });
     } else {
-        User.findOne({ email: email }).then(user => {
+        User.findOne({email: email}).then(user => {
             if (user) {
-                errors.push({ msg: 'Email already exists' });
+                errors.push({msg: 'Email or Username already exists'});
                 res.render('neuerUser_MA', {
                     errors,
                     username,
@@ -77,6 +67,7 @@ router.post('/neuerUSer_MA', (req, res) => {
                     land,
                     telefon,
                     email,
+                    admin,
                     password,
                     password2
                 });
@@ -92,6 +83,7 @@ router.post('/neuerUSer_MA', (req, res) => {
                     land,
                     telefon,
                     email,
+                    admin,
                     password
                 });
 
@@ -117,13 +109,36 @@ router.post('/neuerUSer_MA', (req, res) => {
 });
 
 // Login
+/*
 router.post('/login', (req, res, next) => {
-    passport.authenticate('local', {
-        successRedirect: '/buchungen/startseite_breuninger',
-        failureRedirect: '/users/login',
-        failureFlash: true
-    })(req, res, next);
+    if (User.admin == 1) {
+        passport.authenticate('local', {
+            successRedirect: '/buchungen/startseite_breuninger',
+            failureRedirect: '/users/login',
+            failureFlash: true
+        })(req, res, next);
+    } else {
+        passport.authenticate('local', {
+            successRedirect: '/buchungen/startseite_spediteur',
+            failureRedirect: '/users/login',
+            failureFlash: true
+        })(req, res, next);
+    }
 });
+*/
+
+router.post(
+    '/login',
+    passport.authenticate('local', {
+        failureRedirect: '/login'
+    }), (req, res) => {
+        if (req.user.admin == "1") {
+            res.redirect('/buchungen/startseite_spediteur');
+        }
+        else {
+            res.redirect('/buchungen/startseite_breuninger');
+        }
+    });
 
 module.exports = router;
 
