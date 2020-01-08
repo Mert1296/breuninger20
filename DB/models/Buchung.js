@@ -1,16 +1,16 @@
 const mongoose = require('mongoose');
 
-const UserSchema = new mongoose.Schema({
+const BuchungSchema = new mongoose.Schema({
     sendungsstruktur: {
         type: String,
         required: true
     },
-    date: {
+    datepicker: {
         type: Date,
         required: true
     }
 });
 
-const User = mongoose.model('User', UserSchema);
+const Buchung = mongoose.model('Buchung', BuchungSchema);
 
-module.exports = User;
+module.exports = Buchung;

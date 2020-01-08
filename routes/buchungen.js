@@ -9,26 +9,26 @@ router.get('/startseite_spediteur', (req, res) => res.render('startseite_spedite
 //neue Buchung
 router.get('/neueBuchung_spediteur', (req, res) => res.render('neueBuchung_spediteur'));
 
-router.post('/neuerUSer_MA', (req, res) => {
-    const { sendungsstruktur, date } = req.body;
+/*
+router.post('/neueBuchung_spediteur', (req, res) => {
+    const { sendungsstruktur, datepicker } = req.body;
     let errors = [];
 
     if (errors.length > 0) {
         res.render('neuerUser_MA', {
             errors,
             sendungsstruktur,
-            date
+            datepicker
         });
     } else {
                 const newBuchung = new Buchung({
                     sendungsstruktur,
-                    date
+                    datepicker
                 });
     }
 });
 
-
-
+*/
 //buchung.js einbinden
 //Buchung = require('../DB/models/buchung_mitarbeiter');
 
