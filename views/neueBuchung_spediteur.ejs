@@ -1,61 +1,17 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-    <style>
-
-        .next {
-            text-decoration: none;
-            display: inline-block;
-            padding: 8px 16px;
-        }
-
-        .next:hover {
-            background-color: #ddd;
-            color: black;
-        }
-
-        .next {
-            background-color: #f1f1f1;
-            color: black;
-            float: right;
-            margin-right: 0px;
-            margin-bottom: 0px;
-        }
-
-        .input-container input[type=text] {
-            padding-left: 40px;
-        }
-
-        .input-container {
-            position: relative;
-        }
-
-        #datepicker1 {
-            position: absolute;
-            left: 0;
-            padding: 9px 8px;
-
-        }
-    </style>
-</head>
-<body>
 <div id="page">
     <nav class="fh5co-nav" role="navigation">
         <div class="container-wrap" style="height: 120px;">
             <div class="top-menu">
                 <div class="row">
                     <div class="col-xs-2">
-                        <div><a href="/buchungen/Startseite_Spediteur.html"><img src="../images/logo-breuninger.jpeg"
-                                                                      style="padding-bottom:10px; width: 200px; height:70px;"></a>
+                        <div><a href="/buchungen/Startseite_Spediteur.html"><img src="../images/logo-breuninger.jpeg" style="padding-bottom:10px; width: 200px; height:70px;"></a>
                         </div>
                     </div>
                     <div class="col-xs-10 text-right menu-1">
                         <ul>
-                            <li class="active"><a href="Startseite_Spediteur.html"><span class="fa fa-home"></span>
-                                    Startseite</a></li>
-                            <li><a href="Benutzerinfo_Spediteur.html"><span class="fa fa-user"></span>
-                                    Benutzerinformation</a></li>
-                            <li><a href="work.html"><span class="fa fa-power-off"></span> Logout</a></li>
+                            <li class="active"><a href="Startseite_Spediteur.html"><span class="fa fa-home"></span>Startseite</a></li>
+                            <li><a href="Benutzerinfo_Spediteur.html"><span class="fa fa-user"></span>Benutzerinformation</a></li>
+                            <li><a href=""><span class="fa fa-power-off"></span> Logout</a></li>
                         </ul>
                     </div>
                 </div>
@@ -63,15 +19,15 @@
         </div>
     </nav>
 </div>
-<div class="container-wrap">
-    <div class="flexslider">
-        <div>
-            <form action="/buchungen/neueBuchung_spediteur" method="POST">
-                <div class="form group card" style="padding-top: 10px; padding-left:30px;">
-                    <h2 style="font-weight: lighter">Neue Buchung</h2>
+<form action="/buchungen/neueBuchung_spediteur" id ="myForm" method="POST">
+    <div class="container-wrap">
+        <div class="flexslider">
+            <div>
+                <h2>Neue Buchung</h2>
+                <div class=" form-group card" style="padding-top: 10px; padding-left: 30px;">
                     <div class="ui-widget">
-                        <select id="pick" name="sendungsstruktur" style=" font-size:large; width: 300px">
-                            <option value="0">Sendungsstruktur wählen..</option>
+                        <select id="pick" name="sendungsstruktur" style=" font-size: large; width: 300px">
+                            <option value="0" >Sendungsstruktur wählen..</option>
                             <option value="1">SPN - Liegeversand</option>
                             <option value="2">KEP - Paketversand</option>
                             <option value="3">HW - Liegeversand/Hängeversand</option>
@@ -79,85 +35,65 @@
                     </div>
 
                     <label for="datepicker" class="datepicker" style="padding-top: 30px;"> Datum</label>
-                    <div class="input-container">
-                        <i class="far fa-calendar-alt" id="datepicker1" style="padding:10px;" aria-hidden="true"></i>
-                        <input type="text" class="form-control datepicker" id="datepicker" name="datepicker"
-                               style="border-radius: 10px; height: 35px; width: 300px">
+                    <div class="input-container" style="position: relative">
+                        <i class="far fa-calendar-alt" id="datepicker1" style="padding:10px; position: absolute; left:0; padding: 9px 8px;" aria-hidden="true"></i>
+                        <input type="text" class="form-control datepicker" id="datepicker" name="date" style="border-radius: 10px; height: 35px; width: 300px; padding-left: 40px;">
                     </div>
 
-                    <label for="sendungen" class="sendungen" style="padding-top: 10px;">Anzahl der geladenen
-                        Sendungen</label>
-                    <input data-result="" data-time="5" type="text" class="form-control sendungen" id="sendungen"
-                           style="border-radius: 10px; height: 35px; width: 300px;"
-                           placeholder="Anzahl der Sendungen angeben">
+                    <label for="sendungen" class="sendungen" style="padding-top: 10px;">Anzahl der geladenen Sendungen</label>
+                    <input data-result="" data-time="5" type="text" class="form-control sendungen" id="sendungen" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Anzahl der Sendungen angeben">
 
                     <label for="EUP" class="EUP" style="padding-top: 10px;">Anzahl der geladenen EUP</label>
-                    <input data-result="" data-time="2" type="text" class="form-control EUP" id="EUP"
-                           style="border-radius: 10px; height: 35px; width: 300px;"
-                           placeholder="Anzahl der EUP angeben">
+                    <input data-result="" data-time="2" type="text" class="form-control EUP" id="EUP" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Anzahl der EUP angeben">
 
                     <label for="EWP" class="EWP" style="padding-top: 10px;">Anzahl der geladenen EWP</label>
-                    <input data-result="" data-time="2" type="text" class="form-control EWP" id="EWP"
-                           style="border-radius: 10px; height: 35px; width: 300px;"
-                           placeholder="Anzahl der EWP angeben">
+                    <input data-result="" data-time="2" type="text" class="form-control EWP" id="EWP" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Anzahl der EWP angeben">
 
-                    <label for="pakete" class="pakete" style="padding-top: 10px;">Anzahl der geladenen Pakete
-                        (lose) </label>
-                    <input data-result="" data-time="1" type="text" class="form-control pakete" id="pakete"
-                           style="border-radius: 10px; height: 35px; width:300px;"
-                           placeholder="Anzahl der losen Pakete angeben">
+                    <label for="pakete" class="pakete" style="padding-top: 10px;">Anzahl der geladenen Pakete (lose) </label>
+                    <input data-result="" data-time="1" type="text" class="form-control pakete" id="pakete" style="border-radius: 10px; height: 35px; width:300px;" placeholder="Anzahl der losen Pakete angeben">
 
                     <label for="bemerkung" class="bemerkung" style="padding-top: 10px;">Referenz</label>
-                    <input type="text" class="form-control bemerkung" id="bemerkung"
-                           style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Referenz angeben">
+                    <input type="text" class="form-control bemerkung" id="bemerkung" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Referenz angeben">
 
                     <label for="teile" class="teile" style="padding-top: 10px;">Anzahl der Teile</label>
-                    <input data-result="" data-time="1" type="text" class="form-control teile" id="teile"
-                           style="border-radius: 10px; height: 35px; width: 300px;"
-                           placeholder="Anzahl der Teile angeben">
+                    <input data-result="" data-time="1" type="text" class="form-control teile" id="teile" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Anzahl der Teile angeben">
 
                     <label for="submit" class="submit" style="padding-top: 10px;"></label>
-                    <input type="submit" class="form-control submit" id="submit"
-                           style="border-radius: 10px; height: 35px; width: 300px;" value="Berechnen">
+                    <input type="submit" class="form-control submit" id="submit" style="border-radius: 10px; height: 35px; width: 300px;" value="Berechnen">
 
-                    <label class="zeit" style="padding-top: 40px">Benötigte Entladezeit:&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <strong
-                                style="text-decoration: underline; color: #861a22;" class="zeit-value"></strong></label>
-                    <a href="Torauswahl_Spediteur.html" class="next">Weiter &raquo;</a>
-
-                    <label class="leer" style="padding-top: 350px"></label>
+                    <label class="zeit" style="padding-top: 40px">Benötigte Entladezeit:&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <strong style="text-decoration: underline; color: #861a22;" class="zeit-value"></strong></label>
+                    <a href="" class="next">Weiter &raquo;</a>
                 </div>
-            </form>
+                <label class="leer" style="padding-top: 350px"></label>
+            </div>
         </div>
-    </div>
-</div><!-- END container-wrap -->
+    </div><!-- END container-wrap -->
+</form>
 <div class="container-wrap">
     <footer id="fh5co-footer" role="contentinfo">
         <div class="row">
             <div class="col-md-12 text-center">
                 <h4>Kontaktinformation</h4>
                 <div class="fh5co-footer">
-                    <p> E. Breuninger GmbH & Co. <br> Eschenbrünnlestraße 11, 71065 Sindelfingen
-                        <br>Tel-Nr. <a href="tel://1234567920">+ 49 1235 2355 98</a>&nbsp;
-                        <br><a href="mailto:info@yoursite.com">info@breuninger.com</a>
-                        <br><a href="http://gettemplates.co">www.breuninger.com</a>
-                    </p>
-                </div>
-
-            </div>
-            <div class="row copyright">
-                <div class="col-md-12 text-center">
-                    <p>
-                        <small class="block">&copy; 2020 Breuninger. All Rights Reserved.</small>
+                    <p><br> E. Breuninger GmbH & Co. <br> <i class="fas fa-home"></i> &nbsp Eschenbrünnlestraße 11, 71065 Sindelfingen
+                        <br><i class="fas fa-phone-alt"></i><a href="tel://1234567920"> &nbsp +49 (0) 1235 / 2355 98</a>&nbsp;
+                        <br>Mo-Fr 8:00 bis 13:00 Uhr
+                        <br><i class="fas fa-print"></i><a href="tel://1234567920"> &nbsp +49 (0) 1235 / 2355 </a>&nbsp;
+                        <br><i class="fas fa-envelope"></i><a href="mailto:info@breuninger.com"> &nbsp info@breuninger.com</a>
+                        <br><a href="https://www.breuninger.com/de/"> www.breuninger.com</a>
                     </p>
                 </div>
             </div>
         </div>
+        <div class="row copyright">
+            <div class="col-md-12 text-center"style="margin-bottom: 10px">
+                <p>
+                    <small class="block">&copy; 2020 Breuninger. All Rights Reserved.</small>
+                </p>
+            </div>
+        </div>
     </footer>
 </div><!-- END container-wrap -->
-</div>
-<div class="gototop js-top">
-    <a href="#" class="js-gotop"><i class="icon-arrow-up2"></i></a>
-</div>
 <script>
     $(document).ready(function () {
         $('#example').DataTable({
@@ -166,22 +102,20 @@
             paging: false,
         });
 
-        $('#datepicker').datepicker();
-
-        $('.input-container,.datepicker, .sendungen, .EUP, .EWP, .pakete, .bemerkung, .teile , .submit, .zeit ,.next').removeClass('active').hide();
+        $('.input-container, .datepicker, .sendungen,.EUP, .EWP,.pakete, .bemerkung, .teile, .submit, .zeit, .next').removeClass('active').hide();
 
         $('#pick').change(function () {
             var self = $(this);
             if (self.val() == 1) {
-                $('.input-container,.datepicker,.sendungen, .EUP, .EWP, .pakete, .bemerkung,.submit ,.zeit, .next').addClass('active').show();
-                $('.teile, .leer').hide();
-
-            } else if (self.val() == 2) {
+                $('.input-container,.datepicker,.sendungen, .EUP, .EWP, .pakete, .bemerkung,.submit, .zeit, .next').addClass('active').show();
+                $('.teile, .leer').removeClass('active').hide();
+            }
+           else if (self.val() == 2) {
                 $('.input-container, .datepicker, .sendungen, .pakete, .bemerkung, .submit, .zeit, .next').addClass('active').show();
                 $('.EUP, .EWP, .teile, .leer').removeClass('active').hide();
-
-            } else if (self.val() == 3) {
-                $('.input-container,.datepicker, .sendungen, .EUP, .EWP, .pakete, .teile, .bemerkung ,.submit, .zeit,.next').addClass('active').show();
+            }
+            else if (self.val() == 3) {
+                $('.input-container,.datepicker, .sendungen, .EUP, .EWP, .pakete, .teile, .bemerkung ,.submit, .zeit, .next').addClass('active').show();
             } else {
                 $('.input-container, .datepicker, .sendungen, .EUP, .EWP, .pakete, .bemerkung, .teile,.submit, .zeit, .next').removeClass('active').hide();
                 $('.leer').show();
@@ -218,7 +152,6 @@
                     }
                 }
             });
-
             // sum elements within array
             totalResult = results.reduce((a, b) => a + b, 0);
 
@@ -228,6 +161,8 @@
 
             $('.zeit-value').text(totalResult + " Minuten");
         });
+
+        $('#datepicker').datepicker();
 
         function setdefaults() {
             $("#datepicker").datepicker({
@@ -265,5 +200,3 @@
         });
     });
 </script>
-</body>
-</html>
