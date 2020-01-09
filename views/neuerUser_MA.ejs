@@ -29,13 +29,13 @@
                                 <div class="ui-widget">
                                     <select id="pick" name="admin" style=" font-size: large; width: 300px">
                                         <option value="0" >Benutzer wählen..</option>
-                                        <option value="1">Spediteur</option>
-                                        <option value="2">Breuninger</option>
+                                        <option value="spediteur">Spediteur</option>
+                                        <option value="breuninger">Breuninger</option>
                                     </select>
                                 </div>
 
                                 <label for="username" class="username" style="padding-top: 30px;">Username</label>
-                                <input type="text" minlength="3" class="form-control username" required id="username" name="username" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Username">
+                                <input type="text" minlength="3" class="form-control username" required id="username" name="usernames" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Username">
 
                                 <label for="vorname" class="vorname" style="padding-top: 10px;">Name</label>
                                 <input type="text" required class="form-control vorname" id="vorname" name="vorname" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Name">
@@ -114,11 +114,11 @@
                     });
                     $('.name, .zugehoerigkeit,.division, .strasse,.PLZ, .stadt, .username, .vorname, .land, .telefon, .email, .password, .password2, .submit').hide();
                     $('#pick').change(function () {
-                        if($('#pick').val() == 1){
+                        if($('#pick').val() == "spediteur"){
                             $('.username, .vorname, .land, .telefon, .email, .password, .password2, .submit').show();
                             $('.name, .zugehoerigkeit,.division, .strasse,.PLZ, .stadt, .leer').hide();
                         }
-                        else if($('#pick').val() == 2){
+                        else if($('#pick').val() == "breuninger"){
                             $('.username, .vorname, .name, .zugehoerigkeit, .division, .strasse, .PLZ, .stadt, .land, .telefon ,.email, .password, .password2, .submit').show();
                             $('.leer').hide();
                         }
