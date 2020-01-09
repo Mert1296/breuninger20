@@ -37,32 +37,32 @@
                     <label for="datepicker" class="datepicker" style="padding-top: 30px;"> Datum</label>
                     <div class="input-container" style="position: relative">
                         <i class="far fa-calendar-alt" id="datepicker1" style="padding:10px; position: absolute; left:0; padding: 9px 8px;" aria-hidden="true"></i>
-                        <input type="text" class="form-control datepicker" id="datepicker" name="date" style="border-radius: 10px; height: 35px; width: 300px; padding-left: 40px;" placeholder="Wählen Sie ein Datum">
+                        <input type="text" class="form-control datepicker" id="datepicker" name="datepicker" style="border-radius: 10px; height: 35px; width: 300px; padding-left: 40px;" placeholder="Wählen Sie ein Datum">
                     </div>
 
                     <label for="sendungen" class="sendungen" style="padding-top: 10px;">Anzahl der geladenen Sendungen</label>
-                    <input data-result="" data-time="5" type="text" class="form-control sendungen" id="sendungen" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Anzahl der Sendungen angeben">
+                    <input data-result="" data-time="5" type="text" class="form-control sendungen" id="sendungen" name="sendungen" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Anzahl der Sendungen angeben">
 
                     <label for="EUP" class="EUP" style="padding-top: 10px;">Anzahl der geladenen EUP</label>
-                    <input data-result="" data-time="2" type="text" class="form-control EUP" id="EUP" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Anzahl der EUP angeben">
+                    <input data-result="" data-time="2" type="text" class="form-control EUP" id="EUP" name="EUP" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Anzahl der EUP angeben">
 
                     <label for="EWP" class="EWP" style="padding-top: 10px;">Anzahl der geladenen EWP</label>
-                    <input data-result="" data-time="2" type="text" class="form-control EWP" id="EWP" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Anzahl der EWP angeben">
+                    <input data-result="" data-time="2" type="text" class="form-control EWP" id="EWP" name="EWP" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Anzahl der EWP angeben">
 
                     <label for="pakete" class="pakete" style="padding-top: 10px;">Anzahl der geladenen Pakete (lose) </label>
-                    <input data-result="" data-time="1" type="text" class="form-control pakete" id="pakete" style="border-radius: 10px; height: 35px; width:300px;" placeholder="Anzahl der losen Pakete angeben">
+                    <input data-result="" data-time="1" type="text" class="form-control pakete" id="pakete" name="pakete" style="border-radius: 10px; height: 35px; width:300px;" placeholder="Anzahl der losen Pakete angeben">
 
                     <label for="bemerkung" class="bemerkung" style="padding-top: 10px;">Referenz</label>
-                    <input type="text" class="form-control bemerkung" id="bemerkung" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Referenz angeben">
+                    <input type="text" class="form-control bemerkung" id="bemerkung" name="bemerkung" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Referenz angeben">
 
                     <label for="teile" class="teile" style="padding-top: 10px;">Anzahl der Teile</label>
-                    <input data-result="" data-time="1" type="text" class="form-control teile" id="teile" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Anzahl der Teile angeben">
+                    <input data-result="" data-time="1" type="text" class="form-control teile" id="teile" name="teile" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Anzahl der Teile angeben">
 
                     <label for="submit" class="submit" style="padding-top: 10px;"></label>
-                    <input type="submit" class="form-control submit" id="submit" style="border-radius: 10px; height: 35px; width: 300px;" value="Berechnen">
+                    <input type="button" class="form-control submit" id="submit" style="border-radius: 10px; height: 35px; width: 300px;" value="Berechnen">
 
                     <label class="zeit" style="padding-top: 40px">Benötigte Entladezeit:&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <strong style="text-decoration: underline; color: #861a22;" class="zeit-value"></strong></label>
-                    <a href="" class="next">Weiter &raquo;</a>
+                    <button type="submit" style="width: 90px;" class="next">Weiter &raquo;</button>
                 </div>
                 <label class="leer" style="padding-top: 350px"></label>
             </div>
@@ -101,19 +101,15 @@
             bInfo: false,
             paging: false,
         });
-
         $( "#datepicker" ).datepicker();
-
-
         $('.input-container, .datepicker, .sendungen,.EUP, .EWP,.pakete, .bemerkung, .teile, .submit, .zeit, .next').removeClass('active').hide();
-
         $('#pick').change(function () {
             var self = $(this);
             if (self.val() == 1) {
                 $('.input-container,.datepicker,.sendungen, .EUP, .EWP, .pakete, .bemerkung,.submit, .zeit, .next').addClass('active').show();
                 $('.teile, .leer').removeClass('active').hide();
             }
-           else if (self.val() == 2) {
+            else if (self.val() == 2) {
                 $('.input-container, .datepicker, .sendungen, .pakete, .bemerkung, .submit, .zeit, .next').addClass('active').show();
                 $('.EUP, .EWP, .teile, .leer').removeClass('active').hide();
             }
@@ -123,28 +119,22 @@
                 $('.input-container, .datepicker, .sendungen, .EUP, .EWP, .pakete, .bemerkung, .teile,.submit, .zeit, .next').removeClass('active').hide();
                 $('.leer').show();
             }
-
             $('.zeit-value').text('');
             $('input[data-time]').val('');
         });
-
-        $("#myForm").submit(function (event) {
+        $(".submit").click(function (event) {
             event.preventDefault();
             var timeResult = 0;
             var minValue;
             var selectedValue = $('#pick').val();
             var totalResult;
-
             if (selectedValue === 1) {
                 minValue = 20;
             } else {
                 minValue = 15;
             }
-
             var results = [];
-
             $('input[data-time]').each(function (index, elem) {
-
                 if ($(elem).hasClass('active')) {
                     var time = $(this).attr('data-time'),
                         val = $(this).val();
@@ -157,11 +147,9 @@
             });
             // sum elements within array
             totalResult = results.reduce((a, b) => a + b, 0);
-
             if (totalResult < minValue) {
                 totalResult = minValue;
             }
-
             $('.zeit-value').text(totalResult + " Minuten");
         });
         function setdefaults() {
@@ -173,9 +161,7 @@
                 dateFormat: 'dd.mm.yy',
             });
             $("#datepicker").datepicker("setDate", new Date());
-
         }
-
         jQuery(function ($) {
             $.datepicker.regional['de'] = {
                 clearText: 'löschen', clearStatus: 'aktuelles Datum löschen',
@@ -198,6 +184,5 @@
             };
             $.datepicker.setDefaults($.datepicker.regional['de']);
         });
-
     });
 </script>

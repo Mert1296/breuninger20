@@ -3,14 +3,42 @@ const mongoose = require('mongoose');
 const BuchungSchema = new mongoose.Schema({
     sendungsstruktur: {
         type: String,
-        required: true
+        required: false
     },
     datepicker: {
         type: Date,
-        required: true
+        required: false
+    },
+    sendungen: {
+        type: String,
+        required: false
+    },
+    EUP: {
+        type: String,
+        required: false
+    },
+    EWP: {
+        type: String,
+        required: false
+    },
+    pakete: {
+        type: String,
+        required: false
+    },
+    bemerkung: {
+        type: String,
+        required: false
+    },
+    teile: {
+        type: String,
+        required: false
     }
 });
 
-const Buchung = mongoose.model('Buchung', BuchungSchema);
+const Buchung = module.exports = mongoose.model('Buchung', BuchungSchema,'buchungs');
 
-module.exports = Buchung;
+module.exports.getBuchung = function(callback, limit){
+    Buchung.find(callback).limit(limit);
+}
+
+//module.exports = Buchung;
