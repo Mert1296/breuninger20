@@ -1,6 +1,14 @@
 const mongoose = require('mongoose');
 
 const BuchungSchema = new mongoose.Schema({
+    user: {
+        type: String,
+        required: false
+    },
+    tor:{
+        type: Number,
+        required: false
+    },
     sendungsstruktur: {
         type: String,
         required: false

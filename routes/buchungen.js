@@ -5,7 +5,17 @@ const Buchung = require('../DB/models/Buchung');
 const { forwardAuthenticated } = require('../DB/config/auth');
 
 // Startseite
-router.get('/startseite_breuninger', (req, res) => res.render('startseite_breuninger'));
+//Benutzerverwaltung_MA
+router.route ('/test').get(function (req, res) {
+
+    Buchung.find(function (err, buchungen) {
+        if (err)
+            return res.send(err);
+        res.render('startseite_breuninger',{
+            buchungen: buchungen || []
+        });
+    });
+});
 router.get('/startseite_spediteur', (req, res) => res.render('startseite_spediteur'));
 
 //neue Buchung

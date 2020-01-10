@@ -56,7 +56,6 @@
     <div class="container-wrap">
         <div class="flexslider">
             <h1> Benutzerverwaltung</h1>
-
             <div>
                 <table id="tabelle" class="cell-border"  class="table table-striped" cellspacing="0" class="table table-hover">
                     <thead>
@@ -66,86 +65,12 @@
                     </tr>
                     </thead>
                     <tbody>
+                    <%for (var i = 0; i < users.length; i++) { %>
                     <tr>
-                        <td>Timo Slomianka</td>
-                        <td>Breuninger Mitarbeiter</td>
+                    <td><%=users[i].username%></td>
+                    <td><%=users[i].admin%></td>
                     </tr>
-                    <tr>
-                        <td>Adam Mayer</td>
-                        <td>Breuninger Mitarbeiter</td>
-                    </tr>
-                    <tr>
-                        <td>Dominik Klein</td>
-                        <td>Breuninger Mitarbeiter</td>
-                    </tr>
-                    <tr>
-                        <td>Vladimir Klitschko</td>
-                        <td>Breuninger Mitarbeiter</td>
-                    </tr>
-                    <tr>
-                        <td>Adams Spediteur</td>
-                        <td>Spediteur</td>
-                    </tr>
-                    <tr>
-                        <td>DHL</td>
-                        <td>Spediteur</td>
-                    </tr>
-                    <tr>
-                        <td>Zukunfts Spediteur</td>
-                        <td>Spediteur</td>
-                    </tr>
-                    <tr>
-                        <td>DHL</td>
-                        <td>Spediteur</td>
-                    </tr>
-                    <tr>
-                        <td>DHL</td>
-                        <td>Spediteur</td>
-                    </tr>
-                    <tr>
-                        <td>DHL</td>
-                        <td>Spediteur</td>
-                    </tr>
-                    <tr>
-                        <td>DHL</td>
-                        <td>Spediteur</td>
-                    </tr>
-                    <tr>
-                        <td>DHL</td>
-                        <td>Spediteur</td>
-                    </tr>
-                    <tr>
-                        <td>DHL</td>
-                        <td>Spediteur</td>
-                    </tr>
-                    <tr>
-                        <td>DHL</td>
-                        <td>Spediteur</td>
-                    </tr>
-                    <tr>
-                        <td>DHL</td>
-                        <td>Spediteur</td>
-                    </tr>
-                    <tr>
-                        <td>DHL</td>
-                        <td>Spediteur</td>
-                    </tr>
-                    <tr>
-                        <td>DHL</td>
-                        <td>Spediteur</td>
-                    </tr>
-                    <tr>
-                        <td>DHL</td>
-                        <td>Spediteur</td>
-                    </tr>
-                    <tr>
-                        <td>DHL</td>
-                        <td>Spediteur</td>
-                    </tr>
-                    <tr>
-                        <td>DHL</td>
-                        <td>Spediteur</td>
-                    </tr>
+                    <%}%>
                     </tbody>
                 </table>
                 <div>
@@ -190,6 +115,7 @@
 </div>
 <script>
     $(document).ready(function () {
+        var users = '<% JSON.stringify(users)%>';
 
         var table = $('#tabelle').DataTable({
             bInfo: false,

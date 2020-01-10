@@ -40,84 +40,13 @@
                 </tr>
                 </thead>
                 <tbody>
+                <%for (var i = 0; i < buchungen.length; i++) { %>
                 <tr>
-                    <td>DHL</td>
-                    <td>2</td>
-                    <td>29.10.19</td>
-                    <td>11:00-11:20</td>
+                    <td><%=buchungen[i].user%></td>
+                    <td><%=buchungen[i].tor%></td>
                 </tr>
-                <tr>
-                    <td>GLS</td>
-                    <td>3</td>
-                    <td>29.10.19</td>
-                    <td>11:10-11:30</td>
-                </tr>
-                <tr>
-                    <td>TNT</td>
-                    <td>3</td>
-                    <td>29.10.19</td>
-                    <td>11:30-12:20</td>
-                </tr>
-                <tr>
-                    <td>Multisped</td>
-                    <td>7</td>
-                    <td>30.10.19</td>
-                    <td>15:00-15:20</td>
-                </tr>
-                <tr>
-                    <td>GLS</td>
-                    <td>3</td>
-                    <td>29.10.19</td>
-                    <td>11:10-11:30</td>
-                </tr>
-                <tr>
-                    <td>TNT</td>
-                    <td>3</td>
-                    <td>29.10.19</td>
-                    <td>11:30-12:20</td>
-                </tr>
-                <tr>
-                    <td>Multisped</td>
-                    <td>7</td>
-                    <td>30.10.19</td>
-                    <td>15:00-15:20</td>
-                </tr>
-                <tr>
-                    <td>GLS</td>
-                    <td>3</td>
-                    <td>29.10.19</td>
-                    <td>11:10-11:30</td>
-                </tr>
-                <tr>
-                    <td>TNT</td>
-                    <td>3</td>
-                    <td>29.10.19</td>
-                    <td>11:30-12:20</td>
-                </tr>
-                <tr>
-                    <td>Multisped</td>
-                    <td>7</td>
-                    <td>30.10.19</td>
-                    <td>15:00-15:20</td>
-                </tr>
-                <tr>
-                    <td>GLS</td>
-                    <td>3</td>
-                    <td>29.10.19</td>
-                    <td>11:10-11:30</td>
-                </tr>
-                <tr>
-                    <td>TNT</td>
-                    <td>3</td>
-                    <td>29.10.19</td>
-                    <td>11:30-12:20</td>
-                </tr>
-                <tr>
-                    <td>Multisped</td>
-                    <td>7</td>
-                    <td>30.10.19</td>
-                    <td>15:00-15:20</td>
-                </tr>
+                <%}%>
+
                 </tbody>
             </table>
         </div>
