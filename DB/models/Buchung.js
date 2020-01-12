@@ -13,7 +13,11 @@ const BuchungSchema = new mongoose.Schema({
         type: String,
         required: false
     },
-    datepicker: {
+    from: {
+        type: Date,
+        required: false
+    },
+    to:{
         type: Date,
         required: false
     },
@@ -47,6 +51,6 @@ const Buchung = module.exports = mongoose.model('Buchung', BuchungSchema,'buchun
 
 module.exports.getBuchung = function(callback, limit){
     Buchung.find(callback).limit(limit);
-}
+};
 
 //module.exports = Buchung;

@@ -61,71 +61,37 @@
                 <tr>
                     <th>Sendungsstruktur</th>
                     <th>Tor</th>
-                    <th>Buchungsdatum</th>
-                    <th>Uhrzeit</th>
+                    <th>Datum</th>
+                    <th>Von</th>
+                    <th>Bis</th>
                 </tr>
                 </thead>
                 <tbody>
+                <%for (var i = 0; i < buchungen.length; i++) {
+                    var monat = 1 + buchungen[i].from.getMonth();
+                    var von = -1 + buchungen[i].from.getHours();
+                    var vonMin = buchungen[i].from.getMinutes();
+                    var bis = -1 + buchungen[i].to.getHours();
+                    var bisMin = buchungen[i].to.getMinutes();
+                    if(bisMin == 00){
+                        bisMin = bisMin + "0";
+                    }
+                    if(vonMin == 00){
+                        vonMin = vonMinn + "0";
+                    }
+                %>
                 <tr>
-                    <td>KEP</td>
-                    <td>2</td>
-                    <td>29.10.19</td>
-                    <td>11:00-11:20</td>
+                    <td><%=buchungen[i].sendungsstruktur%></td>
+                    <td><%=buchungen[i].tor%></td>
+                    <td><%=buchungen[i].from.getDate()+"."+monat+"."+buchungen[i].from.getFullYear()%></td>
+                    <td><%= von +":"+vonMin%></td>
+                    <td><%= bis+":"+bisMin%></td>
                 </tr>
-                <tr>
-                    <td>SPN</td>
-                    <td>3</td>
-                    <td>29.10.19</td>
-                    <td>11:10-11:30</td>
-                </tr>
-                <tr>
-                    <td>SPN</td>
-                    <td>3</td>
-                    <td>29.10.19</td>
-                    <td>11:10-12:20</td>
-                </tr>
-                <tr>
-                    <td>HW</td>
-                    <td>7</td>
-                    <td>30.10.19</td>
-                    <td>15:00-15:20</td>
-                </tr>
-                <tr>
-                    <td>SPN</td>
-                    <td>3</td>
-                    <td>29.10.19</td>
-                    <td>11:10-11:30</td>
-                </tr>
-                <tr>
-                    <td>SPN</td>
-                    <td>3</td>
-                    <td>29.10.19</td>
-                    <td>11:30-12:20</td>
-                </tr>
-                <tr>
-                    <td>HW</td>
-                    <td>7</td>
-                    <td>30.10.19</td>
-                    <td>15:00-15:20</td>
-                </tr>
-                <tr>
-                    <td>SPN</td>
-                    <td>3</td>
-                    <td>29.10.19</td>
-                    <td>11:10-11:30</td>
-                </tr>
-                <tr>
-                    <td>SPN</td>
-                    <td>3</td>
-                    <td>29.10.19</td>
-                    <td>11:30-12:20</td>
-                </tr>
-                <tr>
-                    <td>HW</td>
-                    <td>7</td>
-                    <td>30.10.19</td>
-                    <td>15:00-15:20</td>
-                </tr>
+                <% monat ++;
+                    if(monat == 13){
+                        monat = 1;
+                    }
+                }%>
                 </tbody>
             </table>
             <div>

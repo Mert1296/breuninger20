@@ -35,17 +35,37 @@
                 <tr>
                     <th>Spediteur</th>
                     <th>Tor</th>
-                    <th>Buchungsdatum</th>
-                    <th>Uhrzeit</th>
+                    <th>Datum</th>
+                    <th>Von</th>
+                    <th>Bis</th>
                 </tr>
                 </thead>
                 <tbody>
-                <%for (var i = 0; i < buchungen.length; i++) { %>
+                <%for (var i = 0; i < buchungen.length; i++) {
+                var monat = 1 + buchungen[i].from.getMonth();
+                var von = -1 + buchungen[i].from.getHours();
+                var vonMin = buchungen[i].from.getMinutes();
+                var bis = -1 + buchungen[i].to.getHours();
+                var bisMin = buchungen[i].to.getMinutes();
+                if(bisMin == 00){
+                    bisMin = bisMin + "0";
+                }
+                if(vonMin == 00){
+                    vonMin = vonMinn + "0";
+                }
+                %>
                 <tr>
                     <td><%=buchungen[i].user%></td>
                     <td><%=buchungen[i].tor%></td>
+                    <td><%=buchungen[i].from.getDate()+"."+monat+"."+buchungen[i].from.getFullYear()%></td>
+                    <td><%= von +":"+vonMin%></td>
+                    <td><%= bis+":"+bisMin%></td>
                 </tr>
-                <%}%>
+                <% monat ++;
+                    if(monat == 13){
+                        monat = 1;
+                    }
+                }%>
 
                 </tbody>
             </table>

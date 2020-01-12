@@ -1,0 +1,200 @@
+<body>
+
+<div class="fh5co-loader"></div>
+
+<div id="page">
+    <nav class="fh5co-nav" role="navigation">
+        <div class="container-wrap" style="height: 120px;">
+            <div class="top-menu">
+                <div class="row">
+                    <div class="col-xs-2">
+                        <div ><a href="Startseite_Spediteur.html" ><img src="images/logo-breuninger.jpeg" style="padding-bottom:10px; width: 200px; height:70px;"></a></div>
+                    </div>
+                    <div class="col-xs-10 text-right menu-1">
+                        <ul>
+                            <li><a href="Startseite_Spediteur.html"><span class="fa fa-home"></span> Startseite</a></li>
+                            <li><a href="Benutzerinfo_Spediteur.html"><span class="fa fa-user"></span> Benutzerinformation</a></li>
+                            <li><a href=""><span class="fa fa-power-off"></span> Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+    <div class="container-wrap">
+        <div class="flexslider">
+            <h2>Buchungsübersicht</h2>
+
+            <button><a href="Torauswahl_Spediteur.html" class="next">Zur Torauswahl</a></button>
+            <button><a href=class="next">Buchung abgeben</a></button>
+
+
+        </div><!--  END container-wrap -->
+        <div class="container-wrap">
+            <footer id="fh5co-footer" role="contentinfo">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h4>Kontaktinformation</h4>
+                        <div class="fh5co-footer">
+                            <p> E. Breuninger GmbH & Co. <br> Eschenbrünnlestraße 11, 71065 Sindelfingen
+                                <br>Tel-Nr. <a href="tel://1234567920">+ 49 1235 2355 98</a>&nbsp;
+                                <br><a href="mailto:info@yoursite.com">info@breuninger.com</a>
+                                <br><a href="http://gettemplates.co">www.breuninger.com</a>
+                            </p>
+                        </div>
+
+                    </div>
+                    <div class="row copyright">
+                        <div class="col-md-12 text-center">
+                            <p>
+                                <small class="block">&copy; 2020 Breuninger. All Rights Reserved.</small>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div><!-- END container-wrap -->
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Torsperrung</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        Sie sind dabei ein Tor zu sperren. <br>Falls Sie sich sicher sind, verfassen Sie den Grund.
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label ">Bemerkung:</label>
+                        <textarea class="form-control torbemerkung" id="message-text"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
+                <button type="button" class="btn btn-primary torsperren">Tor sperren</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    $(document).ready(function () {
+        var appointments = new Array();
+
+
+        var appointment1 = {
+            id: "id1",
+            description: "George brings projector for presentations.",
+            location: "",
+            subject: "Quarterly Project Review Meeting",
+            calendar: "Tor 1",
+            start: new Date(2015, 10, 23, 9, 0, 0),
+            end: new Date(2015, 10, 23, 16, 0, 0)
+        }
+
+
+        appointments.push(appointment1);
+        appointments.push(appointment2);
+        appointments.push(appointment3);
+        appointments.push(appointment4);
+        appointments.push(appointment5);
+        appointments.push(appointment6);
+
+
+// prepare the data
+        var source =
+            {
+                dataType: "array",
+                dataFields: [
+                    { name: 'id', type: 'string' },
+                    { name: 'description', type: 'string' },
+                    { name: 'subject', type: 'string' },
+                    { name: 'calendar', type: 'string' },
+                    { name: 'start', type: 'date' },
+                    { name: 'end', type: 'date' }
+                ],
+                id: 'id',
+                localData: appointments
+            };
+        var adapter = new $.jqx.dataAdapter(source);
+        $("#scheduler").jqxScheduler({
+            date: new $.jqx.date(2015, 11, 23),
+            width: 1050,
+            height: 600,
+            dayNameFormat: "abbr",
+            source: adapter,
+            view: 'dayView',
+            showLegend: false,
+            ready: function () {
+                $("#scheduler").jqxScheduler('ensureAppointmentVisible', 'id1');
+            },
+            resources:
+                {
+                    colorScheme: "scheme09",
+                    dataField: "calendar",
+                    orientation: "horizontal",
+                    source:  new $.jqx.dataAdapter(source)
+                },
+            appointmentDataFields:
+                {
+                    from: "start",
+                    to: "end",
+                    id: "id",
+                    description: "about",
+                    subject: "subject",
+                    resourceId: "calendar"
+                },
+            views:
+                [
+                    { type: "dayView", showWeekends: false, timeRuler: { hidden: false } },
+                    { type: "weekView", showWeekends: false, },
+                    { type: "monthView", showWeekends: false  }
+                ]
+        });
+        $('.jqx-group-button-normal').hide();
+        $('#toolbarscheduler').hide();
+        $("tr[data-key='jqxscheduler_48']").hide();
+        $("tr[data-key='jqxscheduler_47']").hide();
+        $("tr[data-key='jqxscheduler_46']").hide();
+        $("tr[data-key='jqxscheduler_45']").hide();
+        $("tr[data-key='jqxscheduler_44']").hide();
+        $("tr[data-key='jqxscheduler_43']").hide();
+        $("tr[data-key='jqxscheduler_42']").hide();
+        $("tr[data-key='jqxscheduler_41']").hide();
+        $("tr[data-key='jqxscheduler_40']").hide();
+        $("tr[data-key='jqxscheduler_39']").hide();
+        $("tr[data-key='jqxscheduler_38']").hide();
+        $("tr[data-key='jqxscheduler_37']").hide();
+        $("tr[data-key='jqxscheduler_36']").hide();
+        $("tr[data-key='jqxscheduler_35']").hide();
+        $("tr[data-key='jqxscheduler_34']").hide();
+        $("tr[data-key='jqxscheduler_33']").hide();
+        $("tr[data-key='jqxscheduler_32']").hide();
+        $("tr[data-key='jqxscheduler_31']").hide();
+        $("tr[data-key='jqxscheduler_30']").hide();
+        $("tr[data-key='jqxscheduler_29']").hide();
+        $("tr[data-key='jqxscheduler_14']").hide();
+        $("tr[data-key='jqxscheduler_13']").hide();
+        $("tr[data-key='jqxscheduler_12']").hide();
+        $("tr[data-key='jqxscheduler_11']").hide();
+        $("tr[data-key='jqxscheduler_10']").hide();
+        $("tr[data-key='jqxscheduler_9']").hide();
+        $("tr[data-key='jqxscheduler_8']").hide();
+        $("tr[data-key='jqxscheduler_7']").hide();
+        $("tr[data-key='jqxscheduler_6']").hide();
+        $("tr[data-key='jqxscheduler_5']").hide();
+        $("tr[data-key='jqxscheduler_4']").hide();
+        $("tr[data-key='jqxscheduler_3']").hide();
+        $("tr[data-key='jqxscheduler_2']").hide();
+        $("tr[data-key='jqxscheduler_1']").hide();
+    });
+</script>

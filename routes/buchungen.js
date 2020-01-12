@@ -4,22 +4,36 @@ const router = express.Router();
 const Buchung = require('../DB/models/Buchung');
 const { forwardAuthenticated } = require('../DB/config/auth');
 
-// Startseite
-//Benutzerverwaltung_MA
-router.route ('/test').get(function (req, res) {
+
+//Startseite Breuninger
+router.route ('/startseite_breuni').get(function (req, res) {
 
     Buchung.find(function (err, buchungen) {
         if (err)
             return res.send(err);
+
         res.render('startseite_breuninger',{
             buchungen: buchungen || []
         });
     });
 });
-router.get('/startseite_spediteur', (req, res) => res.render('startseite_spediteur'));
 
-//neue Buchung
-router.get('/neueBuchung_spediteur', (req, res) => res.render('neueBuchung_spediteur'));
+router.route ('/startseite_spediteur').get(function (req, res) {
+
+    Buchung.find(function (err, buchungen) {
+        if (err)
+            return res.send(err);
+
+        res.render('startseite_spediteur',{
+            buchungen: buchungen || []
+        });
+    });
+});
+
+//Buhchungsübersicht spedi
+router.get('/buchungsuebersicht', (req, res) => res.render('buchungsuebersicht'));
+
+
 
 //insert
 router.post('/neueBuchung_spediteur', (req, res) => {
