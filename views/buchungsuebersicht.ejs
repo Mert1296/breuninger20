@@ -1,3 +1,84 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<style>
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+    }
+
+    .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: yellowgreen;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+    input:checked + .slider {
+        background-color: orangered;
+    }
+
+    input:focus + .slider {
+        box-shadow: 0 0 1px #2196F3;
+    }
+
+    input:checked + .slider:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px);
+    }
+
+    /* Rounded sliders */
+    .slider.round {
+        border-radius: 34px;
+    }
+
+    .slider.round:before {
+        border-radius: 50%;
+    }
+    .previous1{
+        text-decoration: none;
+        display: inline-block;
+        padding: 8px 16px;
+    }
+    .previous1:hover {
+        background-color: #ddd;
+        color: black;
+    }
+    .previous1{
+        background-color: #f1f1f1;
+        color: black;
+        float:left;
+        margin-right: 0px;
+        margin-bottom: 0px;
+    }
+</style>
+</head>
 <body>
 
 <div class="fh5co-loader"></div>
@@ -58,143 +139,5 @@
     </div>
 </div>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Torsperrung</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        Sie sind dabei ein Tor zu sperren. <br>Falls Sie sich sicher sind, verfassen Sie den Grund.
-                    </div>
-                    <div class="form-group">
-                        <label for="message-text" class="col-form-label ">Bemerkung:</label>
-                        <textarea class="form-control torbemerkung" id="message-text"></textarea>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
-                <button type="button" class="btn btn-primary torsperren">Tor sperren</button>
-            </div>
-        </div>
-    </div>
-</div>
 </body>
-<script>
-    $(document).ready(function () {
-        var appointments = new Array();
-
-
-        var appointment1 = {
-            id: "id1",
-            description: "George brings projector for presentations.",
-            location: "",
-            subject: "Quarterly Project Review Meeting",
-            calendar: "Tor 1",
-            start: new Date(2015, 10, 23, 9, 0, 0),
-            end: new Date(2015, 10, 23, 16, 0, 0)
-        }
-
-
-        appointments.push(appointment1);
-        appointments.push(appointment2);
-        appointments.push(appointment3);
-        appointments.push(appointment4);
-        appointments.push(appointment5);
-        appointments.push(appointment6);
-
-
-// prepare the data
-        var source =
-            {
-                dataType: "array",
-                dataFields: [
-                    { name: 'id', type: 'string' },
-                    { name: 'description', type: 'string' },
-                    { name: 'subject', type: 'string' },
-                    { name: 'calendar', type: 'string' },
-                    { name: 'start', type: 'date' },
-                    { name: 'end', type: 'date' }
-                ],
-                id: 'id',
-                localData: appointments
-            };
-        var adapter = new $.jqx.dataAdapter(source);
-        $("#scheduler").jqxScheduler({
-            date: new $.jqx.date(2015, 11, 23),
-            width: 1050,
-            height: 600,
-            dayNameFormat: "abbr",
-            source: adapter,
-            view: 'dayView',
-            showLegend: false,
-            ready: function () {
-                $("#scheduler").jqxScheduler('ensureAppointmentVisible', 'id1');
-            },
-            resources:
-                {
-                    colorScheme: "scheme09",
-                    dataField: "calendar",
-                    orientation: "horizontal",
-                    source:  new $.jqx.dataAdapter(source)
-                },
-            appointmentDataFields:
-                {
-                    from: "start",
-                    to: "end",
-                    id: "id",
-                    description: "about",
-                    subject: "subject",
-                    resourceId: "calendar"
-                },
-            views:
-                [
-                    { type: "dayView", showWeekends: false, timeRuler: { hidden: false } },
-                    { type: "weekView", showWeekends: false, },
-                    { type: "monthView", showWeekends: false  }
-                ]
-        });
-        $('.jqx-group-button-normal').hide();
-        $('#toolbarscheduler').hide();
-        $("tr[data-key='jqxscheduler_48']").hide();
-        $("tr[data-key='jqxscheduler_47']").hide();
-        $("tr[data-key='jqxscheduler_46']").hide();
-        $("tr[data-key='jqxscheduler_45']").hide();
-        $("tr[data-key='jqxscheduler_44']").hide();
-        $("tr[data-key='jqxscheduler_43']").hide();
-        $("tr[data-key='jqxscheduler_42']").hide();
-        $("tr[data-key='jqxscheduler_41']").hide();
-        $("tr[data-key='jqxscheduler_40']").hide();
-        $("tr[data-key='jqxscheduler_39']").hide();
-        $("tr[data-key='jqxscheduler_38']").hide();
-        $("tr[data-key='jqxscheduler_37']").hide();
-        $("tr[data-key='jqxscheduler_36']").hide();
-        $("tr[data-key='jqxscheduler_35']").hide();
-        $("tr[data-key='jqxscheduler_34']").hide();
-        $("tr[data-key='jqxscheduler_33']").hide();
-        $("tr[data-key='jqxscheduler_32']").hide();
-        $("tr[data-key='jqxscheduler_31']").hide();
-        $("tr[data-key='jqxscheduler_30']").hide();
-        $("tr[data-key='jqxscheduler_29']").hide();
-        $("tr[data-key='jqxscheduler_14']").hide();
-        $("tr[data-key='jqxscheduler_13']").hide();
-        $("tr[data-key='jqxscheduler_12']").hide();
-        $("tr[data-key='jqxscheduler_11']").hide();
-        $("tr[data-key='jqxscheduler_10']").hide();
-        $("tr[data-key='jqxscheduler_9']").hide();
-        $("tr[data-key='jqxscheduler_8']").hide();
-        $("tr[data-key='jqxscheduler_7']").hide();
-        $("tr[data-key='jqxscheduler_6']").hide();
-        $("tr[data-key='jqxscheduler_5']").hide();
-        $("tr[data-key='jqxscheduler_4']").hide();
-        $("tr[data-key='jqxscheduler_3']").hide();
-        $("tr[data-key='jqxscheduler_2']").hide();
-        $("tr[data-key='jqxscheduler_1']").hide();
-    });
-</script>
+</html>
