@@ -6,7 +6,7 @@ const { forwardAuthenticated } = require('../DB/config/auth');
 
 
 //Startseite Breuninger
-router.route ('/startseite_breuni').get(function (req, res) {
+router.route ('/startseite_breuninger').get(function (req, res) {
 
     Buchung.find(function (err, buchungen) {
         if (err)

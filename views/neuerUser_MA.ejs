@@ -61,8 +61,8 @@
                                             <option value="DE">DE</option>
                                             <option value="EN">EN</option> </select></p></label>
 
-                                <label for="telefon" class="telefon" style="padding-top: 10px;">Telefon</label>
-                                <input type="text" class="form-control telefon" id="telefon" name="telefon" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Telefon">
+                                <label for="telefon" class="telefon" style="padding-top: 10px;">Telefon<br><small>Format: +49 178 123456</small></label>
+                                <input type="text" class="form-control telefon" id="telefon" pattern="[\+]\d{2}\d{5,20}" name="telefon" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Telefon">
 
                                 <label for="email" class="email" style="padding-top: 10px;">Email</label>
                                 <input type="email" class="form-control email" id="email" name="email" required pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)+$" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Email">
