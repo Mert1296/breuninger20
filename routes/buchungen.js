@@ -18,6 +18,7 @@ router.route ('/startseite_breuni').get(function (req, res) {
     });
 });
 
+//startseite Spedi
 router.route ('/startseite_spediteur').get(function (req, res) {
 
     Buchung.find(function (err, buchungen) {
@@ -33,6 +34,18 @@ router.route ('/startseite_spediteur').get(function (req, res) {
 //Buhchungsübersicht spedi
 router.get('/buchungsuebersicht', (req, res) => res.render('buchungsuebersicht'));
 
+//torauswahl spedi
+router.route ('/torauswahl').get(function (req, res) {
+
+    Buchung.find(function (err, buchungen) {
+        if (err)
+            return res.send(err);
+
+        res.render('torauswahl',{
+            buchungen: buchungen || []
+        });
+    });
+});
 
 
 //insert

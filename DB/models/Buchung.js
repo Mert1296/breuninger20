@@ -26,7 +26,7 @@ const BuchungSchema = new mongoose.Schema({
         required: false
     },
     EUP: {
-        type: String,
+        type: Number,
         required: false
     },
     EWP: {

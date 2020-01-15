@@ -7,7 +7,7 @@
                     <div class="col-xs-2">
                         <div ><a href="/users/test" ><img src="../images/logo-breuninger.jpeg" style="padding-bottom:10px; width: 200px; height:70px;"></a></div>
                     </div>
-                    <div class="col-xs-10 text-right menu-1">
+                    <div class="col-xs-9 text-right menu-1">
                         <ul>
                             <li class="active"><a href="Startseite_Mitarbeiter.html"><span class="fa fa-home"></span> Startseite</a></li>
                             <li><a href="Benutzerverwaltung_Mitarbeiter.html"><span class="fa fa-user"></span> Benutzerverwaltung</a></li>
@@ -20,6 +20,7 @@
         </div>
     </nav>
 </div>
+            <%- include('./partials/messages'); %>
             <form action="/users/neuerUser_MA" method="POST">
                 <div class="container-wrap">
                     <div class="flexslider">
@@ -71,6 +72,42 @@
 
                                 <label for="password2" class="password2" style="padding-top: 10px;">Passwort wiederholen</label>
                                 <input type="password" required minlength="8" class="form-control password2" id="password2" name="password2" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Passwort wiederholen">
+
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" value="Tor 1">Tor 1
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" value="Tor 2">Tor 2
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" value="Tor 3">Tor 3
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" value="Tor 4">Tor 4
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" value="Tor 5">Tor 5
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" value="Tor 6">Tor 6
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" value="Tor 7">Tor 7
+                                    </label>
+                                </div>
 
                                 <label for="submit" class="submit" style="padding-top: 10px;"></label>
                                 <input type="submit" class="form-control submit" id="submit" style="border-radius: 10px; height: 35px; width: 300px;" value="Speichern"><br>
