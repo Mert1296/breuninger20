@@ -61,8 +61,8 @@
                                             <option value="DE">DE</option>
                                             <option value="EN">EN</option> </select></p></label>
 
-                                <label for="telefon" class="telefon" style="padding-top: 10px;">Telefon</label>
-                                <input type="text" class="form-control telefon" id="telefon" name="telefon" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Telefon">
+                                <label for="telefon" class="telefon" style="padding-top: 10px;">Telefon<br><small>Format: +49 178 123456</small></label>
+                                <input type="text" class="form-control telefon" id="telefon" pattern="[\+]\d{2}\d{5,20}" name="telefon" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Telefon">
 
                                 <label for="email" class="email" style="padding-top: 10px;">Email</label>
                                 <input type="email" class="form-control email" id="email" name="email" required pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)+$" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Email">
@@ -72,42 +72,6 @@
 
                                 <label for="password2" class="password2" style="padding-top: 10px;">Passwort wiederholen</label>
                                 <input type="password" required minlength="8" class="form-control password2" id="password2" name="password2" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Passwort wiederholen">
-
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input type="checkbox" class="form-check-input" value="Tor 1">Tor 1
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input type="checkbox" class="form-check-input" value="Tor 2">Tor 2
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input type="checkbox" class="form-check-input" value="Tor 3">Tor 3
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input type="checkbox" class="form-check-input" value="Tor 4">Tor 4
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input type="checkbox" class="form-check-input" value="Tor 5">Tor 5
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input type="checkbox" class="form-check-input" value="Tor 6">Tor 6
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input type="checkbox" class="form-check-input" value="Tor 7">Tor 7
-                                    </label>
-                                </div>
 
                                 <label for="submit" class="submit" style="padding-top: 10px;"></label>
                                 <input type="submit" class="form-control submit" id="submit" style="border-radius: 10px; height: 35px; width: 300px;" value="Speichern"><br>
