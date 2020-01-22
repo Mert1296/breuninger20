@@ -67,11 +67,11 @@
         <div class="flexslider">
             <h1> Benutzerverwaltung</h1>
             <div>
-                <table id="tabelle" class="cell-border"  class="table table-striped" cellspacing="0" class="table table-hover">
+                <table id="tabelle" class="table table-striped cell-border table-hover" cellspacing="0" style="text-align: center">
                     <thead>
                     <tr>
-                        <th>UserID</th>
-                        <th>Rolle</th>
+                        <th style="text-align: center">UserID</th>
+                        <th style="text-align: center">Rolle</th>
                         <th> </th>
                     </tr>
                     </thead>
@@ -80,7 +80,7 @@
                     <tr>
                     <td><%=users[i].username%></td>
                     <td><%=users[i].admin%></td>
-                    <td><button id="buttonAnzeigen" data-toggle="tooltip" title="Anzeigen"><i class="fas fa-search"></i></button></td>
+                        <td><form action="/users/Benutzerverwaltung_Mitarbeiter"><button id="buttonAnzeigen" type="submit" name="username" href="" value="<%users[i].username%>"data-toggle="tooltip" title="Anzeigen"><i class="fas fa-search"></i></button></form></td>
                     </tr>
                     <%}%>
                     </tbody>
@@ -135,6 +135,10 @@
             searching: true,
             scrollY:"300px",
             ScrollCollapse: true,
+            "columnDefs": [
+                { "width": "20px", "targets": [0,1],
+                "width": "90px", "targets": 2}
+            ]
         });
 
         $('#tabelle tbody').on( 'click', 'tr', function () {

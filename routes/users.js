@@ -17,13 +17,15 @@ router.get('/register', (req, res) => res.render('register'));
 
 //Benutzerverwaltung_MA
 router.route ('/Benutzerverwaltung_Mitarbeiter').get(function (req, res) {
-
+    const username = req.body;
     User.find(function (err, users) {
         if (err)
             return res.send(err);
         res.render('Benutzerverwaltung_Mitarbeiter',{
-            users: users || []
+            users: users || [],
+
         });
+
     });
 });
 
