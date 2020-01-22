@@ -6,33 +6,33 @@ const { forwardAuthenticated } = require('../DB/config/auth');
 
 
 //Startseite Breuninger
-router.route ('/Startseite_Mitarbeiter').get(function (req, res) {
+router.route ('/startseite_breuninger').get(function (req, res) {
 
     Buchung.find(function (err, buchungen) {
         if (err)
             return res.send(err);
 
-        res.render('Startseite_Mitarbeiter',{
+        res.render('startseite_breuninger',{
             buchungen: buchungen || []
         });
     });
 });
 
 //startseite Spedi
-router.route ('/Startseite_Spediteur').get(function (req, res) {
+router.route ('/startseite_spediteur').get(function (req, res) {
 
     Buchung.find(function (err, buchungen) {
         if (err)
             return res.send(err);
 
-        res.render('Startseite_Spediteur',{
+        res.render('startseite_spediteur',{
             buchungen: buchungen || []
         });
     });
 });
 
 //Buhchungsübersicht spedi
-router.get('/Buchungsuebersicht_Spediteur', (req, res) => res.render('Buchungsuebersicht_Spediteur'));
+router.get('/buchungsuebersicht', (req, res) => res.render('buchungsuebersicht'));
 
 //torauswahl spedi
 router.route ('/torauswahl').get(function (req, res) {
@@ -49,11 +49,11 @@ router.route ('/torauswahl').get(function (req, res) {
 
 
 //insert
-router.post('/neueBuchung_Spediteur', (req, res) => {
+router.post('/neueBuchung_spediteur', (req, res) => {
     const {sendungsstruktur, datepicker, sendungen, EUP, EWP, pakete, bemerkung, teile } = req.body;
     let errors = [];
     if (errors.length > 0) {
-        res.render('neueBuchung_Spediteur', {
+        res.render('neueBuchung_spediteur', {
             errors,
             sendungsstruktur,
             datepicker,
@@ -77,7 +77,7 @@ router.post('/neueBuchung_Spediteur', (req, res) => {
                 });
                 newBuchung.save()
                     .then(buchung =>{
-                        res.redirect('/buchungen/Startseite_Spediteur')
+                        res.redirect('/buchungen/startseite_spediteur')
                     })
                     .catch(err=>console.log(err));
                 console.log(newBuchung)
