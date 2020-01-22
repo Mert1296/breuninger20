@@ -49,6 +49,10 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: false
     },
+    gate: {
+        type: Array,
+        required: false
+    },
     date: {
         type: Date,
         default: Date.now
