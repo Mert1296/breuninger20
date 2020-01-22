@@ -2,24 +2,27 @@ const express = require('express');
 const router = express.Router();
 // Load Buchung model
 const Buchung = require('../DB/models/Buchung');
-const { forwardAuthenticated } = require('../DB/config/auth');
-
+const { ensureAuthenticated } = require('../DB/config/auth');
 
 //Startseite Breuninger
-router.route ('/startseite_breuninger').get(function (req, res) {
+router.get ('/startseite_breuninger', ensureAuthenticated, (req, res) => {
 
     Buchung.find(function (err, buchungen) {
         if (err)
             return res.send(err);
 
         res.render('startseite_breuninger',{
+            vorname: req.user.vorname,
             buchungen: buchungen || []
         });
     });
 });
 
+//Calendar Mirza
+router.get('/calendar', (req, res) => res.render('calendar'));
+
 //startseite Spedi
-router.route ('/startseite_spediteur').get(function (req, res) {
+router.get ('/startseite_spediteur', ensureAuthenticated, (req, res) => {
 
     Buchung.find(function (err, buchungen) {
         if (err)
@@ -33,9 +36,11 @@ router.route ('/startseite_spediteur').get(function (req, res) {
 
 //Buhchungsübersicht spedi
 router.get('/buchungsuebersicht', (req, res) => res.render('buchungsuebersicht'));
+//Buhchungsübersicht spedi
+router.get('/neueBuchung_spediteur', (req, res) => res.render('neueBuchung_spediteur'));
 
 //torauswahl spedi
-router.route ('/torauswahl').get(function (req, res) {
+router.get ('/torauswahl', (req, res) => {
 
     Buchung.find(function (err, buchungen) {
         if (err)
@@ -77,7 +82,7 @@ router.post('/neueBuchung_spediteur', (req, res) => {
                 });
                 newBuchung.save()
                     .then(buchung =>{
-                        res.redirect('/buchungen/startseite_spediteur')
+                        res.redirect('/buchungen/torauswahl')
                     })
                     .catch(err=>console.log(err));
                 console.log(newBuchung)

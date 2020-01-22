@@ -1,7 +1,5 @@
 <!DOCTYPE HTML>
 <html>
-<head>
-</head>
 <body>
 <div id="page">
     <nav class="fh5co-nav" role="navigation">
@@ -26,7 +24,6 @@
     <div class="container-wrap">
         <div class="flexslider">
             <h2> Tor buchen</h2>
-
             <div id="scheduler">
 
             </div>
@@ -65,125 +62,160 @@
     </div>
 </div>
 
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Torsperrung</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        Sie sind dabei ein Tor zu sperren. <br>Falls Sie sich sicher sind, verfassen Sie den Grund.
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label ">Bemerkung:</label>
+                        <textarea class="form-control torbemerkung" id="message-text"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
+                <button type="button" class="btn btn-primary torsperren">Tor sperren</button>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
-<script >
+<script>
+    $(document).ready(function () {
+        var appointments = new Array();
+
+        var appointment1 = {
+            id: "id1",
+            description: "George brings projector for presentations.",
+            location: "",
+            subject: "Quarterly Project Review Meeting",
+            calendar: "Room 1",
+            start: new Date(2020, 0, 22, 9, 0, 0),
+            end: new Date(2020, 0, 22, 16, 0, 0)
+        }
+
+        var appointment2 = {
+            id: "id2",
+            description: "",
+            location: "",
+            subject: "IT Group Mtg.",
+            calendar: "Room 2",
+            start: new Date(2020, 0, 22, 10, 0, 0),
+            end: new Date(2020, 0, 22, 15, 0, 0)
+        }
+
+        /*var appointment3 = {
+            id: "id3",
+            description: "",
+            location: "",
+            subject: "Course Social Media",
+            calendar: "Room 3",
+            start: new Date(2020, 1, 27, 11, 0, 0),
+            end: new Date(2020, 1, 27, 13, 0, 0)
+        }
+
+        var appointment4 = {
+            id: "id4",
+            description: "",
+            location: "",
+            subject: "New Projects Planning",
+            calendar: "Room 2",
+            start: new Date(2020, 1, 23, 16, 0, 0),
+            end: new Date(2020, 1, 23, 18, 0, 0)
+        }
+
+        var appointment5 = {
+            id: "id5",
+            description: "",
+            location: "",
+            subject: "Interview with James",
+            calendar: "Room 1",
+            start: new Date(2020, 1, 25, 15, 0, 0),
+            end: new Date(2020, 1, 25, 17, 0, 0)
+        }
+
+        var appointment6 = {
+            id: "id6",
+            description: "",
+            location: "",
+            subject: "Interview with Nancy",
+            calendar: "Room 4",
+            start: new Date(2020, 1, 26, 14, 0, 0),
+            end: new Date(2020, 1, 26, 16, 0, 0)
+        }*/
+        appointments.push(appointment1);
+        appointments.push(appointment2);
+       /* appointments.push(appointment3);
+        appointments.push(appointment4);
+        appointments.push(appointment5);
+        appointments.push(appointment6);*/
 
 
-
-
-
-
-        $(document).ready(function () {
-
-            const appointments = [];
-            var buchungArray = JSON.parse(<%=buchungen%>);
-
-            for(var i=0; i < buchungArray.length; i++) {
-
-                var appointment = {};
-                var monat = 1 + buchungArray[i].from.getMonth();
-                var von = -1 + buchungArray[i].from.getHours();
-                var vonMin = buchungArray[i].from.getMinutes();
-                var bisMonat = 1 + buchungArray[i].from.getMonth();
-                var bis = -1 + buchungArray[i].to.getHours();
-                var bisMin = buchungArray[i].to.getMinutes();
-
-
-
-                appointment[i] = {
-                    calendar: buchungArray[i].tor,
-                    start: new Date(buchungArray[i].from.getDate(), monat, buchungArray[i].from.getDay(), von, vonMin, 0),
-                    end: new Date(buchungArray[i].to.getDate(), bisMonat, buchungArray[i].to.getDay(), bis, bisMin, 0)
-                }
-
-                appointments.push(appointment[i]);
-                console.log(appointments);
-            }
-
-
-// prepare the data
+        // prepare the data
         var source =
             {
                 dataType: "array",
                 dataFields: [
-                    { name: 'calendar', type: 'number' },
+                    { name: 'id', type: 'string' },
+                    { name: 'description', type: 'string' },
+                    { name: 'location', type: 'string' },
+                    { name: 'subject', type: 'string' },
+                    { name: 'calendar', type: 'string' },
                     { name: 'start', type: 'date' },
                     { name: 'end', type: 'date' }
                 ],
+                id: 'id',
                 localData: appointments
             };
         var adapter = new $.jqx.dataAdapter(source);
-            $("#scheduler").jqxScheduler({
-                date: new $.jqx.date(2015, 10, 23),
-                width: 1050,
-                height: 600,
-                dayNameFormat: "abbr",
-                source: adapter,
-                view: 'dayView',
-                showLegend: true,
-                ready: function () {
-                    $("#scheduler").jqxScheduler('ensureAppointmentVisible', 'id1');
+        $("#scheduler").jqxScheduler({
+            date: new $.jqx.date(2015, 11, 23),
+            width: 850,
+            height: 600,
+            source: adapter,
+            showLegend: false,
+            ready: function () {
+                $("#scheduler").jqxScheduler('ensureAppointmentVisible', 'id1')
+            },
+            resources:
+                {
+                    colorScheme: "scheme02",
+                    dataField: "calendar",
+                    orientation: "horizontal",
+                    source: new $.jqx.dataAdapter(source)
                 },
-                resources:
-                    {
-                        colorScheme: "scheme09",
-                        dataField: "calendar",
-                        orientation: "horizontal",
-                        source:  new $.jqx.dataAdapter(source)
-                    },
-                appointmentDataFields:
-                    {
-                        from: "start",
-                        to: "end",
-                        id: "id",
-                        description: "about",
-                        subject: "subject",
-                        resourceId: "calendar"
-                    },
-                views:
-                    [
-                        { type: "dayView", showWeekends: false, timeRuler: { hidden: false } },
-                        { type: "weekView", showWeekends: false, },
-                        { type: "monthView", showWeekends: false  }
-                    ]
-            });
-            $('.jqx-group-button-normal').hide();
-            $('#toolbarscheduler').hide();
-            $("tr[data-key='jqxscheduler_48']").hide();
-            $("tr[data-key='jqxscheduler_47']").hide();
-            $("tr[data-key='jqxscheduler_46']").hide();
-            $("tr[data-key='jqxscheduler_45']").hide();
-            $("tr[data-key='jqxscheduler_44']").hide();
-            $("tr[data-key='jqxscheduler_43']").hide();
-            $("tr[data-key='jqxscheduler_42']").hide();
-            $("tr[data-key='jqxscheduler_41']").hide();
-            $("tr[data-key='jqxscheduler_40']").hide();
-            $("tr[data-key='jqxscheduler_39']").hide();
-            $("tr[data-key='jqxscheduler_38']").hide();
-            $("tr[data-key='jqxscheduler_37']").hide();
-            $("tr[data-key='jqxscheduler_36']").hide();
-            $("tr[data-key='jqxscheduler_35']").hide();
-            $("tr[data-key='jqxscheduler_34']").hide();
-            $("tr[data-key='jqxscheduler_33']").hide();
-            $("tr[data-key='jqxscheduler_32']").hide();
-            $("tr[data-key='jqxscheduler_31']").hide();
-            $("tr[data-key='jqxscheduler_30']").hide();
-            $("tr[data-key='jqxscheduler_29']").hide();
-            $("tr[data-key='jqxscheduler_14']").hide();
-            $("tr[data-key='jqxscheduler_13']").hide();
-            $("tr[data-key='jqxscheduler_12']").hide();
-            $("tr[data-key='jqxscheduler_11']").hide();
-            $("tr[data-key='jqxscheduler_10']").hide();
-            $("tr[data-key='jqxscheduler_9']").hide();
-            $("tr[data-key='jqxscheduler_8']").hide();
-            $("tr[data-key='jqxscheduler_7']").hide();
-            $("tr[data-key='jqxscheduler_6']").hide();
-            $("tr[data-key='jqxscheduler_5']").hide();
-            $("tr[data-key='jqxscheduler_4']").hide();
-            $("tr[data-key='jqxscheduler_3']").hide();
-            $("tr[data-key='jqxscheduler_2']").hide();
-            $("tr[data-key='jqxscheduler_1']").hide();
-            $('#jqxScrollThumbverticalScrollBarscheduler').scrollTop(100);
+            appointmentDataFields:
+                {
+                    from: "start",
+                    to: "end",
+                    id: "id",
+                    description: "description",
+                    location: "place",
+                    subject: "subject",
+                    resourceId: "calendar"
+                },
+            view: 'dayView',
+            views:
+                [
+                    { type: "dayView", showWeekends: false, timeRuler: { hidden: false } },
+                    { type: "weekView", showWeekends: false, },
+                    { type: "monthView", showWeekends: false  }
+                ]
         });
+        $('.jqx-group-button-normal').hide();
+        $('#toolbarscheduler').hide();
+        $('#jqxScrollThumbverticalScrollBarscheduler').scrollTop(100);
+    });
 </script>
 </html>
+

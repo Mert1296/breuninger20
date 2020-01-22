@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs');
 const passport = require('passport');
 // Load User model
 const User = require('../DB/models/User');
-const { forwardAuthenticated } = require('../DB/config/auth');
+const { ensureAuthenticated } = require('../DB/config/auth');
 
 //User Models
 //const User = require('../DB/models/user');
@@ -16,7 +16,7 @@ router.get('/login', (req, res) => res.render('login'));
 router.get('/register', (req, res) => res.render('register'));
 
 //Benutzerverwaltung_MA
-router.route ('/Benutzerverwaltung_Mitarbeiter').get(function (req, res) {
+router.get ('/Benutzerverwaltung_Mitarbeiter', ensureAuthenticated, (req, res) =>{
 
     User.find(function (err, users) {
         if (err)
@@ -35,11 +35,11 @@ router.route ('/Benutzerverwaltung_Mitarbeiter').get(function (req, res) {
 
 
 //New User MA
-    router.get('/neuerUser_MA', (req, res) => res.render('neuerUser_MA'));
+    router.get('/neuerUser_MA', ensureAuthenticated, (req, res) => res.render('neuerUser_MA'));
 
 // Register
     router.post('/neuerUSer_MA', (req, res) => {
-        const {username, vorname, name, division, strasse, PLZ, stadt, land, telefon, email, admin, password, password2} = req.body;
+        const {username, vorname, name, division, strasse, PLZ, stadt, land, telefon, email, admin, gate, password, password2} = req.body;
         let errors = [];
 
         if (password != password2) {
@@ -64,6 +64,7 @@ router.route ('/Benutzerverwaltung_Mitarbeiter').get(function (req, res) {
                 telefon,
                 email,
                 admin,
+                gate,
                 password,
                 password2
             });
@@ -84,6 +85,7 @@ router.route ('/Benutzerverwaltung_Mitarbeiter').get(function (req, res) {
                         telefon,
                         email,
                         admin,
+                        gate,
                         password,
                         password2
                     });
@@ -100,6 +102,7 @@ router.route ('/Benutzerverwaltung_Mitarbeiter').get(function (req, res) {
                         telefon,
                         email,
                         admin,
+                        gate,
                         password
                     });
 
@@ -148,7 +151,7 @@ router.route ('/Benutzerverwaltung_Mitarbeiter').get(function (req, res) {
         passport.authenticate('local', {
             failureRedirect: '/login'
         }), (req, res) => {
-            if (req.user.admin == "1") {
+            if (req.user.admin == "spediteur") {
                 res.redirect('/buchungen/startseite_spediteur');
             } else {
                 res.redirect('/buchungen/startseite_breuninger');

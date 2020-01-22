@@ -235,6 +235,30 @@
 </body>
 <script>
 	$(document).ready(function () {
+		var appointments = new Array();
+
+		var appointment1 = {
+			id: "id1",
+			description: "George brings projector for presentations.",
+			location: "",
+			subject: "Quarterly Project Review Meeting",
+			calendar: "Tor 1",
+			start: new Date(2020, 1, 21, 9, 0, 0),
+			end: new Date(2020, 1, 21, 16, 0, 0)
+		}
+
+		var appointment2 = {
+			id: "id2",
+			description: "",
+			location: "",
+			subject: "IT Group Mtg.",
+			calendar: "Tor2",
+			start: new Date(2020, 1, 25, 10, 0, 0),
+			end: new Date(2020, 1, 25, 15, 0, 0)
+		}
+
+		appointments.push(appointment1);
+		appointments.push(appointment2);
 
 // prepare the data
 		var source =
@@ -290,40 +314,6 @@
 		});
 		$('.jqx-group-button-normal').hide();
 		$('#toolbarscheduler').hide();
-		$("tr[data-key='jqxscheduler_48']").hide();
-		$("tr[data-key='jqxscheduler_47']").hide();
-		$("tr[data-key='jqxscheduler_46']").hide();
-		$("tr[data-key='jqxscheduler_45']").hide();
-		$("tr[data-key='jqxscheduler_44']").hide();
-		$("tr[data-key='jqxscheduler_43']").hide();
-		$("tr[data-key='jqxscheduler_42']").hide();
-		$("tr[data-key='jqxscheduler_41']").hide();
-		$("tr[data-key='jqxscheduler_40']").hide();
-		$("tr[data-key='jqxscheduler_39']").hide();
-		$("tr[data-key='jqxscheduler_38']").hide();
-		$("tr[data-key='jqxscheduler_37']").hide();
-		$("tr[data-key='jqxscheduler_36']").hide();
-		$("tr[data-key='jqxscheduler_35']").hide();
-		$("tr[data-key='jqxscheduler_34']").hide();
-		$("tr[data-key='jqxscheduler_33']").hide();
-		$("tr[data-key='jqxscheduler_32']").hide();
-		$("tr[data-key='jqxscheduler_31']").hide();
-		$("tr[data-key='jqxscheduler_30']").hide();
-		$("tr[data-key='jqxscheduler_29']").hide();
-		$("tr[data-key='jqxscheduler_14']").hide();
-		$("tr[data-key='jqxscheduler_13']").hide();
-		$("tr[data-key='jqxscheduler_12']").hide();
-		$("tr[data-key='jqxscheduler_11']").hide();
-		$("tr[data-key='jqxscheduler_10']").hide();
-		$("tr[data-key='jqxscheduler_9']").hide();
-		$("tr[data-key='jqxscheduler_8']").hide();
-		$("tr[data-key='jqxscheduler_7']").hide();
-		$("tr[data-key='jqxscheduler_6']").hide();
-		$("tr[data-key='jqxscheduler_5']").hide();
-		$("tr[data-key='jqxscheduler_4']").hide();
-		$("tr[data-key='jqxscheduler_3']").hide();
-		$("tr[data-key='jqxscheduler_2']").hide();
-		$("tr[data-key='jqxscheduler_1']").hide();
 		$('#jqxScrollThumbverticalScrollBarscheduler').scrollTop(100);
 	});
 </script>
