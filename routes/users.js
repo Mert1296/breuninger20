@@ -35,10 +35,10 @@ router.route ('/Benutzerverwaltung_Mitarbeiter').get(function (req, res) {
 
 
 //New User MA
-    router.get('/neuerUser_MA', (req, res) => res.render('neuerUser_MA'));
+    router.get('/neuerUser_Mitarbeiter', (req, res) => res.render('neuerUser_Mitarbeiter'));
 
 // Register
-    router.post('/neuerUSer_MA', (req, res) => {
+    router.post('/neuerUSer_Mitarbeiter', (req, res) => {
         const {username, vorname, name, division, strasse, PLZ, stadt, land, telefon, email, admin, password, password2} = req.body;
         let errors = [];
 
@@ -51,7 +51,7 @@ router.route ('/Benutzerverwaltung_Mitarbeiter').get(function (req, res) {
         }
 
         if (errors.length > 0) {
-            res.render('neuerUser_MA', {
+            res.render('neuerUser_Mitarbeiter', {
                 errors,
                 username,
                 vorname,
@@ -71,7 +71,7 @@ router.route ('/Benutzerverwaltung_Mitarbeiter').get(function (req, res) {
             User.findOne({email: email}).then(user => {
                 if (user) {
                     errors.push({msg: 'Email or Username already exists'});
-                    res.render('neuerUser_MA', {
+                    res.render('neuerUser_Mitarbeiter', {
                         errors,
                         username,
                         vorname,
@@ -149,9 +149,9 @@ router.route ('/Benutzerverwaltung_Mitarbeiter').get(function (req, res) {
             failureRedirect: '/login'
         }), (req, res) => {
             if (req.user.admin == "1") {
-                res.redirect('/buchungen/startseite_spediteur');
+                res.redirect('/buchungen/Startseite_Spediteur');
             } else {
-                res.redirect('/buchungen/startseite_breuninger');
+                res.redirect('/buchungen/Startseite_Mitarbeiter');
             }
         });
 
