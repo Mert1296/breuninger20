@@ -29,7 +29,17 @@
 
         .button:hover .button__inner-wrapper {
             transform: translateX(0);
-        }</style>
+        }
+        #buttonAnzeigen {
+            background-color: white;
+            border: white;
+        }
+        #buttonAnzeigen:hover{
+            color:#861a22;
+        }
+
+
+    </style>
 </head>
 <body>
 <div id="page">
@@ -38,12 +48,12 @@
             <div class="top-menu">
                 <div class="row">
                     <div class="col-xs-2">
-                        <div ><a href="Startseite_Mitarbeiter.html" ><img src="../images/logo-breuninger.jpeg" style="padding-bottom:10px; width: 200px; height:70px;"></a></div>
+                        <div ><a href="/buchungen/startseite_breuninger"><img src="../images/logo-breuninger.jpeg" style="padding-bottom:10px; width: 200px; height:70px;"></a></div>
                     </div>
                     <div class="col-lg-9 text-right menu-2" style="padding-top: 20px; padding-left: 120px;">
                         <ul>
-                            <li><a href="Startseite_Mitarbeiter.html"><span class="fa fa-home"></span> Startseite</a></li>
-                            <li class="active"><a href="Benutzerverwaltung_Mitarbeiter.html"><span class="fa fa-user"></span> Benutzerverwaltung</a></li>
+                            <li><a href="/buchungen/startseite_breuninger"><span class="fa fa-home"></span> Startseite</a></li>
+                            <li class="active"><a href="/users/Benutzerverwaltung_Mitarbeiter"><span class="fa fa-user"></span> Benutzerverwaltung</a></li>
                             <li><a href="Torverwaltung_Mitarbeiter.html"><i class="fas fa-archway"></i> Torverwaltung</a></li>
                             <li><a href=""><span class="fa fa-power-off"></span> Logout</a></li>
                         </ul>
@@ -62,6 +72,7 @@
                     <tr>
                         <th>UserID</th>
                         <th>Rolle</th>
+                        <th> </th>
                     </tr>
                     </thead>
                     <tbody>
@@ -69,6 +80,7 @@
                     <tr>
                     <td><%=users[i].username%></td>
                     <td><%=users[i].admin%></td>
+                    <td style="width: 90px; text-align: center"><button id="buttonAnzeigen" data-toggle="tooltip" title="Anzeigen"><i class="fas fa-search"></i></button></td>
                     </tr>
                     <%}%>
                     </tbody>
@@ -139,6 +151,7 @@
             table.row('.selected').remove().draw( false );
         } );
 
+        $('[data-toggle="tooltip"]').tooltip();
     } );
 </script>
 <script type="text/javascript">
