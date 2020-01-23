@@ -30,14 +30,24 @@
         .button:hover .button__inner-wrapper {
             transform: translateX(0);
         }
-        #buttonBearbeiten {
-            background-color: white;
-            border: white;
-        }
-        #buttonBearbeiten:hover{
+        #buttonAnzeigen:hover{
             color:#861a22;
+            background-color:transparent ;
         }
 
+        table.dataTable tbody tr.selected {
+            color: black !important;
+            background-color: #E6D1D2!important;
+        }
+
+        #buttonAnzeigen{
+            background-color: transparent;
+            border: white;
+        }
+        ::selection{
+            background-color:white!important;
+            color:black;
+        }
 
     </style>
 </head>
@@ -70,7 +80,7 @@
                 <table id="tabelle" class="table table-striped cell-border table-hover" cellspacing="0" style="text-align: center">
                     <thead>
                     <tr>
-                        <th style="text-align: center">UserID</th>
+                        <th style="text-align: center">User-ID</th>
                         <th style="text-align: center">Rolle</th>
                         <th> </th>
                     </tr>
