@@ -7,7 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         .submit {
-            float:right;
+            border-color: #861a22;
+            background-color: white;
+            border-bottom-color: #861a22;
+
         }
     </style>
 </head>
@@ -67,9 +70,9 @@
                     <input data-result="" data-time="1" type="text" class="form-control teile" id="teile" name="teile" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Anzahl der Teile angeben">
 
                     <label for="submit" class="submit" style="padding-top: 10px;"></label>
-                    <input type="button" class="form-control submit" id="submit" style="border-radius: 10px; height: 35px; width: 300px;" value="Berechnen">
+                    <input type="button" class=" form-control submit" id="submit" style="text-align:center;border-radius: 10px; height: 35px; width: 200px;" value="Entladezeit berechnen">
 
-                    <label class="zeit" style="padding-top: 40px">Benötigte Entladezeit:&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <strong style="text-decoration: underline; color: #861a22;" class="zeit-value"></strong></label>
+                    <label class="zeit" style="padding-top: 20px">Benötigte Entladezeit:&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <strong style="text-decoration: underline; color: #861a22;" class="zeit-value"></strong></label>
 
                     <label for="datepicker" class="datepicker" style="padding-top: 15px;"> Datum</label>
                     <div class="input-container" style="position: relative">
@@ -130,7 +133,7 @@
 <script>
     $(document).ready(function () {
         $('#timepicker1,#timepicker2').timepicker({
-            timeFormat: 'hh:mm p',
+            timeFormat: 'HH:mm',
             interval: 5,
             minTime: '7',
             maxTime: '13',
@@ -139,17 +142,14 @@
             dynamic: true,
             dropdown: true,
             scrollbar: true,
-            amNames:['Uhr'],
-            pmNames:['Uhr'],
+            pickDate: false,
+            pickSeconds: false,
+            pick12HourFormat: false
 
         });
 
-        $('#example').DataTable({
-            searching: false,
-            bInfo: false,
-            paging: false,
-        });
-        $( "#datepicker" ).datepicker();
+
+        $("#datepicker").datepicker();
 
         $('.input-container, .datepicker, .sendungen,.EUP, .EWP,.pakete, .bemerkung, .teile, .submit, .zeit,.timepicker1,.timepicker2,.torauswahl, .next').removeClass('active').hide();
         $('#pick').change(function () {
@@ -157,12 +157,10 @@
             if (self.val() == 1) {
                 $('.input-container,.datepicker,.sendungen, .EUP, .EWP, .pakete, .bemerkung,.submit, .zeit,.timepicker1,.timepicker2,.torauswahl,.next').addClass('active').show();
                 $('.teile, .leer').removeClass('active').hide();
-            }
-            else if (self.val() == 2) {
+            } else if (self.val() == 2) {
                 $('.input-container, .datepicker, .sendungen, .pakete, .bemerkung, .submit, .zeit,.timepicker2,.timepicker1,.torauswahl, .next').addClass('active').show();
                 $('.EUP, .EWP, .teile, .leer').removeClass('active').hide();
-            }
-            else if (self.val() == 3) {
+            } else if (self.val() == 3) {
                 $('.input-container,.datepicker, .sendungen, .EUP, .EWP, .pakete, .teile, .bemerkung ,.submit, .zeit,.timepicker2,.timepicker1,.torauswahl, .next').addClass('active').show();
             } else {
                 $('.input-container, .datepicker, .sendungen, .EUP, .EWP, .pakete, .bemerkung, .teile,.submit, .zeit, .timepicker1,.timepicker2,.torauswahl,.next').removeClass('active').hide();
@@ -173,7 +171,7 @@
         });
 
 
-    $(".submit").click(function (event) {
+        $(".submit").click(function (event) {
             event.preventDefault();
             var timeResult = 0;
             var minValue;
@@ -237,11 +235,11 @@
                 dateFormat: 'dd.mm.yy', firstDay: 1,
                 initStatus: 'Wähle ein Datum', isRTL: false
             };
-
-
             $.datepicker.setDefaults($.datepicker.regional['de']);
 
-        });
+    });
+
+
     });
 
 </script>
