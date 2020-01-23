@@ -6,6 +6,9 @@
     <title>Breuninger</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
+        .submit {
+            float:right;
+        }
     </style>
 </head>
 <body>
@@ -38,17 +41,11 @@
                 <div class=" form-group card" id="hi" style="padding-top: 10px; padding-left: 30px;">
                     <div class="ui-widget">
                         <select id="pick" name="sendungsstruktur" style=" font-size: large; width: 300px">
-                            <option value="0" >Sendungsstruktur wählen..</option>
+                            <option value="0">Sendungsstruktur wählen..</option>
                             <option value="1">SPN - Liegeversand</option>
                             <option value="2">KEP - Paketversand</option>
                             <option value="3">HW - Liegeversand/Hängeversand</option>
                         </select>
-                    </div>
-
-                    <label for="datepicker" class="datepicker" style="padding-top: 30px;"> Datum</label>
-                    <div class="input-container" style="position: relative">
-                        <i class="far fa-calendar-alt" id="datepicker1" style="padding:10px; position: absolute; left:0; padding: 9px 8px;" aria-hidden="true"></i>
-                        <input type="text" class="form-control datepicker" id="datepicker" name="datepicker" style="border-radius: 10px; height: 35px; width: 300px; padding-left: 40px;" placeholder="Wählen Sie ein Datum">
                     </div>
 
                     <label for="sendungen" class="sendungen" style="padding-top: 10px;">Anzahl der geladenen Sendungen</label>
@@ -73,7 +70,24 @@
                     <input type="button" class="form-control submit" id="submit" style="border-radius: 10px; height: 35px; width: 300px;" value="Berechnen">
 
                     <label class="zeit" style="padding-top: 40px">Benötigte Entladezeit:&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <strong style="text-decoration: underline; color: #861a22;" class="zeit-value"></strong></label>
-                    <button type="submit" style="width: 90px;" class="next">Weiter &raquo;</button>
+
+                    <label for="datepicker" class="datepicker" style="padding-top: 15px;"> Datum</label>
+                    <div class="input-container" style="position: relative">
+                        <i class="far fa-calendar-alt" id="datepicker1" style="padding:10px; position: absolute; left:0; padding: 9px 8px;" aria-hidden="true"></i>
+                        <input type="text" class="form-control datepicker" id="datepicker" name="datepicker" style="border-radius: 10px; height: 35px; width: 300px; padding-left: 40px;" placeholder="Wählen Sie ein Datum">
+                    </div>
+
+                    <label for="timepicker1" class="timepicker1" style="padding-top: 10px;">Uhrzeit von </label>
+                    <div class="input-container" style="position: relative">
+                        <i class="far fa-clock" id="timepicker1" style="padding:10px; position: absolute; left:0; padding: 9px 8px;" aria-hidden="true"></i>
+                        <input type="text" class="form-control timepicker1" id="timepicker1" name="timepicker1" style="border-radius: 10px; height: 35px; width: 300px; padding-left: 40px;" placeholder="Wählen Sie eine Ankunftszeit">
+                    </div>
+                    <label for="timepicker2" class="timepicker2" style="padding-top: 10px;">Uhrzeit bis </label>
+                    <div class="input-container" style="position: relative">
+                        <i class="fas fa-clock" id="timepicker2" style="padding:10px; position: absolute; left:0; padding: 9px 8px;" aria-hidden="true"></i>
+                        <input type="text" class="form-control timepicker2" id="timepicker2" name="timepicker2" style="border-radius: 10px; height: 35px; width: 300px; padding-left: 40px;" placeholder="Wählen Sie eine Endzeit">
+                    </div>
+                    <button type="submit" id="submit" name="submit" style="width: 90px;" class="next">Buchen</button>
                 </div>
                 <label class="leer" style="padding-top: 350px"></label>
             </div>
@@ -107,33 +121,51 @@
 </div><!-- END container-wrap -->
 <script>
     $(document).ready(function () {
+        $('#timepicker1,#timepicker2').timepicker({
+            timeFormat: 'hh:mm p',
+            interval: 5,
+            minTime: '7',
+            maxTime: '13',
+            defaultTime: 'now',
+            startTime: '7:00',
+            dynamic: true,
+            dropdown: true,
+            scrollbar: true,
+            amNames:['Uhr'],
+            pmNames:['Uhr'],
+
+        });
+
         $('#example').DataTable({
             searching: false,
             bInfo: false,
             paging: false,
         });
         $( "#datepicker" ).datepicker();
-        $('.input-container, .datepicker, .sendungen,.EUP, .EWP,.pakete, .bemerkung, .teile, .submit, .zeit, .next').removeClass('active').hide();
+
+        $('.input-container, .datepicker, .sendungen,.EUP, .EWP,.pakete, .bemerkung, .teile, .submit, .zeit,.timepicker1,.timepicker2, .next').removeClass('active').hide();
         $('#pick').change(function () {
             var self = $(this);
             if (self.val() == 1) {
-                $('.input-container,.datepicker,.sendungen, .EUP, .EWP, .pakete, .bemerkung,.submit, .zeit, .next').addClass('active').show();
+                $('.input-container,.datepicker,.sendungen, .EUP, .EWP, .pakete, .bemerkung,.submit, .zeit,.timepicker1,.timepicker2,.next').addClass('active').show();
                 $('.teile, .leer').removeClass('active').hide();
             }
             else if (self.val() == 2) {
-                $('.input-container, .datepicker, .sendungen, .pakete, .bemerkung, .submit, .zeit, .next').addClass('active').show();
+                $('.input-container, .datepicker, .sendungen, .pakete, .bemerkung, .submit, .zeit,.timepicker2,.timepicker1, .next').addClass('active').show();
                 $('.EUP, .EWP, .teile, .leer').removeClass('active').hide();
             }
             else if (self.val() == 3) {
-                $('.input-container,.datepicker, .sendungen, .EUP, .EWP, .pakete, .teile, .bemerkung ,.submit, .zeit, .next').addClass('active').show();
+                $('.input-container,.datepicker, .sendungen, .EUP, .EWP, .pakete, .teile, .bemerkung ,.submit, .zeit,.timepicker2,.timepicker1, .next').addClass('active').show();
             } else {
-                $('.input-container, .datepicker, .sendungen, .EUP, .EWP, .pakete, .bemerkung, .teile,.submit, .zeit, .next').removeClass('active').hide();
+                $('.input-container, .datepicker, .sendungen, .EUP, .EWP, .pakete, .bemerkung, .teile,.submit, .zeit, .timepicker1,.timepicker2,.next').removeClass('active').hide();
                 $('.leer').show();
             }
             $('.zeit-value').text('');
             $('input[data-time]').val('');
         });
-        $(".submit").click(function (event) {
+
+
+    $(".submit").click(function (event) {
             event.preventDefault();
             var timeResult = 0;
             var minValue;
@@ -163,6 +195,8 @@
             }
             $('.zeit-value').text(totalResult + " Minuten");
         });
+
+
         function setdefaults() {
             $("#datepicker").datepicker({
                 changeMonth: true,
@@ -172,7 +206,9 @@
                 dateFormat: 'dd.mm.yy',
             });
             $("#datepicker").datepicker("setDate", new Date());
+
         }
+
         jQuery(function ($) {
             $.datepicker.regional['de'] = {
                 clearText: 'löschen', clearStatus: 'aktuelles Datum löschen',
@@ -193,9 +229,13 @@
                 dateFormat: 'dd.mm.yy', firstDay: 1,
                 initStatus: 'Wähle ein Datum', isRTL: false
             };
+
+
             $.datepicker.setDefaults($.datepicker.regional['de']);
+
         });
     });
+
 </script>
 </body>
 </html>
