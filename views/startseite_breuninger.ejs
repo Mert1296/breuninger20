@@ -5,6 +5,27 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>Breuninger</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        tr.selected {
+            color: black !important;
+            background-color: #E6D1D2!important;
+        }
+
+        ::selection{
+            background-color:white!important;
+            color:black;
+        }
+        #buttonAnzeigen:hover{
+            color:#861a22;
+            background-color:transparent ;
+        }
+
+        #buttonAnzeigen{
+            background-color: transparent;
+            border: white;
+        }
+
+    </style>
 </head>
 <body>
 <div id="page">
@@ -27,18 +48,18 @@
             </div>
         </div>
     </nav>
-    <p class="lead mb-3">Willkommen <%=vorname%></p>
     <div class="container-wrap">
-        <h2>Buchungsübersicht</h2>
         <div class="flexslider">
-            <table id="example" class="display">
+        <h1>Buchungsübersicht</h1>
+            <table id="example" class="display" style="text-align: center">
                 <thead>
                 <tr>
-                    <th>Spediteur</th>
-                    <th>Tor</th>
-                    <th>Datum</th>
-                    <th>Von</th>
-                    <th>Bis</th>
+                    <th style="text-align: center">Spediteur</th>
+                    <th style="text-align: center">Tor</th>
+                    <th style="text-align: center">Datum</th>
+                    <th style="text-align: center">Von</th>
+                    <th style="text-align: center">Bis</th>
+                    <th> </th>
                 </tr>
                 </thead>
                 <tbody>
@@ -61,6 +82,7 @@
                     <td><%=buchungen[i].from.getDate()+"."+monat+"."+buchungen[i].from.getFullYear()%></td>
                     <td><%= von +":"+vonMin%></td>
                     <td><%= bis+":"+bisMin%></td>
+                    <td><form action=""><button id="buttonAnzeigen" type="submit" name="buchung" href=""data-toggle="tooltip" title="Anzeigen"><i class="fas fa-search"></i></button></form></td>
                 </tr>
                 <% monat ++;
                     if(monat == 13){

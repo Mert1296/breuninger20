@@ -40,7 +40,8 @@ router.get ('/Benutzerverwaltung_Mitarbeiter', ensureAuthenticated, (req, res) =
         if (err)
             return res.send(err);
         res.render('Benutzerverwaltung_Mitarbeiter',{
-            users: users || []
+            users: users || [],
+            vorname: req.user.vorname
         });
     });
 });
