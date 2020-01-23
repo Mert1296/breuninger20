@@ -1,0 +1,310 @@
+<html>
+<head>
+<style>
+
+    input[type=text]
+    {
+        margin-top:8px;
+        -moz-border-radius: 2px;
+        -webkit-border-radius: 2px;
+        -border-radius: 2px;
+        display:none;
+        width:180px;
+
+    }
+
+
+    input[type=password]
+    {
+        margin-top:8px;
+        -moz-border-radius: 2px;
+        -webkit-border-radius: 2px;
+        -border-radius: 2px;
+        display:none;
+        width:180px;
+
+    }
+
+    input[type=tel]
+    {
+        margin-top:8px;
+        -moz-border-radius: 2px;
+        -webkit-border-radius: 2px;
+        -border-radius: 2px;
+        display:none;
+        width:180px;
+
+    }
+
+    input[type=email]
+    {
+        margin-top:8px;
+        -moz-border-radius: 2px;
+        -webkit-border-radius: 2px;
+        -border-radius: 2px;
+        display:none;
+        width:180px;
+
+    }
+    label
+    {
+        float:left;
+        margin-top:8px;
+        -moz-border-radius: 2px;
+        -webkit-border-radius: 2px;
+        -border-radius: 2px;
+        font-weight: normal;
+    }
+
+    .edit
+    {
+        float:left;
+        background:url("../images/pen-solid.svg") no-repeat;
+        background-size: 18px 18px;
+        background-position: center;
+        width:32px;
+        height:32px;
+        display:block;
+        cursor: pointer;
+        margin-left:10px;
+    }
+
+    .clear
+    {
+        clear:both;
+    }
+</style>
+</head>
+<body>
+<div id="page">
+    <nav class="fh5co-nav" role="navigation">
+        <div class="container-wrap" style="height: 120px;">
+            <div class="top-menu">
+                <div class="row">
+                    <div class="col-xs-2">
+                        <div ><a href="Startseite_Spediteur.html" ><img src="../images/logo-breuninger.jpeg" style="padding-bottom:10px; width: 200px; height:70px;"></a></div>
+                    </div>
+                    <div class="col-xs-10 text-right menu-1">
+                        <ul>
+                            <li><a href="Startseite_Spediteur.html"><span class="fa fa-home"></span> Startseite</a></li>
+                            <li class="active"><a href="Benutzerinfo_Spediteur.html"><span class="fa fa-user"></span> Benutzerinformation</a></li>
+                            <li><a href=""><span class="fa fa-power-off"></span> Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+    <div class="container-wrap">
+        <div class="flexslider">
+            <h1> Benutzerinformation</h1>
+            <table id="tabelle" class="cell-border"  class="table table-striped" cellspacing="0" >
+                <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>User ID</td>
+                    <td><%=user.username%></td>
+                </tr>
+                <tr>
+                    <td>Division</td>
+                    <td><%=user.division%></td>
+                </tr>
+                <tr>
+                    <td>Sprache</td>
+                    <td><p><select id="pickingland" style="font-size: large; width: 100px; text-align:center;">
+                                <option>DE</option>
+                                <option>EN</option> </select></p> </td>
+                </tr>
+                <tr>
+                    <td>Telefon</td>
+                    <td><%=user.telefon%></td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>
+                        <div><input type="email" id="row-2-age" name="row-2-age" value="<%=user.email%>"></div>
+                    </td>
+                </tr>
+                <!-- Passwort-Feld -->
+                <tr>
+                    <td>Passwort</td>
+                    <td><label class="text_label3">******</label>
+                        <div class="edit"></div>
+                        <input type="password" class="passwort" value="Passwort123" id="myInput"/><br>
+                        <div class="clear"></div><br>
+                        <div><input type="checkbox" id="check" onclick="myFunction()"> &nbsp; Passwort anzeigen</div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div><!-- END container-wrap -->
+    <div class="container-wrap">
+        <footer id="fh5co-footer" role="contentinfo">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h4>Kontaktinformation</h4>
+                    <div class="fh5co-footer">
+                        <p> E. Breuninger GmbH & Co. <br> Eschenbrünnlestraße 11, 71065 Sindelfingen
+                            <br>Tel-Nr. <a href="tel://1234567920">+ 49 1235 2355 98</a>&nbsp;
+                            <br><a href="mailto:info@yoursite.com">info@breuninger.com</a>
+                            <br><a href="http://gettemplates.co">www.breuninger.com</a>
+                        </p>
+                    </div>
+
+                </div>
+                <div class="row copyright">
+                    <div class="col-md-12 text-center">
+                        <p>
+                            <small class="block">&copy; 2020 Breuninger. All Rights Reserved.</small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div><!-- END container-wrap -->
+</div>
+</div>
+<script>
+
+    // Passwort anzeigen lassen
+    function myFunction() {
+        var x = document.getElementById("myInput");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    }
+
+    // DataTable
+    $(document).ready(function () {
+        $('#tabelle').DataTable({
+            searching:false,
+            bInfo: false,
+            paging: false,
+            ordering: false,
+        });
+
+        $('.edit').click(function(){
+            $(this).hide();
+            $(this).prev().hide();
+            $(this).next().show();
+            $(this).next().select();
+        });
+
+        //für Textfeld
+
+        $('input[type="text"]').blur(function() {
+            if ($.trim(this.value) == ''){
+                this.value = (this.defaultValue ? this.defaultValue : '');
+            }
+            else{
+                $(this).prev().prev().html(this.value);
+            }
+
+            $(this).hide();
+            $(this).prev().show();
+            $(this).prev().prev().show();
+        });
+
+        $('input[type="text"]').keypress(function(event) {
+            if (event.keyCode == '13') {
+                if ($.trim(this.value) == ''){
+                    this.value = (this.defaultValue ? this.defaultValue : '');
+                }
+                else
+                {
+                    $(this).prev().prev().html(this.value);
+                }
+
+                $(this).hide();
+                $(this).prev().show();
+                $(this).prev().prev().show();
+            }
+        });
+
+        //für Passwort
+
+        $('input[type="password"]').blur(function() {
+            if ($.trim(this.value) == ''){
+                this.value = (this.defaultValue ? this.defaultValue : '');
+            }
+
+            $(this).hide();
+            $(this).prev().show();
+            $(this).prev().prev().show();
+        });
+
+        $('input[type="password"]').keypress(function(event) {
+            if (event.keyCode == '14') {
+                if ($.trim(this.value) == ''){
+                    this.value = (this.defaultValue ? this.defaultValue : '');
+                }
+
+                $(this).hide();
+                $(this).prev().show();
+                $(this).prev().prev().show();
+            }
+        });
+
+        // für tel
+
+        $('input[type="tel"]').blur(function() {
+            if ($.trim(this.value) == ''){
+                this.value = (this.defaultValue ? this.defaultValue : '');
+            }
+
+            $(this).hide();
+            $(this).prev().show();
+            $(this).prev().prev().show();
+        });
+
+        $('input[type="tel"]').keypress(function(event) {
+            if (event.keyCode == '14') {
+                if ($.trim(this.value) == ''){
+                    this.value = (this.defaultValue ? this.defaultValue : '');
+                }
+
+                $(this).hide();
+                $(this).prev().show();
+                $(this).prev().prev().show();
+            }
+        });
+        // für email
+
+        $('input[type="email"]').blur(function() {
+            if ($.trim(this.value) == ''){
+                this.value = (this.defaultValue ? this.defaultValue : '');
+            }
+
+            $(this).hide();
+            $(this).prev().show();
+            $(this).prev().prev().show();
+        });
+
+        $('input[type="email"]').keypress(function(event) {
+            if (event.keyCode == '14') {
+                if ($.trim(this.value) == ''){
+                    this.value = (this.defaultValue ? this.defaultValue : '');
+                }
+
+                $(this).hide();
+                $(this).prev().show();
+                $(this).prev().prev().show();
+            }
+        });
+    });
+
+</script>
+<script type="text/javascript">
+    function click(link){return false;}
+</script>
+</body>
+</html>

@@ -18,9 +18,6 @@ router.get ('/startseite_breuninger', ensureAuthenticated, (req, res) => {
     });
 });
 
-//Calendar Mirza
-router.get('/calendar', (req, res) => res.render('calendar'));
-
 //startseite Spedi
 router.get ('/startseite_spediteur', ensureAuthenticated, (req, res) => {
 
