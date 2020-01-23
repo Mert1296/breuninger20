@@ -15,6 +15,27 @@ router.get('/login', (req, res) => res.render('login'));
 // Kontaktinformation Breuninger
 router.get('/register', (req, res) => res.render('register'));
 
+// Benutzerinfo Spediteur
+router.get('/benutzerinfo_spediteur', function(req, res, next) {
+
+    //here it is
+    var user = req.user;
+
+    //you probably also want to pass this to your view
+    res.render('benutzerinfo_spediteur', { user: user });
+});
+
+// Benutzerinfo Spediteur
+router.get('/benutzerinfo_breuninger', function(req, res, next) {
+
+    //here it is
+    var user = req.user;
+
+    //you probably also want to pass this to your view
+    res.render('benutzerinfo_breuninger', { user: user });
+});
+
+
 //Benutzerverwaltung_MA
 router.get ('/Benutzerverwaltung_Mitarbeiter', ensureAuthenticated, (req, res) =>{
 

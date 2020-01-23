@@ -80,7 +80,32 @@
                     <tr>
                     <td><%=users[i].username%></td>
                     <td><%=users[i].admin%></td>
-                        <td><form action="/users/Benutzerverwaltung_Mitarbeiter"><button id="buttonAnzeigen" type="submit" name="username" href="" value="<%users[i].username%>"data-toggle="tooltip" title="Anzeigen"><i class="fas fa-search"></i></button></form></td>
+                        <td><button id="buttonAnzeigen" type="submit" name="username" data-toggle="tooltip" title="Anzeigen"><a href="/users/benutzerinfo_breuninger"><i class="fas fa-search"></i></a></button></td>
+                        <script type="text/javascript">
+                            open_selected();
+                            function open_selected() {
+                                var table = document.getElementById('tabelle');
+                                var cells = table.getElementsByTagName('td');
+
+                                for (var i = 0; i < cells.length; i++) {
+                                    // Take each cell
+                                    var cell = cells[i];
+                                    // do something on onclick event for cell
+                                    cell.onclick = function () {
+                                        // Get the row id where the cell exists
+                                        var rowId = this.parentNode.rowIndex;
+
+                                        var rowSelected = table.getElementsByTagName('tr')[rowId];
+
+                                        msg = 'The ID of the company is: ' + rowSelected.cells[0].innerHTML;
+                                        msg += '\nThe cell value is: ' + this.innerHTML;
+                                        alert(msg);
+                                    }
+                                }
+
+                            }
+
+                        </script>
                     </tr>
                     <!-- hallo -->
                     <%}%>

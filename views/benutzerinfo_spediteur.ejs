@@ -1,96 +1,18 @@
+<!DOCTYPE HTML>
 <html>
-<head>
-<style>
-
-    input[type=text]
-    {
-        margin-top:8px;
-        -moz-border-radius: 2px;
-        -webkit-border-radius: 2px;
-        -border-radius: 2px;
-        display:none;
-        width:180px;
-
-    }
-
-
-    input[type=password]
-    {
-        margin-top:8px;
-        -moz-border-radius: 2px;
-        -webkit-border-radius: 2px;
-        -border-radius: 2px;
-        display:none;
-        width:180px;
-
-    }
-
-    input[type=tel]
-    {
-        margin-top:8px;
-        -moz-border-radius: 2px;
-        -webkit-border-radius: 2px;
-        -border-radius: 2px;
-        display:none;
-        width:180px;
-
-    }
-
-    input[type=email]
-    {
-        margin-top:8px;
-        -moz-border-radius: 2px;
-        -webkit-border-radius: 2px;
-        -border-radius: 2px;
-        display:none;
-        width:180px;
-
-    }
-    label
-    {
-        float:left;
-        margin-top:8px;
-        -moz-border-radius: 2px;
-        -webkit-border-radius: 2px;
-        -border-radius: 2px;
-        font-weight: normal;
-    }
-
-    .edit
-    {
-        float:left;
-        background:url("../images/pen-solid.svg") no-repeat;
-        background-size: 18px 18px;
-        background-position: center;
-        width:32px;
-        height:32px;
-        display:block;
-        cursor: pointer;
-        margin-left:10px;
-    }
-
-    .clear
-    {
-        clear:both;
-    }
-</style>
-</head>
 <body>
-
-<div class="fh5co-loader"></div>
-
 <div id="page">
     <nav class="fh5co-nav" role="navigation">
         <div class="container-wrap" style="height: 120px;">
             <div class="top-menu">
                 <div class="row">
                     <div class="col-xs-2">
-                        <div ><a href="Startseite_Spediteur.html" ><img src="images/logo-breuninger.jpeg" style="padding-bottom:10px; width: 200px; height:70px;"></a></div>
+                        <div ><a href="/buchungen/startseite_spediteur" ><img src="../images/logo-breuninger.jpeg" style="padding-bottom:10px; width: 200px; height:70px;"></a></div>
                     </div>
                     <div class="col-xs-10 text-right menu-1">
                         <ul>
-                            <li><a href="Startseite_Spediteur.html"><span class="fa fa-home"></span> Startseite</a></li>
-                            <li class="active"><a href="Benutzerinfo_Spediteur.html"><span class="fa fa-user"></span> Benutzerinformation</a></li>
+                            <li><a href="/buchungen/startseite_spediteur"><span class="fa fa-home"></span> Startseite</a></li>
+                            <li class="active"><a href="/users/benutzerinfo_spediteur"><span class="fa fa-user"></span> Benutzerinformation</a></li>
                             <li><a href=""><span class="fa fa-power-off"></span> Logout</a></li>
                         </ul>
                     </div>
@@ -113,20 +35,16 @@
                 <tbody>
                 <tr>
                     <td>User ID</td>
-                    <td contenteditable="false">DHL</td>
-                </tr>
-                <tr>
-                    <td>Zugehörigkeit</td>
-                    <td contenteditable="false">DHL</td>
+                    <td><%=user.username%></td>
                 </tr>
                 <tr>
                     <td>Division</td>
-                    <td contenteditable="false">KEP</td>
+                    <td><%=user.division%></td>
                 </tr>
                 <!-- dann muss das auch bei neueNutzer die Torfreigabe!! -->
                 <tr>
                     <td>Torfreigabe</td>
-                    <td contenteditable="false">2;3</td>
+                    <td><%=user.gate%></td>
                 </tr>
                 <tr>
                     <td>Sprache</td>
@@ -136,15 +54,15 @@
                 </tr>
                 <tr>
                     <td>Telefon</td>
-                    <td><label class="text_label1">+49 172 1234 567</label>
+                    <td><label class="text_label2"><%=user.telefon%></label>
                         <div class="edit"></div>
-                        <input type="tel" value="+49 172 1234 567" />
+                        <input type="email" value="<%=user.telefon%>" />
                 </tr>
                 <tr>
                     <td>E-Mail</td>
-                    <td><label class="text_label2">example@dhl.com</label>
+                    <td><label class="text_label2"><%=user.email%></label>
                         <div class="edit"></div>
-                        <input type="email" value="example@dhl.com" />
+                        <input type="email" value="<%=user.email%>" />
                 </tr>
                 <!-- Passwort-Feld -->
                 <tr>

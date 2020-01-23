@@ -30,7 +30,6 @@
             <button><a href="neueBuchung_Spediteur.html" class="next">Zur Buchung</a></button>
             <button><a href="buchungsuebersicht.html" class="next">Zur Buchungsübersicht</a></button>
 
-//hallo
 
 
 
@@ -99,7 +98,7 @@
             description: "George brings projector for presentations.",
             location: "",
             subject: "Quarterly Project Review Meeting",
-            calendar: "Room 1",
+            calendar: "Gate 1",
             start: new Date(2020, 0, 22, 9, 0, 0),
             end: new Date(2020, 0, 22, 16, 0, 0)
         }
@@ -109,21 +108,21 @@
             description: "",
             location: "",
             subject: "IT Group Mtg.",
-            calendar: "Room 2",
+            calendar: "Gate 2",
             start: new Date(2020, 0, 22, 10, 0, 0),
             end: new Date(2020, 0, 22, 15, 0, 0)
         }
 
-        /*var appointment3 = {
+        var appointment3 = {
             id: "id3",
             description: "",
             location: "",
             subject: "Course Social Media",
-            calendar: "Room 3",
+            calendar: "Gate 3",
             start: new Date(2020, 1, 27, 11, 0, 0),
             end: new Date(2020, 1, 27, 13, 0, 0)
         }
-
+/*
         var appointment4 = {
             id: "id4",
             description: "",
@@ -155,7 +154,8 @@
         }*/
         appointments.push(appointment1);
         appointments.push(appointment2);
-       /* appointments.push(appointment3);
+        appointments.push(appointment3);
+       /*
         appointments.push(appointment4);
         appointments.push(appointment5);
         appointments.push(appointment6);*/
@@ -179,7 +179,7 @@
             };
         var adapter = new $.jqx.dataAdapter(source);
         $("#scheduler").jqxScheduler({
-            date: new $.jqx.date(2015, 11, 23),
+            date: new $.jqx.date('todayDate'),
             width: 850,
             height: 600,
             source: adapter,
