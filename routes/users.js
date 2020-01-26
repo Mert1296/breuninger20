@@ -15,22 +15,22 @@ router.get('/login', (req, res) => res.render('login'));
 // Kontaktinformation Breuninger
 router.get('/register', (req, res) => res.render('register'));
 
-
-// Benutzerinfo Mitarbeiter
-router.post('/username', (req, res) => {
+// Benutzerinfo Spediteur
+router.get('/benutzerinfo_spediteur', function(req, res, next) {
 
     //here it is
-    const username = req.body.username;
-    User.findOne({username: username}, function (err, user) {
-        console.log(user);
-        if (user.admin == "spediteur") {
-            res.render('detailansicht_spediteur', { user: user });
-        } else {
-            res.render('detailansicht_breuninger', { user: user });
-        }
+    var user = req.user;
 
-    });
+    //you probably also want to pass this to your view
+    res.render('benutzerinfo_spediteur', { user: user || []});
+});
 
+// Benutzerinfo Mitarbeiter
+router.get('/benutzerinfo_breuninger', (req, res) => {
+
+    //here it is
+    var user = req.user;
+    res.render('benutzerinfo_breuninger', { user: user || [] });
 });
 
 //Benutzerverwaltung_MA
@@ -41,6 +41,7 @@ router.get ('/Benutzerverwaltung_Mitarbeiter', (req, res) =>{
             return res.send(err);
         res.render('Benutzerverwaltung_Mitarbeiter',{
             users: users || [],
+            vorname: req.user.vorname
         });
     });
 });
