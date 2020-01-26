@@ -5,9 +5,12 @@ const passport = require('passport');
 // Load User model
 const User = require('../DB/models/User');
 const { ensureAuthenticated } = require('../DB/config/auth');
+const bodyParser = require('body-parser');
 
 //User Models
 //const User = require('../DB/models/user');
+
+
 
 // Login Page
 router.get('/login', (req, res) => res.render('login'));
@@ -19,7 +22,7 @@ router.get('/register', (req, res) => res.render('register'));
 // Benutzerinfo Mitarbeiter
 router.post('/username', (req, res) => {
 
-    //here it is
+    //here it isç
     const username = req.body.username;
     User.findOne({username: username}, function (err, user) {
         console.log(user);
@@ -30,6 +33,16 @@ router.post('/username', (req, res) => {
         }
 
     });
+
+});
+
+//Update Benutzerdaten Spediteur
+router.post('/update_detailansicht_breuninger',(req,res) =>{
+    const username = req.body.username;
+    const telefon = req.body.telefon;
+    const email = req.body.email;
+    User.update(username, telefon);
+    res.render('detailansicht_breuninger');
 
 });
 
@@ -45,11 +58,6 @@ router.get ('/Benutzerverwaltung_Mitarbeiter', (req, res) =>{
     });
 });
 
-/*router.get('/Benutzerverwaltung_Mitarbeiter', function (req, res) {
-    res.render('Benutzerverwaltung_Mitarbeiter',{
-        users: req.users ||[]
-    });
-});*/
 
 
 //New User MA

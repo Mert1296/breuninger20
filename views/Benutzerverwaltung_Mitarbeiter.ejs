@@ -82,7 +82,6 @@
                     <tr>
                         <th style="text-align: center">User-ID</th>
                         <th style="text-align: center">Rolle</th>
-                        <th> </th>
                     </tr>
                     </thead>
                     <tbody>
@@ -90,14 +89,17 @@
                     <tr>
                     <td><%=users[i].username%></td>
                     <td><%=users[i].admin%></td>
+                    <form action="username" method="POST">
+                        <input type="hidden" name="username" value="<%=users[i].username%>">
                         <td><button id="buttonAnzeigen" type="submit" name="username" data-toggle="tooltip" title="Anzeigen"><a href="/users/benutzerinfo_breuninger"><i class="fas fa-search"></i></a></button></td>
+                    </form>
                     </tr>
                     <!-- hallo -->
                     <%}%>
                     </tbody>
                 </table>
                 <script>
-                    open_selected();
+                    /*open_selected();
                     function open_selected() {
                         var table = document.getElementById('tabelle');
                         var cells = table.getElementsByTagName('td');
@@ -119,14 +121,15 @@
                                 rowSelected.style.backgroundColor = "yellow";
                                 rowSelected.className += " selected";
 
-                                msg = 'The ID of the company is: ' + rowSelected.cells[0].innerHTML;
+                                msg = 'The ID rsof the company is: ' + rowSelected.cells[0].innerHTML;
                                 msg += '\nThe cell value is: ' + this.innerHTML;
-                                alert(msg);
 
+                                var userid = rowSelected.cells[0].innerHTML;
+                                alert(userid);
                             }
                         }
 
-                    }
+                    }*/
                 </script>
                 <div>
                     <form action="/users/neuerUSer_MA" style="padding: 25px">
@@ -196,10 +199,10 @@
 
         $('#button').click( function () {
             table.row('.selected').remove().draw( false );
-        } );
+        });
 
         $('[data-toggle="tooltip"]').tooltip();
-    } );
+    });
 </script>
 <script type="text/javascript">
     function click(link){return false;}

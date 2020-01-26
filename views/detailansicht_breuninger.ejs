@@ -1,81 +1,86 @@
+<!DOCTYPE HTML>
 <html>
 <head>
-<style>
 
-    input[type=text]
-    {
-        margin-top:8px;
-        -moz-border-radius: 2px;
-        -webkit-border-radius: 2px;
-        -border-radius: 2px;
-        display:none;
-        width:180px;
-
-    }
+    <style>
 
 
-    input[type=password]
-    {
-        margin-top:8px;
-        -moz-border-radius: 2px;
-        -webkit-border-radius: 2px;
-        -border-radius: 2px;
-        display:none;
-        width:180px;
+        input[type=text]
+        {
+            margin-top:8px;
+            -moz-border-radius: 2px;
+            -webkit-border-radius: 2px;
+            -border-radius: 2px;
+            display:none;
+            width:180px;
 
-    }
+        }
 
-    input[type=tel]
-    {
-        margin-top:8px;
-        -moz-border-radius: 2px;
-        -webkit-border-radius: 2px;
-        -border-radius: 2px;
-        display:none;
-        width:180px;
 
-    }
+        input[type=password]
+        {
+            margin-top:8px;
+            -moz-border-radius: 2px;
+            -webkit-border-radius: 2px;
+            -border-radius: 2px;
+            display:none;
+            width:180px;
 
-    input[type=email]
-    {
-        margin-top:8px;
-        -moz-border-radius: 2px;
-        -webkit-border-radius: 2px;
-        -border-radius: 2px;
-        display:none;
-        width:180px;
+        }
 
-    }
-    label
-    {
-        float:left;
-        margin-top:8px;
-        -moz-border-radius: 2px;
-        -webkit-border-radius: 2px;
-        -border-radius: 2px;
-        font-weight: normal;
-    }
+        input[type=tel]
+        {
+            margin-top:8px;
+            -moz-border-radius: 2px;
+            -webkit-border-radius: 2px;
+            -border-radius: 2px;
+            display:none;
+            width:180px;
 
-    .edit
-    {
-        float:left;
-        background:url("../images/pen-solid.svg") no-repeat;
-        background-size: 18px 18px;
-        background-position: center;
-        width:32px;
-        height:32px;
-        display:block;
-        cursor: pointer;
-        margin-left:10px;
-    }
+        }
 
-    .clear
-    {
-        clear:both;
-    }
-</style>
+        input[type=email]
+        {
+            margin-top:8px;
+            -moz-border-radius: 2px;
+            -webkit-border-radius: 2px;
+            -border-radius: 2px;
+            display:none;
+            width:180px;
+
+        }
+        label
+        {
+            float:left;
+            margin-top:8px;
+            -moz-border-radius: 2px;
+            -webkit-border-radius: 2px;
+            -border-radius: 2px;
+            font-weight: normal;
+        }
+
+        .edit
+        {
+            float:left;
+            background:url("../images/pen-solid.svg") no-repeat;
+            background-size: 18px 18px;
+            background-position: center;
+            width:32px;
+            height:32px;
+            display:block;
+            cursor: pointer;
+            margin-left:10px;
+        }
+
+        .clear
+        {
+            clear:both;
+        }
+    </style>
 </head>
 <body>
+
+
 <div id="page">
     <nav class="fh5co-nav" role="navigation">
         <div class="container-wrap" style="height: 120px;">
@@ -99,6 +104,7 @@
     <div class="container-wrap">
         <div class="flexslider">
             <h1> Benutzerinformation</h1>
+            <form action="update_detailansicht_breuninger" method="post">
             <table id="tabelle" class="cell-border"  class="table table-striped" cellspacing="0" >
                 <thead>
                 <tr>
@@ -109,27 +115,24 @@
                 <tbody>
                 <tr>
                     <td>User ID</td>
-                    <td><%=user.username%></td>
+                    <td contenteditable="false"><%=user.username%></td>
+                    <input type="hidden" name="user" value="<%=user.username%>">
                 </tr>
                 <tr>
                     <td>Division</td>
-                    <td><%=user.division%></td>
-                </tr>
-                <tr>
-                    <td>Sprache</td>
-                    <td><p><select id="pickingland" style="font-size: large; width: 100px; text-align:center;">
-                                <option>DE</option>
-                                <option>EN</option> </select></p> </td>
+                    <td contenteditable="false"><%=user.division%></td>
                 </tr>
                 <tr>
                     <td>Telefon</td>
-                    <td><%=user.telefon%></td>
+                    <td><label class="text_label1"><%=user.telefon%></label>
+                        <div class="edit"></div>
+                        <input type="tel" name="telefon" value="<%=user.telefon%>" />
                 </tr>
                 <tr>
-                    <td>Email</td>
-                    <td>
-                        <div><input type="email" id="row-2-age" name="row-2-age" value="<%=user.email%>"></div>
-                    </td>
+                    <td>E-Mail</td>
+                    <td><label class="text_label2">example@dhl.com</label>
+                        <div class="edit"></div>
+                        <input type="email" name="email" value="<%=user.email%>" />
                 </tr>
                 <!-- Passwort-Feld -->
                 <tr>
@@ -143,6 +146,9 @@
                 </tr>
                 </tbody>
             </table>
+            <br>
+            <button class="btn btn-primary" type="submit">Benutzerdaten Aktualisieren</button>
+            </form>
         </div>
     </div><!-- END container-wrap -->
     <div class="container-wrap">
@@ -268,7 +274,7 @@
 
         $('input[type="tel"]').keypress(function(event) {
             if (event.keyCode == '14') {
-                if ($.trim(this.value) == ''){
+                if ($.trim(this.value) == '') {
                     this.value = (this.defaultValue ? this.defaultValue : '');
                 }
 
@@ -277,34 +283,8 @@
                 $(this).prev().prev().show();
             }
         });
-        // für email
-
-        $('input[type="email"]').blur(function() {
-            if ($.trim(this.value) == ''){
-                this.value = (this.defaultValue ? this.defaultValue : '');
-            }
-
-            $(this).hide();
-            $(this).prev().show();
-            $(this).prev().prev().show();
         });
 
-        $('input[type="email"]').keypress(function(event) {
-            if (event.keyCode == '14') {
-                if ($.trim(this.value) == ''){
-                    this.value = (this.defaultValue ? this.defaultValue : '');
-                }
-
-                $(this).hide();
-                $(this).prev().show();
-                $(this).prev().prev().show();
-            }
-        });
-    });
-
-</script>
-<script type="text/javascript">
-    function click(link){return false;}
 </script>
 </body>
 </html>
