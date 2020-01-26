@@ -5,9 +5,12 @@ const passport = require('passport');
 // Load User model
 const User = require('../DB/models/User');
 const { ensureAuthenticated } = require('../DB/config/auth');
+const bodyParser = require('body-parser');
 
 //User Models
 //const User = require('../DB/models/user');
+
+
 
 // Login Page
 router.get('/login', (req, res) => res.render('login'));
@@ -15,22 +18,32 @@ router.get('/login', (req, res) => res.render('login'));
 // Kontaktinformation Breuninger
 router.get('/register', (req, res) => res.render('register'));
 
-// Benutzerinfo Spediteur
-router.get('/benutzerinfo_spediteur', function(req, res, next) {
-
-    //here it is
-    var user = req.user;
-
-    //you probably also want to pass this to your view
-    res.render('benutzerinfo_spediteur', { user: user || []});
-});
 
 // Benutzerinfo Mitarbeiter
-router.get('/benutzerinfo_breuninger', (req, res) => {
+router.post('/username', (req, res) => {
 
-    //here it is
-    var user = req.user;
-    res.render('benutzerinfo_breuninger', { user: user || [] });
+    //here it isç
+    const username = req.body.username;
+    User.findOne({username: username}, function (err, user) {
+        console.log(user);
+        if (user.admin == "spediteur") {
+            res.render('detailansicht_spediteur', { user: user });
+        } else {
+            res.render('detailansicht_breuninger', { user: user });
+        }
+
+    });
+
+});
+
+//Update Benutzerdaten Spediteur
+router.post('/update_detailansicht_breuninger',(req,res) =>{
+    const username = req.body.username;
+    const telefon = req.body.telefon;
+    const email = req.body.email;
+    User.update(username, telefon);
+    res.render('detailansicht_breuninger');
+
 });
 
 //Benutzerverwaltung_MA
@@ -41,16 +54,10 @@ router.get ('/Benutzerverwaltung_Mitarbeiter', (req, res) =>{
             return res.send(err);
         res.render('Benutzerverwaltung_Mitarbeiter',{
             users: users || [],
-            vorname: req.user.vorname
         });
     });
 });
 
-/*router.get('/Benutzerverwaltung_Mitarbeiter', function (req, res) {
-    res.render('Benutzerverwaltung_Mitarbeiter',{
-        users: req.users ||[]
-    });
-});*/
 
 
 //New User MA
