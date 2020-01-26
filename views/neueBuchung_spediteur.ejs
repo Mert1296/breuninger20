@@ -21,7 +21,7 @@
             <div class="top-menu">
                 <div class="row">
                     <div class="col-xs-2">
-                        <div><a href=/buchungen/startseite_spediteur><img src="../images/logo-breuninger.jpeg" style="padding-bottom:10px; width: 200px; height:70px;"></a>
+                        <div><a href="/buchungen/startseite_spediteur"><img src="../images/logo-breuninger.jpeg" style="padding-bottom:10px; width: 200px; height:70px;"></a>
                         </div>
                     </div>
                     <div class="col-lg-9 text-right menu-2" style="padding-top: 20px; padding-left: 120px;">
@@ -38,10 +38,10 @@
 </div>
 <form action="/buchungen/neueBuchung_spediteur" id ="myForm" method="POST">
     <div class="container-wrap">
-        <div class="flexslider">
+        <div class="flexslider"  align="center" >
             <div>
                 <h2>Neue Buchung</h2>
-                <div class=" form-group card" id="hi" style="padding-top: 10px; padding-left: 30px;">
+                <div class=" form-group card" id="hi" style="padding-top: 10px; padding-left: 30px; border-style: none;" >
                     <div class="ui-widget">
                         <select id="pick" name="sendungsstruktur" style=" font-size: large; width: 300px">
                             <option value="0">Sendungsstruktur wählen..</option>
@@ -70,24 +70,24 @@
                     <input data-result="" data-time="1" type="text" class="form-control teile" id="teile" name="teile" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Anzahl der Teile angeben">
 
                     <label for="submit" class="submit" style="padding-top: 10px;"></label>
-                    <input type="button" class=" form-control submit" id="submit" style="text-align:center;border-radius: 10px; height: 35px; width: 200px;" value="Entladezeit berechnen">
+                    <input type="button" class=" form-control submit" id="submit" style="text-align:center;border-radius: 10px; height: 40px; width: 300px; font-weight: bold; margin-top: 10px; color:#861a22 ;" value="Entladezeit berechnen">
 
                     <label class="zeit" style="padding-top: 20px">Benötigte Entladezeit:&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <strong style="text-decoration: underline; color: #861a22;" class="zeit-value"></strong></label>
 
                     <label for="datepicker" class="datepicker" style="padding-top: 15px;"> Datum</label>
                     <div class="input-container" style="position: relative">
-                        <i class="far fa-calendar-alt" id="datepicker1" style="padding:10px; position: absolute; left:0; padding: 9px 8px;" aria-hidden="true"></i>
+                        <i class="far fa-calendar-alt" id="datepicker1" style="padding:10px; position: absolute; left:35.7%; padding: 9px 8px;" aria-hidden="true"></i>
                         <input type="text" class="form-control datepicker" id="datepicker" name="datepicker" style="border-radius: 10px; height: 35px; width: 300px; padding-left: 40px;" placeholder="Wählen Sie ein Datum">
                     </div>
 
                     <label for="timepicker1" class="timepicker1" style="padding-top: 10px;">Uhrzeit von </label>
                     <div class="input-container" style="position: relative">
-                        <i class="far fa-clock" id="timepicker1" style="padding:10px; position: absolute; left:0; padding: 9px 8px;" aria-hidden="true"></i>
+                        <i class="far fa-clock" id="timepicker1" style="padding:10px; position: absolute; left:35.7%; padding: 9px 8px;" aria-hidden="true"></i>
                         <input type="text" class="form-control timepicker1" id="timepicker1" name="timepicker1" style="border-radius: 10px; height: 35px; width: 300px; padding-left: 40px;" placeholder="Wählen Sie eine Ankunftszeit">
                     </div>
                     <label for="timepicker2" class="timepicker2" style="padding-top: 10px;">Uhrzeit bis </label>
                     <div class="input-container" style="position: relative">
-                        <i class="fas fa-clock" id="timepicker2" style="padding:10px; position: absolute; left:0; padding: 9px 8px;" aria-hidden="true"></i>
+                        <i class="fas fa-clock" id="timepicker2" style="padding:10px; position: absolute; left:35.7%; padding: 9px 8px;" aria-hidden="true"></i>
                         <input type="text" class="form-control timepicker2" id="timepicker2" name="timepicker2" style="border-radius: 10px; height: 35px; width: 300px; padding-left: 40px;" placeholder="Wählen Sie eine Endzeit">
                     </div>
 
@@ -98,10 +98,25 @@
                                 <option value="tor7">Tor 7</option>
                             </select></p></label>
 
-                    <button type="submit" id="submit" name="submit" style="width: 90px;" class="next">Buchen</button>
+                   <!-- <button type="submit" id="submit" name="submit" style="width: 90px;" class="next">Buchen</button>-->
                 </div>
                 <label class="leer" style="padding-top: 350px"></label>
+                <div class="weiterT" align="center">
+                    <form action="/buchungen/torauswahl" style="padding: 25px">
+                        <button class="btn btn-primary">
+				        <span class="button__inner-wrapper">
+
+				             <span class="button__label button__content">
+       					            Buchen &raquo;
+                             </span>
+				        </span>
+
+                        </button>
+                    </form>
+                </div>
             </div>
+
+
         </div>
     </div><!-- END container-wrap -->
 </form>
@@ -151,17 +166,17 @@
 
         $("#datepicker").datepicker();
 
-        $('.input-container, .datepicker, .sendungen,.EUP, .EWP,.pakete, .bemerkung, .teile, .submit, .zeit,.timepicker1,.timepicker2,.torauswahl, .next').removeClass('active').hide();
+        $('.input-container, .datepicker, .sendungen,.EUP, .EWP,.pakete, .bemerkung, .teile, .submit, .zeit,.timepicker1,.timepicker2,.torauswahl, .next, .weiterT').removeClass('active').hide();
         $('#pick').change(function () {
             var self = $(this);
             if (self.val() == 1) {
-                $('.input-container,.datepicker,.sendungen, .EUP, .EWP, .pakete, .bemerkung,.submit, .zeit,.timepicker1,.timepicker2,.torauswahl,.next').addClass('active').show();
+                $('.input-container,.datepicker,.sendungen, .EUP, .EWP, .pakete, .bemerkung,.submit, .zeit,.timepicker1,.timepicker2,.torauswahl,.next, .weiterT').addClass('active').show();
                 $('.teile, .leer').removeClass('active').hide();
             } else if (self.val() == 2) {
-                $('.input-container, .datepicker, .sendungen, .pakete, .bemerkung, .submit, .zeit,.timepicker2,.timepicker1,.torauswahl, .next').addClass('active').show();
+                $('.input-container, .datepicker, .sendungen, .pakete, .bemerkung, .submit, .zeit,.timepicker2,.timepicker1,.torauswahl, .next , .weiterT').addClass('active').show();
                 $('.EUP, .EWP, .teile, .leer').removeClass('active').hide();
             } else if (self.val() == 3) {
-                $('.input-container,.datepicker, .sendungen, .EUP, .EWP, .pakete, .teile, .bemerkung ,.submit, .zeit,.timepicker2,.timepicker1,.torauswahl, .next').addClass('active').show();
+                $('.input-container,.datepicker, .sendungen, .EUP, .EWP, .pakete, .teile, .bemerkung ,.submit, .zeit,.timepicker2,.timepicker1,.torauswahl, .next, .weiterT').addClass('active').show();
             } else {
                 $('.input-container, .datepicker, .sendungen, .EUP, .EWP, .pakete, .bemerkung, .teile,.submit, .zeit, .timepicker1,.timepicker2,.torauswahl,.next').removeClass('active').hide();
                 $('.leer').show();
