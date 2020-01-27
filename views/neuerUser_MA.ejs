@@ -23,10 +23,10 @@
             <%- include('./partials/messages'); %>
             <form action="/users/neuerUser_MA" method="POST">
                 <div class="container-wrap">
-                    <div class="flexslider">
+                    <div class="flexslider" align="center">
                         <div>
                             <h2>Neuer Benutzer</h2>
-                            <div class=" form-group card" style="padding-top: 10px; padding-left: 30px;">
+                            <div class=" form-group card" style="padding-top: 10px; padding-left: 30px; border-style: none;">
                                 <div class="ui-widget">
                                     <select id="pick" name="admin" style=" font-size: large; width: 300px">
                                         <option value="0" >Benutzer wählen..</option>
@@ -84,8 +84,20 @@
                                 <label for="password2" class="password2" style="padding-top: 10px;">Passwort wiederholen</label>
                                 <input type="password" required minlength="8" class="form-control password2" id="password2" name="password2" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Passwort wiederholen">
 
-                                <label for="submit" class="submit" style="padding-top: 10px;"></label>
-                                <input type="submit" class="form-control submit" id="submit" style="border-radius: 10px; height: 35px; width: 300px;" value="Speichern"><br>
+                                <!-- <label for="submit" class="submit" style="padding-top: 10px;"></label>
+                                <input type="submit" class="btn btn-primary" id="submit" style="; height: 40px; width: 150px; font-weight: bold; margin-top: 10px;" value="Speichern"><br>
+                                <label> -->
+                                <br>
+                                    <div class="submit">
+                                    <button class="btn btn-primary">
+                                        <span class="button__inner-wrapper">
+                                            <span class="button__label button__content">
+       					                             Speichern
+                                             </span>
+				                         </span>
+                                    </button>
+                                </label>
+                            </div>
                             </div>
                             <label class="leer" style="padding-top: 350px"></label>
                         </div>
@@ -128,8 +140,8 @@
                     $('.name, .zugehoerigkeit,.division, .strasse,.PLZ, .stadt, .username, .vorname, .land, .telefon, .email, .password, .password2, .submit,.torauswahl').hide();
                     $('#pick').change(function () {
                         if($('#pick').val() == "spediteur"){
-                            $('.username, .vorname, .land, .telefon, .email, .password, .password2,.torauswahl, .submit').show();
-                            $('.name, .zugehoerigkeit,.division, .strasse,.PLZ, .stadt,.leer').hide();
+                            $('.username, .vorname, .land, .telefon, .email, .password, .password2,.torauswahl, .submit,.division').show();
+                            $('.name, .zugehoerigkeit, .strasse,.PLZ, .stadt,.leer').hide();
                         }
                         else if($('#pick').val() == "breuninger"){
                             $('.username, .vorname, .name, .zugehoerigkeit, .division, .strasse, .PLZ, .stadt, .land, .telefon ,.email, .password, .password2,.torauswahl, .submit').show();
