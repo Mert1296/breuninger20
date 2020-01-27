@@ -6,21 +6,20 @@ const Tor = require(('../DB/models/Tor'));
 const { ensureAuthenticated } = require('../DB/config/auth');
 
 //Startseite Breuninger
-router.get ('/startseite_breuninger', ensureAuthenticated, (req, res) => {
+router.get ('/startseite_breuninger', (req, res) => {
 
     Buchung.find(function (err, buchungen) {
         if (err)
             return res.send(err);
 
         res.render('startseite_breuninger',{
-            vorname: req.user.vorname,
             buchungen: buchungen || []
         });
     });
 });
 
 //startseite Spedi
-router.get ('/startseite_spediteur', ensureAuthenticated, (req, res) => {
+router.get ('/startseite_spediteur', (req, res) => {
 
     Buchung.find(function (err, buchungen) {
         if (err)
@@ -51,29 +50,23 @@ router.get ('/torauswahl', (req, res) => {
 });
 
 //torverwaltung mitarbeiter
-router.get('/torverwaltung', (req, res) => res.render('torverwaltung'));
-//insert
-router.post('/torverwaltung', (req, res) => {
-    const {gate, disabled } = req.body;
-    let errors = [];
-    if (errors.length > 0) {
-        res.render('torverwaltung ', {
-            errors,
-            gate,
-            disabled
+router.get ('/torverwaltung', (req, res) =>{
+
+    Tor.find(function (err, tor) {
+        if (err)
+            return res.send(err);
+        res.render('torverwaltung',{
+            tor: tor || [],
         });
-    }  else {
-        const newTor = new Tor({
-            gate,
-            disabled
-        });
-        newTor.save()
-            .then(tor =>{
-                res.send('saved')
-            })
-            .catch(err=>console.log(err));
-        console.log(newTor)
-    }
+    });
+});
+//Torsperrung
+router.post('/torverwaltung',(req,res) =>{
+    const username = req.body.username;
+    const email = req.body.email;
+    User.update({username: username}, telefon);
+    res.render('detailansicht_breuninger');
+
 });
 
 //insert

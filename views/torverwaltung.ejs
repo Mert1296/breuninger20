@@ -1,6 +1,70 @@
 <!DOCTYPE HTML>
 <html>
-//kommi
+<head>
+    <style>
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: yellowgreen;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        input:checked + .slider {
+            background-color: orangered;
+        }
+
+        input:focus + .slider {
+            box-shadow: 0 0 1px #2196F3;
+        }
+
+        input:checked + .slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+        }
+
+        /* Rounded sliders */
+        .slider.round {
+            border-radius: 34px;
+        }
+
+        .slider.round:before {
+            border-radius: 50%;
+        }
+    </style>
+
+
+</head>
 <body>
 <div id="page">
     <nav class="fh5co-nav" role="navigation">
@@ -8,19 +72,19 @@
             <div class="top-menu">
                 <div class="row">
                     <div class="col-xs-2">
-                        <div><a href="/users/startseite_breuninger"><img src="../images/logo-breuninger.jpeg"
+                        <div><a href="/buchungen/startseite_breuninger"><img src="../images/logo-breuninger.jpeg"
                                                                         style="padding-bottom:10px; width: 200px; height:70px;"></a>
                         </div>
                     </div>
                     <div class="col-xs-10 text-right menu-1">
                         <ul>
-                            <li><a href="Startseite_Mitarbeiter.html"><span class="fa fa-home"></span> Startseite</a>
+                            <li><a href="/buchungen/startseite_breuninger"><span class="fa fa-home"></span> Startseite</a>
                             </li>
-                            <li><a href="Benutzerverwaltung_Mitarbeiter.html"><span class="fa fa-user"></span>
+                            <li><a href="/users/benutzerverwaltung_mitarbeiter"><span class="fa fa-user"></span>
                                     Benutzerverwaltung</a></li>
-                            <li class="active"><a href="Torverwaltung_Mitarbeiter.html"><span
+                            <li class="active"><a href="/buchungen/benutzerverwaltung_mitarbeiter"><span
                                             class="fas fa-archway"></span> Torverwaltung</a></li>
-                            <li><a href=""><span class="fa fa-power-off"></span> Logout</a></li>
+                            <li><a href="/users/logout"><span class="fa fa-power-off"></span> Logout</a></li>
                         </ul>
                     </div>
                 </div>
@@ -31,23 +95,6 @@
     <div class="container-wrap">
         <div class="flexslider">
             <h2>Torverwaltung</h2>
-            <form action="/buchungen/torverwaltung" id ="myForm" method="POST">
-            <label for="gate" class="gate" style="padding-top: 10px;"> Tor </label>
-            <input type="text" class="form-control gate" id="gate" name="gate" style="border-radius: 10px; height: 35px; width:300px;" placeholder="Anzahl der losen Pakete angeben">
-
-            <label for="disabled" class="disabled" style="padding-top: 10px;">disabled</label>
-            <input type="disabled" class="form-control disabled" id="disabled" name="disabled" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Gesperrt">
-                <button class="btn btn-primary">
-				        <span class="button__inner-wrapper">
-
-				             <span class="button__label button__content">
-       					            Buchen &raquo;
-                             </span>
-				        </span>
-
-                </button>
-            </form>
-
             <table id="tore" class="cell-border">
                 <thead>
                 <tr>
@@ -58,55 +105,19 @@
                 </tr>
                 </thead>
                 <tbody>
+                <%for (var i = 0; i < tor.length; i++) { %>
                 <tr data-index="0">
-                    <td>1</td>
+                    <td><%=tor[i].gate%></td>
                     <td class="status"></td>
                     <td class="sperren"></td>
                     <td class="bemerkung"></td>
                 </tr>
-                <tr data-index="1">
-                    <td>2</td>
-                    <td class="status"></td>
-                    <td class="sperren"></td>
-                    <td class="bemerkung"></td>
-                </tr>
-                <tr data-index="2">
-                    <td>3</td>
-                    <td class="status"></td>
-                    <td class="sperren"></td>
-                    <td class="bemerkung"></td>
-                </tr>
-                <tr data-index="3">
-                    <td>6</td>
-                    <td class="status"></td>
-                    <td class="sperren"></td>
-                    <td class="bemerkung"></td>
-                </tr>
-                <tr data-index="4">
-                    <td>7</td>
-                    <td class="status"></td>
-                    <td class="sperren"></td>
-                    <td class="bemerkung"></td>
-                </tr>
-                <tr data-index="5">
-                    <td>9</td>
-                    <td class="status"></td>
-                    <td class="sperren"></td>
-                    <td class="bemerkung"></td>
-                </tr>
-                <tr data-index="5">
-                    <td>10</td>
-                    <td class="status"></td>
-                    <td class="sperren"></td>
-                    <td class="bemerkung"></td>
-                </tr>
-
+                <%}%>
                 </tbody>
             </table>
             <label class="leer" style="padding-top: 50px"></label>
         </div>
     </div><!-- END container-wrap -->
-
     <div class="container-wrap">
         <footer id="fh5co-footer" role="contentinfo">
             <div class="row">
@@ -176,11 +187,10 @@
 
         $('.sperren').each(function () {
             $(this).append('<label class="switch">' +
-                '<input type="checkbox" class="sperrung">' +
+                '<input type="checkbox" class="sperrung" name="disabled" value="true">' +
                 '<span class="slider round"></span>' +
                 '</label>'
             );
-
         });
         $('.slider').change(function () {
             if ($(this).is(':checked')) {

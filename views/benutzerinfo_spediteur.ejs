@@ -84,10 +84,12 @@
                 <div class="col-md-12 text-center">
                     <h4>Kontaktinformation</h4>
                     <div class="fh5co-footer">
-                        <p> E. Breuninger GmbH & Co. <br> Eschenbrünnlestraße 11, 71065 Sindelfingen
-                            <br>Tel-Nr. <a href="tel://1234567920">+ 49 1235 2355 98</a>&nbsp;
-                            <br><a href="mailto:info@yoursite.com">info@breuninger.com</a>
-                            <br><a href="http://gettemplates.co">www.breuninger.com</a>
+                        <p><br> E. Breuninger GmbH & Co. <br> <i class="fas fa-home"></i> &nbsp Eschenbrünnlestraße 11, 71065 Sindelfingen
+                            <br>Mo-Fr 07:00 bis 15:00 Uhr
+                            <br><i class="fas fa-phone-alt"></i><a href="tel://1234567920"> &nbsp +49 (0) 7031 / 616 2437</a>&nbsp;
+                            <br><i class="fas fa-print"></i><a href="tel://1234567920"> &nbsp +49 (0) 7031 / 616 2036</a>&nbsp;
+                            <br><i class="fas fa-envelope"></i><a href="mailto:info@breuninger.com"> &nbsp wareneingang.logistik@breuninger.de</a>
+                            <br><a href="https://www.breuninger.com/de/"> www.breuninger.com</a>
                         </p>
                     </div>
 
@@ -105,7 +107,6 @@
 </div>
 </div>
 <script>
-
     // Passwort anzeigen lassen
     function myFunction() {
         var x = document.getElementById("myInput");
@@ -115,7 +116,6 @@
             x.type = "password";
         }
     }
-
     // DataTable
     $(document).ready(function () {
         $('#tabelle').DataTable({
@@ -124,16 +124,13 @@
             paging: false,
             ordering: false,
         });
-
         $('.edit').click(function(){
             $(this).hide();
             $(this).prev().hide();
             $(this).next().show();
             $(this).next().select();
         });
-
         //für Textfeld
-
         $('input[type="text"]').blur(function() {
             if ($.trim(this.value) == ''){
                 this.value = (this.defaultValue ? this.defaultValue : '');
@@ -141,12 +138,10 @@
             else{
                 $(this).prev().prev().html(this.value);
             }
-
             $(this).hide();
             $(this).prev().show();
             $(this).prev().prev().show();
         });
-
         $('input[type="text"]').keypress(function(event) {
             if (event.keyCode == '13') {
                 if ($.trim(this.value) == ''){
@@ -156,85 +151,69 @@
                 {
                     $(this).prev().prev().html(this.value);
                 }
-
                 $(this).hide();
                 $(this).prev().show();
                 $(this).prev().prev().show();
             }
         });
-
         //für Passwort
-
         $('input[type="password"]').blur(function() {
             if ($.trim(this.value) == ''){
                 this.value = (this.defaultValue ? this.defaultValue : '');
             }
-
             $(this).hide();
             $(this).prev().show();
             $(this).prev().prev().show();
         });
-
         $('input[type="password"]').keypress(function(event) {
             if (event.keyCode == '14') {
                 if ($.trim(this.value) == ''){
                     this.value = (this.defaultValue ? this.defaultValue : '');
                 }
-
                 $(this).hide();
                 $(this).prev().show();
                 $(this).prev().prev().show();
             }
         });
-
         // für tel
-
         $('input[type="tel"]').blur(function() {
             if ($.trim(this.value) == ''){
                 this.value = (this.defaultValue ? this.defaultValue : '');
             }
-
             $(this).hide();
             $(this).prev().show();
             $(this).prev().prev().show();
         });
-
         $('input[type="tel"]').keypress(function(event) {
             if (event.keyCode == '14') {
                 if ($.trim(this.value) == ''){
                     this.value = (this.defaultValue ? this.defaultValue : '');
                 }
-
                 $(this).hide();
                 $(this).prev().show();
                 $(this).prev().prev().show();
             }
         });
         // für email
-
         $('input[type="email"]').blur(function() {
             if ($.trim(this.value) == ''){
                 this.value = (this.defaultValue ? this.defaultValue : '');
             }
-
             $(this).hide();
             $(this).prev().show();
             $(this).prev().prev().show();
         });
-
         $('input[type="email"]').keypress(function(event) {
             if (event.keyCode == '14') {
                 if ($.trim(this.value) == ''){
                     this.value = (this.defaultValue ? this.defaultValue : '');
                 }
-
                 $(this).hide();
                 $(this).prev().show();
                 $(this).prev().prev().show();
             }
         });
     });
-
 </script>
 <script type="text/javascript">
     function click(link){return false;}

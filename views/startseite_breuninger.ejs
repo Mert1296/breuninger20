@@ -40,8 +40,8 @@
                         <ul>
                             <li class="active"><a href="/buchungen/startseite_breuninger"><span class="fa fa-home"></span> Startseite</a></li>
                             <li><a href="/users/Benutzerverwaltung_Mitarbeiter"><span class="fa fa-user"></span> Benutzerverwaltung</a></li>
-                            <li><a href="Torverwaltung_Mitarbeiter.html"><span class="fas fa-archway"></span> Torverwaltung</a></li>
-                            <li><a href=""><span class="fa fa-power-off"></span> Logout</a></li>
+                            <li><a href="/buchungen/torverwaltung"><span class="fas fa-archway"></span> Torverwaltung</a></li>
+                            <li><a href="/users/logout"><span class="fa fa-power-off"></span> Logout</a></li>
                         </ul>
                     </div>
                 </div>
@@ -65,7 +65,7 @@
                 <tbody>
                 <%for (var i = 0; i < buchungen.length; i++) {
                 var monat = 1 + buchungen[i].from.getMonth();
-                var von = -1 + buchungen[i].from.getHours();
+                var von = -1 + buchungen[i].from.getHours(); //hier
                 var vonMin = buchungen[i].from.getMinutes();
                 var bis = -1 + buchungen[i].to.getHours();
                 var bisMin = buchungen[i].to.getMinutes();

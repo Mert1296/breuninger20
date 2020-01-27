@@ -105,49 +105,49 @@
         <div class="flexslider">
             <h1> Benutzerinformation</h1>
             <form action="update_detailansicht_breuninger" method="post">
-            <table id="tabelle" class="cell-border"  class="table table-striped" cellspacing="0" >
-                <thead>
-                <tr>
-                    <th></th>
-                    <th></th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>User ID</td>
-                    <td contenteditable="false"><%=user.username%></td>
-                    <input type="hidden" name="user" value="<%=user.username%>">
-                </tr>
-                <tr>
-                    <td>Division</td>
-                    <td contenteditable="false"><%=user.division%></td>
-                </tr>
-                <tr>
-                    <td>Telefon</td>
-                    <td><label class="text_label1"><%=user.telefon%></label>
-                        <div class="edit"></div>
-                        <input type="tel" name="telefon" value="<%=user.telefon%>" />
-                </tr>
-                <tr>
-                    <td>E-Mail</td>
-                    <td><label class="text_label2">example@dhl.com</label>
-                        <div class="edit"></div>
-                        <input type="email" name="email" value="<%=user.email%>" />
-                </tr>
-                <!-- Passwort-Feld -->
-                <tr>
-                    <td>Passwort</td>
-                    <td><label class="text_label3">******</label>
-                        <div class="edit"></div>
-                        <input type="password" class="passwort" value="Passwort123" id="myInput"/><br>
-                        <div class="clear"></div><br>
-                        <div><input type="checkbox" id="check" onclick="myFunction()"> &nbsp; Passwort anzeigen</div>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-            <br>
-            <button class="btn btn-primary" type="submit">Benutzerdaten Aktualisieren</button>
+                <table id="tabelle" class="cell-border"  class="table table-striped" cellspacing="0" >
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>User ID</td>
+                        <td contenteditable="false"><%=user.username%></td>
+                        <input type="hidden" name="user" value="<%=user.username%>">
+                    </tr>
+                    <tr>
+                        <td>Division</td>
+                        <td contenteditable="false"><%=user.division%></td>
+                    </tr>
+                    <tr>
+                        <td>Telefon</td>
+                        <td><label class="text_label1"><%=user.telefon%></label>
+                            <div class="edit"></div>
+                            <input type="tel" name="telefon" value="<%=user.telefon%>" />
+                    </tr>
+                    <tr>
+                        <td>E-Mail</td>
+                        <td><label class="text_label2">example@dhl.com</label>
+                            <div class="edit"></div>
+                            <input type="email" name="email" value="<%=user.email%>" />
+                    </tr>
+                    <!-- Passwort-Feld -->
+                    <tr>
+                        <td>Passwort</td>
+                        <td><label class="text_label3">**</label>
+                            <div class="edit"></div>
+                            <input type="password" class="passwort" value="Passwort123" id="myInput"/><br>
+                            <div class="clear"></div><br>
+                            <div><input type="checkbox" id="check" onclick="myFunction()"> &nbsp; Passwort anzeigen</div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <br>
+                <button class="btn btn-primary" type="submit">Benutzerdaten Aktualisieren</button>
             </form>
         </div>
     </div><!-- END container-wrap -->
@@ -283,7 +283,7 @@
                 $(this).prev().prev().show();
             }
         });
-        });
+    });
 
 </script>
 </body>

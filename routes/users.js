@@ -7,22 +7,29 @@ const User = require('../DB/models/User');
 const { ensureAuthenticated } = require('../DB/config/auth');
 const bodyParser = require('body-parser');
 
-//User Models
-//const User = require('../DB/models/user');
-
-
-
 // Login Page
 router.get('/login', (req, res) => res.render('login'));
 
 // Kontaktinformation Breuninger
 router.get('/register', (req, res) => res.render('register'));
 
+// Benutzerinfo Spediteur
+router.get ('/benutzerinfo_spediteur', (req, res) => {
+
+    User.find(function (err, user) {
+        if (err)
+            return res.send(err);
+
+        res.render('benutzerinfo_spediteur',{
+            user: user || []
+        });
+    });
+});
 
 // Benutzerinfo Mitarbeiter
 router.post('/username', (req, res) => {
 
-    //here it isç
+    //here it is
     const username = req.body.username;
     User.findOne({username: username}, function (err, user) {
         console.log(user);
@@ -36,12 +43,12 @@ router.post('/username', (req, res) => {
 
 });
 
-//Update Benutzerdaten Spediteur
+//Update Benutzerdaten Breuni
 router.post('/update_detailansicht_breuninger',(req,res) =>{
     const username = req.body.username;
     const telefon = req.body.telefon;
     const email = req.body.email;
-    User.update(username, telefon);
+    User.update({username: username}, telefon);
     res.render('detailansicht_breuninger');
 
 });
@@ -61,7 +68,7 @@ router.get ('/Benutzerverwaltung_Mitarbeiter', (req, res) =>{
 
 
 //New User MA
-    router.get('/neuerUser_MA', ensureAuthenticated, (req, res) => res.render('neuerUser_MA'));
+    router.get('/neuerUser_MA', (req, res) => res.render('neuerUser_MA'));
 
 // Register
     router.post('/neuerUSer_MA', (req, res) => {
@@ -153,25 +160,7 @@ router.get ('/Benutzerverwaltung_Mitarbeiter', (req, res) =>{
         }
     });
 
-// Login
-    /*
-    router.post('/login', (req, res, next) => {
-        if (User.admin == 1) {
-            passport.authenticate('local', {
-                successRedirect: '/buchungen/startseite_breuninger',
-                failureRedirect: '/users/login',
-                failureFlash: true
-            })(req, res, next);
-        } else {
-            passport.authenticate('local', {
-                successRedirect: '/buchungen/startseite_spediteur',
-                failureRedirect: '/users/login',
-                failureFlash: true
-            })(req, res, next);
-        }
-    });
-    */
-
+//Login
     router.post(
         '/login',
         passport.authenticate('local', {
@@ -183,6 +172,13 @@ router.get ('/Benutzerverwaltung_Mitarbeiter', (req, res) =>{
                 res.redirect('/buchungen/startseite_breuninger');
             }
         });
+
+// Logout
+router.get('/logout', (req, res) => {
+    req.logout();
+    req.flash('success_msg', 'You are logged out');
+    res.redirect('/users/login');
+});
 
 module.exports = router;
 
