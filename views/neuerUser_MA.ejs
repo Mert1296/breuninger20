@@ -20,8 +20,9 @@
         </div>
     </nav>
 </div>
+
             <%- include('./partials/messages'); %>
-            <form action="/users/neuerUser_MA" method="POST">
+            <form action="/users/neuerUser_MA" method="POST" name="neuerUser" onsubmit="return pruefen();">
                 <div class="container-wrap">
                     <div class="flexslider" align="center">
                         <div>
@@ -31,7 +32,7 @@
                                     <select id="pick" name="admin" style=" font-size: large; width: 300px">
                                         <option value="0" >Benutzer wählen..</option>
                                         <option value="spediteur">Spediteur</option>
-                                        <option value="breuninger">Breuninger</option>
+                                        <option value="breuninger">Breuninger Mitarbeiter</option>
                                     </select>
                                 </div>
 
@@ -56,13 +57,13 @@
                                 <label for="stadt" class="stadt" style="padding-top: 10px;">Stadt</label>
                                 <input type="text" class="form-control stadt" id="stadt" name="stadt" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Stadt">
 
-                                <label class="land" style="padding-top: 10px;">Land
+                                <label class="land" style="padding-top: 10px;">Sprache
                                     <p><select id="land" name="land" style="font-size: large; width: 300px">
                                             <option value="DE">DE</option>
                                             <option value="EN">EN</option> </select></p></label>
 
                                 <label class="torauswahl" style="padding-top: 3px;">Tore
-                                    <p><select id="torauswahl" multiple="multiple" name="torauswahl" style="font-size: large; width: 300px">
+                                    <p><select id="torauswahl" multiple="multiple" required name="torauswahl" style="font-size: large; width: 300px">
                                             <option value="tor1">Tor 1</option>
                                             <option value="tor2">Tor 2</option>
                                             <option value="tor3">Tor 3</option>
@@ -131,6 +132,7 @@
             </div><!-- END container-wrap -->
             <script>
                 $(document).ready(function () {
+
                     $('#example').DataTable({
                         searching: false,
                         bInfo: false,
@@ -144,14 +146,35 @@
                             $('.name, .zugehoerigkeit, .strasse,.PLZ, .stadt,.leer').hide();
                         }
                         else if($('#pick').val() == "breuninger"){
-                            $('.username, .vorname, .name, .zugehoerigkeit, .division, .strasse, .PLZ, .stadt, .land, .telefon ,.email, .password, .password2,.torauswahl, .submit').show();
-                            $('.leer').hide();
+                            $('.username, .vorname, .name, .zugehoerigkeit, .division, .strasse, .PLZ, .stadt, .telefon ,.email, .password, .password2,.torauswahl, .submit').show();
+                            $('.leer,.land').hide();
                         }
                         else {
                             $('.name, .zugehoerigkeit,.division, .strasse,.PLZ, .stadt, .username, .vorname, .land, .telefon, .email, .password, .password2,.torauswahl .submit').hide();
                             $('.leer').show();
                         }
                     });
-                    $('#torauswahl').multiselect();
+                    $('#torauswahl').multiselect(
+                    );
                 });
             </script>
+
+    <script type="text/javascript">
+
+            function pruefen(){
+                var f = document.neuerUser;
+                var fehler = "";
+
+                if (f.password.value !== f.password2.value){
+                    fehler += "Die eingegebenen Passwörter stimmen nicht überein";
+                }
+
+                if (fehler != ""){
+                    var fehlertext = "";
+                    fehlertext += fehler;
+                    alert(fehlertext + "");
+                    return false;
+                }
+                return true;
+            }
+    </script>
