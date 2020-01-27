@@ -1,5 +1,82 @@
 <!DOCTYPE HTML>
 <html>
+<head>
+    <style>
+
+
+        input[type=text]
+        {
+            margin-top:8px;
+            -moz-border-radius: 2px;
+            -webkit-border-radius: 2px;
+            -border-radius: 2px;
+            display:none;
+            width:180px;
+
+        }
+
+
+        input[type=password]
+        {
+            margin-top:8px;
+            -moz-border-radius: 2px;
+            -webkit-border-radius: 2px;
+            -border-radius: 2px;
+            display:none;
+            width:180px;
+
+        }
+
+        input[type=tel]
+        {
+            margin-top:8px;
+            -moz-border-radius: 2px;
+            -webkit-border-radius: 2px;
+            -border-radius: 2px;
+            display:none;
+            width:180px;
+
+        }
+
+        input[type=email]
+        {
+            margin-top:8px;
+            -moz-border-radius: 2px;
+            -webkit-border-radius: 2px;
+            -border-radius: 2px;
+            display:none;
+            width:180px;
+
+        }
+        label
+        {
+            float:left;
+            margin-top:8px;
+            -moz-border-radius: 2px;
+            -webkit-border-radius: 2px;
+            -border-radius: 2px;
+            font-weight: normal;
+        }
+
+        .edit
+        {
+            float:left;
+            background:url("../images/pen-solid.svg") no-repeat;
+            background-size: 18px 18px;
+            background-position: center;
+            width:32px;
+            height:32px;
+            display:block;
+            cursor: pointer;
+            margin-left:10px;
+        }
+
+        .clear
+        {
+            clear:both;
+        }
+    </style>
+</head>
 <body>
 <div id="page">
     <nav class="fh5co-nav" role="navigation">
@@ -13,7 +90,7 @@
                         <ul>
                             <li><a href="/buchungen/startseite_spediteur"><span class="fa fa-home"></span> Startseite</a></li>
                             <li class="active"><a href="/users/benutzerinfo_spediteur"><span class="fa fa-user"></span> Benutzerinformation</a></li>
-                            <li><a href=""><span class="fa fa-power-off"></span> Logout</a></li>
+                            <li><a href="/users/logout"><span class="fa fa-power-off"></span> Logout</a></li>
                         </ul>
                     </div>
                 </div>

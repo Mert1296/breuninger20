@@ -6,20 +6,21 @@ const Tor = require(('../DB/models/Tor'));
 const { ensureAuthenticated } = require('../DB/config/auth');
 
 //Startseite Breuninger
-router.get ('/startseite_breuninger', (req, res) => {
+router.get ('/startseite_breuninger', ensureAuthenticated, (req, res) => {
 
     Buchung.find(function (err, buchungen) {
         if (err)
             return res.send(err);
 
         res.render('startseite_breuninger',{
+            vorname: req.user.vorname,
             buchungen: buchungen || []
         });
     });
 });
 
 //startseite Spedi
-router.get ('/startseite_spediteur', (req, res) => {
+router.get ('/startseite_spediteur', ensureAuthenticated, (req, res) => {
 
     Buchung.find(function (err, buchungen) {
         if (err)
@@ -60,9 +61,10 @@ router.get ('/torverwaltung', (req, res) =>{
         });
     });
 });
-//Torsperrung
-router.post('/torverwaltung',(req,res) =>{
+//Update Benutzerdaten Breuni
+router.post('/update_detailansicht_breuninger',(req,res) =>{
     const username = req.body.username;
+    const telefon = req.body.telefon;
     const email = req.body.email;
     User.update({username: username}, telefon);
     res.render('detailansicht_breuninger');
