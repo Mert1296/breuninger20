@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 // Load Buchung model
 const Buchung = require('../DB/models/Buchung');
+const Tor = require(('../DB/models/Tor'));
 const { ensureAuthenticated } = require('../DB/config/auth');
 
 //Startseite Breuninger
@@ -31,7 +32,7 @@ router.get ('/startseite_spediteur', ensureAuthenticated, (req, res) => {
     });
 });
 
-//Buhchungsübersicht spedi
+//Buhchungsübersicht mitarbeiter
 router.get('/buchungsuebersicht', (req, res) => res.render('buchungsuebersicht'));
 //Buhchungsübersicht spedi
 router.get('/neueBuchung_spediteur', (req, res) => res.render('neueBuchung_spediteur'));
@@ -49,16 +50,43 @@ router.get ('/torauswahl', (req, res) => {
     });
 });
 
+//torverwaltung mitarbeiter
+router.get('/torverwaltung', (req, res) => res.render('torverwaltung'));
+//insert
+router.post('/torverwaltung', (req, res) => {
+    const {gate, disabled } = req.body;
+    let errors = [];
+    if (errors.length > 0) {
+        res.render('torverwaltung ', {
+            errors,
+            gate,
+            disabled
+        });
+    }  else {
+        const newTor = new Tor({
+            gate,
+            disabled
+        });
+        newTor.save()
+            .then(tor =>{
+                res.send('saved')
+            })
+            .catch(err=>console.log(err));
+        console.log(newTor)
+    }
+});
 
 //insert
 router.post('/neueBuchung_spediteur', (req, res) => {
-    const {sendungsstruktur, datepicker, sendungen, EUP, EWP, pakete, bemerkung, teile } = req.body;
+    const {sendungsstruktur, datepicker, from, to, sendungen, EUP, EWP, pakete, bemerkung, teile } = req.body;
     let errors = [];
     if (errors.length > 0) {
         res.render('neueBuchung_spediteur', {
             errors,
             sendungsstruktur,
             datepicker,
+            from,
+            to,
             sendungen,
             EUP,
             EWP,
@@ -67,22 +95,24 @@ router.post('/neueBuchung_spediteur', (req, res) => {
             teile
         });
     }  else {
-                const newBuchung = new Buchung({
-                    sendungsstruktur,
-                    datepicker,
-                    sendungen,
-                    EUP,
-                    EWP,
-                    pakete,
-                    bemerkung,
-                    teile
-                });
-                newBuchung.save()
-                    .then(buchung =>{
-                        res.redirect('/buchungen/torauswahl')
-                    })
-                    .catch(err=>console.log(err));
-                console.log(newBuchung)
+        const newBuchung = new Buchung({
+            sendungsstruktur,
+            datepicker,
+            from,
+            to,
+            sendungen,
+            EUP,
+            EWP,
+            pakete,
+            bemerkung,
+            teile
+        });
+        newBuchung.save()
+            .then(buchung =>{
+                res.send('saved')
+            })
+            .catch(err=>console.log(err));
+        console.log(newBuchung)
     }
 });
 
