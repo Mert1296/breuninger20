@@ -61,7 +61,15 @@
         .slider.round:before {
             border-radius: 50%;
         }
-        #buttonAnzeigen{
+        #buttonSperren{
+            background-color: transparent;
+            border: white;
+        }
+        ::selection{
+            background-color:white!important;
+            color:black;
+        }
+        #buttonEntsperren{
             background-color: transparent;
             border: white;
         }
@@ -112,7 +120,8 @@
                         <td><%=tor[i].gate%></td>
                         <td><p id="demo">in Betrieb</p></td>
                         <td>
-                            <button id="buttonAnzeigen" onclick="sperren()"><i class="fas fa-lock" data-toggle="tooltip" title="Freigeben/Sperren"></i></button>
+                            <button id="buttonSperren" onclick="sperren()"><i class="fas fa-lock" data-toggle="tooltip" title="Sperren"></i></button>
+                            <button id="buttonEntsperren" onclick="entsperren()"><i class="fas fa-unlock" data-toggle="tooltip" title="Freigeben"></i></button>
                         </td>
                         <td style="height: 40px"><input type="text" class="form-control" style="border-radius: 10px; height: 35px;" name="Bemerkung" value=""><br></td>
                     </tr>
@@ -180,6 +189,20 @@
         } else {
             txt = "in Betrieb";
             document.getElementById("demo").innerHTML = txt;
+        }
+
+    }
+
+    function entsperren() {
+        var txt1;
+
+        if (confirm("Sie sind gerade dabei ein Tor zu entsperren!")) {
+
+            txt1 = "in Betrieb";
+            document.getElementById("demo").innerHTML = txt1;
+        } else {
+            txt1 = "gesperrt";
+            document.getElementById("demo").innerHTML = txt1;
         }
 
     }
