@@ -103,7 +103,13 @@
                 <tr data-index="0">
                     <td><%=tor[i].gate%></td>
                     <td class="status"></td>
-                    <td class="sperren"></td>
+                    <input type="hidden" value="<%=tor[i].gate%>" name="gate">
+                    <td class="sperren">
+                        <label class="switch">
+                        <input type="checkbox" class="sperrung" value="<%=tor[i].disabled%>" name="disabled">
+                            <span class="slider round"></span>
+                        </label>
+                    </td>
                     <td class="bemerkung"></td>
                 </tr>
                 <%}%>
@@ -179,31 +185,14 @@
             ordering: false
         });
 
-        $('.sperren').each(function () {
-            $(this).append('<label class="switch">' +
-                '<input type="checkbox" class="sperrung" value="false">' +
-                '<span class="slider round"></span>' +
-                '</label>'
-            );
-            $('.sperrung').change(function () {
-                if($('.sperrung').is(':checked')){
-                    $('.sperrung').val('true');
-                    console.log($('.sperrung').val());
-                }
-                else {
-                    $('.sperrung').val('false');
-                    console.log($('.sperrung').val());
-                }
-            });
-        });
-        $('.slider').change(function () {
-            if ($(this).is(':checked')) {
 
-            }
-        });
+        $('input:checkbox[value="false"]').prop('checked', false);
+        $('input:checkbox[value="true"]').prop('checked', true);
+
+
         $('#tore').find('.status').text("in Betrieb");
         // open modal on slide change
-        $('input[type="checkbox"]').on('change', function (e) {
+        /*$('input[type="checkbox"]').on('change', function (e) {
             // get index from `tr`
             var index = $(this).parents('tr').data().index;
             if (e.target.checked) {
@@ -224,7 +213,7 @@
 
 
         // textarea example
-        $('.torsperren').click(function () {
+        /*$('.torsperren').click(function () {
             var index = $(this).attr('data-index');
             // find element by index and assign the given value
             $('#tore').find('tr[data-index="' + index + '"]').find('.bemerkung').text($('.torbemerkung').val());
@@ -232,10 +221,10 @@
             $('#exampleModal').modal('hide');
         });
 
-        $('.abbrechen').click(function () {
+        /*$('.abbrechen').click(function () {
             var index = $(this).attr('data-index');
             $('#tore').find('tr[data-index="' + index + '"]').find('input[type="checkbox"]').prop('checked', false);
-        });
+        });*/
 
 
     });
