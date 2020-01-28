@@ -6,7 +6,11 @@ const TorSchema = new mongoose.Schema({
         required: true
     },
     disabled: {
-        type: Boolean,
+        type: String,
+        required: false
+    },
+    bemerkung:{
+        type: String,
         required: false
     }
 });
