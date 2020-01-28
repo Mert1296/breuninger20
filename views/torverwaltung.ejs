@@ -62,8 +62,6 @@
             border-radius: 50%;
         }
     </style>
-
-
 </head>
 <body>
 <div id="page">
@@ -86,93 +84,64 @@
             </div>
         </div>
     </nav>
-    <div class="container-wrap">
-        <div class="flexslider">
-            <h2>Torverwaltung</h2>
-            <table id="tore" class="cell-border">
-                <thead>
-                <tr>
-                    <th>Tor</th>
-                    <th>Status</th>
-                    <th>Sperren/Entsperren</th>
-                    <th>Bemerkung</th>
-                </tr>
-                </thead>
-                <tbody>
-                <%for (var i = 0; i < tor.length; i++) { %>
-                <tr data-index="0">
-                    <td><%=tor[i].gate%></td>
-                    <td class="status"></td>
-                    <input type="hidden" value="<%=tor[i].gate%>" name="gate">
-                    <td class="sperren">
-                        <label class="switch">
-                        <input type="checkbox" class="sperrung" value="<%=tor[i].disabled%>" name="disabled">
-                            <span class="slider round"></span>
-                        </label>
-                    </td>
-                    <td class="bemerkung"></td>
-                </tr>
-                <%}%>
-                </tbody>
-            </table>
-            <label class="leer" style="padding-top: 50px"></label>
-        </div>
-    </div><!-- END container-wrap -->
-    <div class="container-wrap">
-        <footer id="fh5co-footer" role="contentinfo">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <h4>Kontaktinformation</h4>
-                    <div class="fh5co-footer">
-                        <p> E. Breuninger GmbH & Co. <br> Eschenbrünnlestraße 11, 71065 Sindelfingen
-                            <br>Tel-Nr. <a href="tel://1234567920">+ 49 1235 2355 98</a>&nbsp;
-                            <br><a href="mailto:info@yoursite.com">info@breuninger.com</a>
-                            <br><a href="http://gettemplates.co">www.breuninger.com</a>
-                        </p>
-                    </div>
 
-                </div>
-                <div class="row copyright">
-                    <div class="col-md-12 text-center">
-                        <p>
-                            <small class="block">&copy; 2020 Breuninger. All Rights Reserved.</small>
-                        </p>
-                    </div>
-                </div>
+        <div class="container-wrap">
+            <div class="flexslider">
+                <h2>Torverwaltung</h2>
+                <table id="tore" class="cell-border">
+                    <form name="torVerw" onsubmit="return sperren();">
+                    <thead>
+                    <tr>
+                        <th>Tor</th>
+                        <th>Status</th>
+                        <th>Sperren/Entsperren</th>
+                        <th>Bemerkung</th>
+                    </tr>
+                    </thead>
+                    <tbody style="height: 40px" >
+                    <%for (var i = 0; i < tor.length; i++) { %>
+                    <tr data-index="0">
+                        <td><%=tor[i].gate%></td>
+                        <td><p id="demo">in Betrieb</p></td>
+                        <td>
+                            <button onclick="sperren()"><i class="fas fa-lock" data-toggle="tooltip" title="Freigeben/Sperren"></i></button>
+                        </td>
+                        <td style="height: 40px"><input type="text" class="form-control" style="border-radius: 10px; height: 35px;" name="Bemerkung" value=""><br></td>
+                    </tr>
+                    <%}%>
+                    </tbody>
+                    </form>
+                </table>
+                <label class="leer" style="padding-top: 50px"></label>
             </div>
-        </footer>
-    </div><!-- END container-wrap -->
+        </div>
 
 </div>
+</div><!-- END container-wrap -->
+<div class="container-wrap">
+    <footer id="fh5co-footer" role="contentinfo">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h4>Kontaktinformation</h4>
+                <div class="fh5co-footer">
+                    <p> E. Breuninger GmbH & Co. <br> Eschenbrünnlestraße 11, 71065 Sindelfingen
+                        <br>Tel-Nr. <a href="tel://1234567920">+ 49 1235 2355 98</a>&nbsp;
+                        <br><a href="mailto:info@yoursite.com">info@breuninger.com</a>
+                        <br><a href="http://gettemplates.co">www.breuninger.com</a>
+                    </p>
+                </div>
 
-
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Torsperrung</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
             </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        Sie sind dabei ein Tor zu sperren. <br>Falls Sie sich sicher sind, verfassen Sie einen Grund.
-                    </div>
-                    <div class="form-group">
-                        <label for="message-text" class="col-form-label ">Bemerkung:</label>
-                        <textarea class="form-control torbemerkung" id="message-text"></textarea>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary abbrechen" data-index="0" data-dismiss="modal">Abbrechen</button>
-                <button type="button" class="btn btn-primary torsperren" data-index="0">Tor sperren</button>
+            <div class="row copyright">
+                <div class="col-md-12 text-center">
+                    <p>
+                        <small class="block">&copy; 2020 Breuninger. All Rights Reserved.</small>
+                    </p>
+                </div>
             </div>
         </div>
-    </div>
+    </footer>
+</div><!-- END container-wrap -->
 </div>
 </body>
 <script>
@@ -182,51 +151,29 @@
             searching: false,
             bInfo: false,
             paging: false,
-            ordering: false
+            ordering: false,
+            "columnDefs": [
+                { "width": "30px", "targets": [1],
+                    "width": "15px", "targets": [0],
+                    "width": "60px", "targets": 2}
+            ]
         });
-
-
-        $('input:checkbox[value="false"]').prop('checked', false);
-        $('input:checkbox[value="true"]').prop('checked', true);
-
-
-        $('#tore').find('.status').text("in Betrieb");
-        // open modal on slide change
-        /*$('input[type="checkbox"]').on('change', function (e) {
-            // get index from `tr`
-            var index = $(this).parents('tr').data().index;
-            if (e.target.checked) {
-                var modalinstance = $('#exampleModal');
-                // assign index
-                modalinstance.find('.torsperren').attr('data-index', index);
-                modalinstance.find('.abbrechen').attr('data-index', index);
-                // open modal
-                modalinstance.modal('show');
-                // reset value
-                modalinstance.find('.torbemerkung').val('');
-            } else {
-                // clear data by selecting the row with the given index
-                $('#tore').find('tr[data-index="' + index + '"]').find('.bemerkung').text("");
-                $('#tore').find('tr[data-index="' + index + '"]').find('.status').text("in Betrieb");
-            }
-        });
-
-
-        // textarea example
-        /*$('.torsperren').click(function () {
-            var index = $(this).attr('data-index');
-            // find element by index and assign the given value
-            $('#tore').find('tr[data-index="' + index + '"]').find('.bemerkung').text($('.torbemerkung').val());
-            $('#tore').find('tr[data-index="' + index + '"]').find('.status').text("gesperrt");
-            $('#exampleModal').modal('hide');
-        });
-
-        /*$('.abbrechen').click(function () {
-            var index = $(this).attr('data-index');
-            $('#tore').find('tr[data-index="' + index + '"]').find('input[type="checkbox"]').prop('checked', false);
-        });*/
-
-
     });
+</script>
+<script type="text/javascript">
+
+    function sperren() {
+        var txt;
+
+        if (confirm("Sie sind gerade dabei ein Tor zu sperren! Wenn Sie sich sicher sind, verfassen Sie anschließend einen Grund.")) {
+
+            txt = "gesperrt";
+            document.getElementById("demo").innerHTML = txt;
+        } else {
+            txt = "in Betrieb";
+            document.getElementById("demo").innerHTML = txt;
+        }
+
+    }
 </script>
 </html>
