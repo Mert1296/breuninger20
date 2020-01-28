@@ -39,11 +39,11 @@ const BuchungSchema = new mongoose.Schema(
             type: String,
             required: false
         },
-        from: {
+        timepicker1: {
             type: String,
             required: false
         },
-        to: {
+        timepicker2: {
             type: String,
             required: false
         },
