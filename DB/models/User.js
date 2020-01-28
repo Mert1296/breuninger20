@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 const UserSchema = new mongoose.Schema({
     username: {
@@ -50,13 +51,13 @@ const UserSchema = new mongoose.Schema({
         required: false
     },
     gate: {
-        type: Array,
+        type: [String],
         required: false
     },
-    date: {
-        type: Date,
-        default: Date.now
-    }
+   /* createdEvents: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Buchung'
+    }]*/
 });
 
 const User = mongoose.model('User', UserSchema);
