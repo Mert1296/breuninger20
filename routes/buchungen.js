@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 // Load Buchung model
 const Buchung = require('../DB/models/Buchung');
+const User = require('../DB/models/User');
 const Tor = require(('../DB/models/Tor'));
 const { ensureAuthenticated } = require('../DB/config/auth');
 
@@ -72,44 +73,46 @@ router.post('/update_detailansicht_breuninger',(req,res) =>{
 });
 
 //insert
-router.post('/neueBuchung_spediteur', (req, res) => {
-    const {sendungsstruktur, datepicker, from, to, sendungen, EUP, EWP, pakete, bemerkung, teile } = req.body;
-    let errors = [];
-    if (errors.length > 0) {
-        res.render('neueBuchung_spediteur', {
-            errors,
-            sendungsstruktur,
-            datepicker,
-            from,
-            to,
-            sendungen,
-            EUP,
-            EWP,
-            pakete,
-            bemerkung,
-            teile
-        });
-    }  else {
-        const newBuchung = new Buchung({
-            sendungsstruktur,
-            datepicker,
-            from,
-            to,
-            sendungen,
-            EUP,
-            EWP,
-            pakete,
-            bemerkung,
-            teile
-        });
-        newBuchung.save()
-            .then(buchung =>{
-                res.send('saved')
-            })
-            .catch(err=>console.log(err));
-        console.log(newBuchung)
-    }
-});
+    router.post('/neueBuchung_spediteur', (req, res) => {
+        const {sendungsstruktur, datepicker, timepicker1, timepicker2, sendungen, EUP, EWP, pakete, bemerkung, teile } = req.body;
+        let errors = [];
+        var user = req.user;
+        if (errors.length > 0) {
+            res.render('neueBuchung_spediteur', {
+                errors,
+                sendungsstruktur,
+                datepicker,
+                timepicker1,
+                timepicker2,
+                sendungen,
+                EUP,
+                EWP,
+                pakete,
+                bemerkung,
+                teile,
+                gate: user.map(t => t.user.gate)
+            });
+        }  else {
+            const newBuchung = new Buchung({
+                sendungsstruktur,
+                datepicker,
+                timepicker1,
+                timepicker2,
+                sendungen,
+                EUP,
+                EWP,
+                pakete,
+                bemerkung,
+                teile
+            });
+            newBuchung.save()
+                .then(buchung =>{
+                    res.send('saved')
+                })
+                .catch(err=>console.log(err));
+            console.log(newBuchung)
+        }
+    });
 
 //get Data
 /*
