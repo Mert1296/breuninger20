@@ -61,6 +61,14 @@
         .slider.round:before {
             border-radius: 50%;
         }
+        #buttonAnzeigen{
+            background-color: transparent;
+            border: white;
+        }
+        ::selection{
+            background-color:white!important;
+            color:black;
+        }
     </style>
 </head>
 <body>
@@ -104,7 +112,7 @@
                         <td><%=tor[i].gate%></td>
                         <td><p id="demo">in Betrieb</p></td>
                         <td>
-                            <button onclick="sperren()"><i class="fas fa-lock" data-toggle="tooltip" title="Freigeben/Sperren"></i></button>
+                            <button id="buttonAnzeigen" onclick="sperren()"><i class="fas fa-lock" data-toggle="tooltip" title="Freigeben/Sperren"></i></button>
                         </td>
                         <td style="height: 40px"><input type="text" class="form-control" style="border-radius: 10px; height: 35px;" name="Bemerkung" value=""><br></td>
                     </tr>
