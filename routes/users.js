@@ -23,6 +23,7 @@ router.get('/benutzerinfo_spediteur', function(req, res, next) {
     res.render('benutzerinfo_spediteur', { user: user });
 });
 
+
 router.post('/update_benutzerdaten_spedi', function (req,res) {
     var myquery = { username: req.body.username };
     var newvalues = { $set: {telefon: req.body.telefon, email: req.body.email } };

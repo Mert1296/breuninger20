@@ -3,9 +3,9 @@ const mongoose = require('mongoose');
 
 const BuchungSchema = new mongoose.Schema(
     {
-        user: {
+        username: {
             type: String,
-            required: false
+            required: true
         },
         tor: {
             type: Number,

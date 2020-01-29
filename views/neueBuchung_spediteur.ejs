@@ -10,6 +10,7 @@
             border-color: #861a22;
             background-color: white;
             border-bottom-color: #861a22;
+
         }
     </style>
 </head>
@@ -42,6 +43,7 @@
                 <h2>Neue Buchung</h2>
                 <div class=" form-group card" id="hi" style="padding-top: 10px; padding-left: 30px; border-style: none;" >
                     <div class="ui-widget">
+                        <input type="hidden" name="username" value="<%=user.username%>">
                         <select id="pick" name="sendungsstruktur" style="font-size: large; width: 300px">
                             <option value="0">Sendungsstruktur wählen..</option>
                             <option value="1">SPN - Liegeversand</option>
@@ -76,7 +78,7 @@
                     <label for="datepicker" class="datepicker" style="padding-top: 15px;"> Datum</label>
                     <div class="input-container" style="position: relative">
                         <i class="far fa-calendar-alt" id="datepicker1" style="padding:10px; position: absolute; left:36%; padding: 9px 8px;" aria-hidden="true"></i>
-                        <input type="text" class="form-control datepicker" id="datepicker" name="datepicker" style="border-radius: 10px; height: 35px; width: 300px; padding-left: 40px;" placeholder="&nbsp &nbsp Wählen Sie ein Datum">
+                        <input type="date" class="form-control datepicker" id="datepicker" name="datepicker" style="border-radius: 10px; height: 35px; width: 300px; padding-left: 40px;" placeholder="&nbsp &nbsp Wählen Sie ein Datum">
                     </div>
 
                     <label for="timepicker1" class="timepicker1" style="padding-top: 10px;">Uhrzeit von </label>
@@ -88,15 +90,12 @@
                     <label for="timepicker2" class="timepicker2" style="padding-top: 10px;">Uhrzeit von </label>
                     <div class="input-container" style="position: relative">
                         <i class="far fa-clock" style="padding:10px; position: absolute; left:36%; padding: 9px 8px;" aria-hidden="true"></i>
-                        <input type="text" class="form-control timepicker1" id="timepicker2" name="timepicker1" style="border-radius: 10px; height: 35px; width: 300px; padding-left: 40px;" placeholder="&nbsp &nbsp Wählen Sie eine Ankunftszeit">
+                        <input type="text" class="form-control timepicker1" id="timepicker2" name="timepicker2" style="border-radius: 10px; height: 35px; width: 300px; padding-left: 40px;" placeholder="&nbsp &nbsp Wählen Sie eine Ankunftszeit">
                     </div>
 
                     <label class="torauswahl" style="padding-top: 10px;">Torauswahl
                         <p><select id="torauswahl" name="torauswahl" style="padding:10px;font-size: large; width: 300px">
-                                <% for (var i = 0; i < gate.length; i++){
-                                    var gates = gate[i];%>
-                                    <option value="<%=gates[i]%>"><%=gates[i]%></option>
-                                <%}%>
+
                             </select></p></label>
 
                     <!-- <button type="submit" id="submit" name="submit" style="width: 90px;" class="next">Buchen</button>-->
@@ -195,6 +194,9 @@
             }
         });
 
+
+
+
         $("#datepicker").datepicker();
 
         $('.input-container, .datepicker, .sendungen,.EUP, .EWP,.pakete, .bemerkung, .teile, .submit, .zeit,.timepicker1,.timepicker2,.torauswahl, .next, .weiterT').removeClass('active').hide();
@@ -282,8 +284,11 @@
                 initStatus: 'Wähle ein Datum', isRTL: false
             };
             $.datepicker.setDefaults($.datepicker.regional['de']);
+
         });
+
     });
+
 </script>
 </body>
 </html>
