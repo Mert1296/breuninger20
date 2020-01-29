@@ -36,13 +36,13 @@
                                     </select>
                                 </div>
 
-                                <label for="username" class="username" style="padding-top: 30px;">Username</label>
+                                <label for="username" class="username" style="padding-top: 30px;">Username *</label>
                                 <input type="text" minlength="3" class="form-control username" required id="username" name="usernames" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Username">
 
-                                <label for="vorname" class="vorname" style="padding-top: 10px;">Name</label>
+                                <label for="vorname" class="vorname" style="padding-top: 10px;">Name *</label>
                                 <input type="text" required class="form-control vorname" id="vorname" name="vorname" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Name">
 
-                                <label for="name" class="name"style="padding-top: 10px;">Nachname</label>
+                                <label for="name" class="name"style="padding-top: 10px;">Nachname *</label>
                                 <input type="text" class="form-control name" id="name" name="name" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Nachname">
 
                                 <label for="division" class="division" style="padding-top: 10px;">Division</label>
@@ -62,7 +62,7 @@
                                             <option value="DE">DE</option>
                                             <option value="EN">EN</option> </select></p></label>
 
-                                <label class="torauswahl" style="padding-top: 3px;">Tore
+                                <label class="torauswahl" style="padding-top: 3px;">Tore *
                                     <p><select id="torauswahl" multiple="multiple" required name="torauswahl" style="font-size: large; width: 300px">
                                             <option value="tor1">Tor 1</option>
                                             <option value="tor2">Tor 2</option>
@@ -73,16 +73,16 @@
                                             <option value="tor10">Tor 10</option>
                                         </select></p></label>
 
-                                <label for="telefon" class="telefon" style="padding-top: 10px;">Telefon<br><small>Format: +49 178 123456</small></label>
+                                <label for="telefon" class="telefon" style="padding-top: 10px;">Telefon *<br><small>Format: +49 178 123456</small></label>
                                 <input type="text" class="form-control telefon" id="telefon" pattern="[\+]\d{2}\d{5,20}" name="telefon" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Telefon">
 
-                                <label for="email" class="email" style="padding-top: 10px;">Email</label>
+                                <label for="email" class="email" style="padding-top: 10px;">Email *</label>
                                 <input type="email" class="form-control email" id="email" name="email" required pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)+$" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Email">
 
-                                <label for="password" class="password" style="padding-top: 10px;">Passwort</label>
+                                <label for="password" class="password" style="padding-top: 10px;">Passwort *</label>
                                 <input type="password" required minlength="8" class="form-control password" id="password" name="password" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Passwort">
 
-                                <label for="password2" class="password2" style="padding-top: 10px;">Passwort wiederholen</label>
+                                <label for="password2" class="password2" style="padding-top: 10px;">Passwort wiederholen *</label>
                                 <input type="password" required minlength="8" class="form-control password2" id="password2" name="password2" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Passwort wiederholen">
 
                                 <!-- <label for="submit" class="submit" style="padding-top: 10px;"></label>
@@ -97,11 +97,12 @@
                                              </span>
 				                         </span>
                                     </button>
-                                </label>
                             </div>
+                                <label class="required" style="font-size: x-small">*Pflichtfelder</label>
                             </div>
                             <label class="leer" style="padding-top: 350px"></label>
                         </div>
+
                     </div>
                 </div><!-- END container-wrap -->
             </form>
