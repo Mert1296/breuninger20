@@ -120,7 +120,7 @@
                             <span class="slider round"></span>
                         </label>
                     </td>
-                    <td class="bemerkung"><input type="text" style="height: 30px; width: 100%; text-align: left;" value="<%=tor[i].bemerkung%>" id="tor<%=tor[i].gate%>"name="bemerkung"></td>
+                    <td class="bemerkung" style="height: 30px; width: 50%; text-align: left;"><%=tor[i].bemerkung%></td>
                     <form action="torverwaltung" method="post">
                         <input type="hidden" value="<%=tor[i].gate%>" name="gate">
                     <td><button id="show" type="submit"  data-toggle="tooltip" title="Tor anzeigen"><i class="fas fa-search"></i></button></td>
@@ -132,34 +132,33 @@
             </table>
             <label class="leer" style="padding-top: 50px"></label>
         </div>
-        <div class="container-wrap">
-            <footer id="fh5co-footer" role="contentinfo">
-                <div class="row">
-                    <div class="col-md-12 text-center">
-                        <h4>Kontaktinformation</h4>
-                        <div class="fh5co-footer">
-                            <p><br> E. Breuninger GmbH & Co. <br> <i class="fas fa-home"></i> &nbsp Eschenbrünnlestraße 11, 71065 Sindelfingen
-                                <br>Mo-Fr 07:00 bis 15:00 Uhr
-                                <br><i class="fas fa-phone-alt"></i><a href="tel://1234567920"> &nbsp +49 (0) 7031 / 616 2437</a>&nbsp;
-                                <br><i class="fas fa-print"></i><a href="tel://1234567920"> &nbsp +49 (0) 7031 / 616 2036</a>&nbsp;
-                                <br><i class="fas fa-envelope"></i><a href="mailto:info@breuninger.com"> &nbsp wareneingang.logistik@breuninger.de</a>
-                                <br><a href="https://www.breuninger.com/de/"> www.breuninger.com</a>
+    </div><!-- END container-wrap -->
+    <div class="container-wrap">
+        <footer id="fh5co-footer" role="contentinfo">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h4>Kontaktinformation</h4>
+                    <div class="fh5co-footer">
+                        <p><br> E. Breuninger GmbH & Co. <br> <i class="fas fa-home"></i> &nbsp Eschenbrünnlestraße 11, 71065 Sindelfingen
+                            <br>Mo-Fr 07:00 bis 15:00 Uhr
+                            <br><i class="fas fa-phone-alt"></i><a href="tel://1234567920"> &nbsp +49 (0) 7031 / 616 2437</a>&nbsp;
+                            <br><i class="fas fa-print"></i><a href="tel://1234567920"> &nbsp +49 (0) 7031 / 616 2036</a>&nbsp;
+                            <br><i class="fas fa-envelope"></i><a href="mailto:info@breuninger.com"> &nbsp wareneingang.logistik@breuninger.de</a>
+                            <br><a href="https://www.breuninger.com/de/"> www.breuninger.com</a>
+                        </p>
+                    </div>
+                    <div class="row copyright">
+                        <div class="col-md-12 text-center">
+                            <p>
+                                <small class="block">&copy; 2020 Breuninger. All Rights Reserved.</small>
                             </p>
-                        </div>
-                        <div class="row copyright">
-                            <div class="col-md-12 text-center">
-                                <p>
-                                    <small class="block">&copy; 2020 Breuninger. All Rights Reserved.</small>
-                                </p>
-                            </div>
                         </div>
                     </div>
                 </div>
-            </footer>
-        </div><!-- END container-wrap -->
-
+            </div>
+        </footer>
+    </div><!-- END container-wrap -->
 </div>
-
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
