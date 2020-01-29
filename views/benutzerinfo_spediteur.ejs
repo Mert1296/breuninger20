@@ -101,7 +101,7 @@
     <div class="container-wrap">
         <div class="flexslider">
             <h1> Benutzerinformation</h1>
-
+            <form action="update_benutzerdaten_spedi" method="post">
             <table id="tabelle" class="cell-border"  class="table table-striped" cellspacing="0" >
                 <thead>
                 <tr>
@@ -133,13 +133,13 @@
                     <td>Telefon</td>
                     <td><label class="text_label2"><%=user.telefon%></label>
                         <div class="edit"></div>
-                        <input type="tel" value="<%=user.telefon%>" />
+                        <input type="text" name="telefon" value="<%=user.telefon%>" />
                 </tr>
                 <tr>
                     <td>E-Mail</td>
                     <td><label class="text_label2"><%=user.email%></label>
                         <div class="edit"></div>
-                        <input type="email" value="<%=user.email%>" />
+                        <input type="email" name="email" value="<%=user.email%>" />
                 </tr>
                 <!-- Passwort-Feld -->
                 <tr>
@@ -154,7 +154,9 @@
                 </tbody>
             </table>
             <br>
+                <input type="hidden" name="username" value="<%=user.username%>">
             <button class="btn btn-primary" type="submit">Benutzerdaten aktualisieren</button>
+            </form>
         </div>
     </div><!-- END container-wrap -->
     <div class="container-wrap">

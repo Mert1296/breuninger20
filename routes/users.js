@@ -17,12 +17,27 @@ router.get('/register', (req, res) => res.render('register'));
 
 //Benutzerinfo Spediteur
 router.get('/benutzerinfo_spediteur', function(req, res, next) {
-
     //here it is
     var user = req.user;
-
     //you probably also want to pass this to your view
     res.render('benutzerinfo_spediteur', { user: user });
+});
+
+router.post('/update_benutzerdaten_spedi', function (req,res) {
+    var myquery = { username: req.body.username };
+    var newvalues = { $set: {telefon: req.body.telefon, email: req.body.email } };
+    MongoClient.connect(db, function(err, db) {
+        if (err) throw err;
+        var dbo = db.db("test");
+        dbo.collection("users").updateOne(myquery, newvalues, function(err, res) {
+            if (err) throw err;
+            console.log("1 document updated");
+            db.close();
+
+        });
+        res.redirect('/users/benutzerinfo_spediteur');
+    });
+
 });
 
 // Detailansicht Mitarbeiter
