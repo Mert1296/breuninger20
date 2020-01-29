@@ -59,7 +59,7 @@
                     <th style="text-align: center">Datum</th>
                     <th style="text-align: center">Von</th>
                     <th style="text-align: center">Bis</th>
-                    <th> </th>
+                    <th style="text-align: center">Anzeigen</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -72,7 +72,7 @@
                     <td><%=buchungen[i].datepicker.getDate()+"."+monat+"."+buchungen[i].datepicker.getFullYear()%></td>
                     <td><%= buchungen[i].timepicker1%></td>
                     <td><%=buchungen[i].timepicker2%></td>
-                    <td><form action=""><button id="buttonAnzeigen" type="submit" name="buchung" href=""data-toggle="tooltip" title="Anzeigen"><i class="fas fa-search"></i></button></form></td>
+                    <td><form action=""><button id="buttonAnzeigen" type="submit" name="buchung" href=""data-toggle="tooltip" title="Buchung anzeigen"><i class="fas fa-search"></i></button></form></td>
                 </tr>
                 <%
                 }%>
@@ -125,6 +125,15 @@
             scrollY: "500px",
             ScrollCollapse: true,
             aaSortingFixed: [[2,'asc'], [3,'asc']],
+
+            "columnDefs": [
+                { "width": "5px", "targets": 0,
+                    "width": "10px", "targets": 1,
+                    "width": "150px", "targets": 2,
+                    "width": "10px", "targets": 3,
+                    "width": "150px", "targets": 4,
+                    "width": "50px", "targets": 5}
+            ]
         });
 
         $('#example tbody').on( 'click', 'tr', function () {
@@ -140,7 +149,7 @@
         $('#button').click( function () {
             table.row('.selected').remove().draw( false );
         } );
-
+        $('[data-toggle="tooltip"]').tooltip();
     } );
 </script>
 </body>
