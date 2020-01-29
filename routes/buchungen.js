@@ -62,6 +62,9 @@ router.get ('/torverwaltung', (req, res) =>{
     });
 });
 
+// Login Page
+router.get('/torsperren', (req, res) => res.render('torsperren'));
+
 //Update Torverwaltung
 /*router.post('/update/:id', (req, res) => {
     let tor = {};
@@ -83,7 +86,7 @@ router.get ('/torverwaltung', (req, res) =>{
 });
 */
 
-//new Gate asd
+//new Gate
 router.post('/torverwaltung', (req, res) => {
     const {gate, disabled, bemerkung } = req.body;
     let errors = [];
@@ -166,22 +169,5 @@ router.get ('/neueBuchung_spediteur', (req, res) => {
         });
     });
 });
-
-//get Data
-/*
-router.get('/Buchung', (req, res) => {
-    Buchung.getBuchung((err, buchung) => {
-        if(err){
-            throw err;
-        }
-        res.json(buchung);
-    });
-});
-*/
-
-//buchung.js einbinden
-//Buchung = require('../DB/models/buchung_mitarbeiter');
-
-
 
 module.exports = router;

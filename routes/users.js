@@ -184,7 +184,7 @@ router.get ('/Benutzerverwaltung_Mitarbeiter', (req, res) =>{
                                         'success_msg',
                                         'You are now registered and can log in'
                                     );
-                                    res.redirect('/users/login');
+                                    res.redirect('/users/benutzerverwaltung_mitarbeiter');
                                 })
                                 .catch(err => console.log(err));
                         });
