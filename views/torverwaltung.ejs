@@ -61,9 +61,19 @@
         .slider.round:before {
             border-radius: 50%;
         }
+        #show{
+            background-color: transparent;
+            border: white;
+        }
+        ::selection{
+            background-color:white!important;
+            color:black;
+        }
+        #show:hover{
+            color:#861a22;
+            background-color:transparent ;
+        }
     </style>
-
-
 </head>
 <body>
 <div id="page">
@@ -76,9 +86,9 @@
                     </div>
                     <div class="col-lg-9 text-right menu-2" style="padding-top: 20px; padding-left: 120px;">
                         <ul>
-                            <li class="active"><a href="/buchungen/startseite_breuninger"><span class="fa fa-home"></span> Startseite</a></li>
+                            <li><a href="/buchungen/startseite_breuninger"><span class="fa fa-home"></span> Startseite</a></li>
                             <li><a href="/users/Benutzerverwaltung_Mitarbeiter"><span class="fa fa-user"></span> Benutzerverwaltung</a></li>
-                            <li><a href="/buchungen/torverwaltung"><span class="fas fa-archway"></span> Torverwaltung</a></li>
+                            <li class="active"><a href="/buchungen/torverwaltung"><span class="fas fa-archway"></span> Torverwaltung</a></li>
                             <li><a href="/users/logout"><span class="fa fa-power-off"></span> Logout</a></li>
                         </ul>
                     </div>
@@ -89,13 +99,13 @@
     <div class="container-wrap">
         <div class="flexslider">
             <h2>Torverwaltung</h2>
-            <table id="tore" class="cell-border">
-                <thead>
+            <table id="tore" class="cell-border"style="text-align: center">
+                <thead style="text-align: center">
                 <tr>
-                    <th>Tor</th>
-                    <th><b style="color:limegreen">Freigeben</b>/<b style="color:red">Sperren</b></th>
-                    <th>Bemerkungen</th>
-                    <th>Speichern</th>
+                    <th style="text-align: center">Tor</th>
+                    <th style="text-align: center">Status</th>
+                    <th style="text-align: center">Bemerkung</th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -109,8 +119,8 @@
                             <span class="slider round"></span>
                         </label>
                     </td>
-                    <td class="bemerkung"><input type="text" value="<%=tor[i].bemerkung%>" id="tor<%=tor[i].gate%>"name="bemerkung"></td>
-                    <td><button id="submit" type="submit" name="save" data-toggle="tooltip" title="Speichern"><i class="fas fa-save"></i></button></td>
+                    <td class="bemerkung"><input type="text" style="height: 30px; width: 100%; text-align: left;" value="<%=tor[i].bemerkung%>" id="tor<%=tor[i].gate%>"name="bemerkung"></td>
+                    <td><button id="show" type="" name="show" data-toggle="tooltip" title="Tor anzeigen"><i class="fas fa-search"></i></button></td>
                 </tr>
                 <%}%>
                 </tbody>
@@ -182,9 +192,17 @@
             searching: false,
             bInfo: false,
             paging: false,
-            ordering: false
+            ordering: false,
+
+            "columnDefs": [
+                { "width": "5px", "targets": 0,
+                    "width": "10px", "targets": 1,
+                    "width": "150px", "targets": 2,
+                    "width": "40px", "targets": 3}
+            ]
         });
 
+        $('[data-toggle="tooltip"]').tooltip();
 
         $('input:checkbox[value="false"]').prop('checked', false);
         $('input:checkbox[value="true"]').prop('checked', true);

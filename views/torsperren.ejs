@@ -1,1 +1,173 @@
-<h1> Funktioniert </h1>
+<!DOCTYPE HTML>
+<html>
+<head>
+    <style>
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: yellowgreen;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        input:checked + .slider {
+            background-color: orangered;
+        }
+
+        input:focus + .slider {
+            box-shadow: 0 0 1px #2196F3;
+        }
+
+        input:checked + .slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+        }
+
+        /* Rounded sliders */
+        .slider.round {
+            border-radius: 34px;
+        }
+
+        .slider.round:before {
+            border-radius: 50%;
+        }
+
+    </style>
+</head>
+<body>
+<div id="page">
+    <nav class="fh5co-nav" role="navigation">
+        <div class="container-wrap" style="height: 120px;">
+            <div class="top-menu">
+                <div class="row">
+                    <div class="col-xs-2">
+                        <div ><a href="/buchungen/startseite_breuninger" ><img src="../images/logo-breuninger.jpeg" style="padding-bottom:10px; width: 200px; height:70px;"></a></div>
+                    </div>
+                    <div class="col-lg-9 text-right menu-2" style="padding-top: 20px; padding-left: 120px;">
+                        <ul>
+                            <li><a href="/buchungen/startseite_breuninger"><span class="fa fa-home"></span> Startseite</a></li>
+                            <li><a href="/users/benutzerverwaltung_mitarbeiter"><span class="fa fa-user"></span> Benutzerverwaltung</a></li>
+                            <li class="active"><a href="/buchungen/torverwaltung"><span class="fas fa-archway"></span> Torverwaltung</a></li>
+                            <li><a href="/users/logout"><span class="fa fa-power-off"></span> Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container-wrap">
+        <div class="flexslider">
+            <h1>Tor sperren</h1>
+            <form action="" method="post">
+                <table id="tabelle" class="cell-border"  class="table table-striped" cellspacing="0" >
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Tor ID</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><b style="color:yellowgreen">Freigeben</b>/<b style="color:red">Sperren</b>
+                        <td class="sperren">
+                            <label class="switch">
+                                <input type="checkbox" class="sperrung" value="" name="disabled">
+                                <span class="slider round"></span>
+                            </label>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td class="bemerkung">Bemerkung</td>
+                        <td><input type="text" style="height: 30px; width: 100%; text-align: left;" value="" id=""name="bemerkung"></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <br>
+                <button class="btn btn-primary" type="submit">Speichern</button>
+            </form>
+        </div>
+    </div><!-- END container-wrap -->
+    <div class="container-wrap">
+        <footer id="fh5co-footer" role="contentinfo">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h4>Kontaktinformation</h4>
+                    <div class="fh5co-footer">
+                        <p><br> E. Breuninger GmbH & Co. <br> <i class="fas fa-home"></i> &nbsp Eschenbrünnlestraße 11, 71065 Sindelfingen
+                            <br>Mo-Fr 07:00 bis 15:00 Uhr
+                            <br><i class="fas fa-phone-alt"></i><a href="tel://1234567920"> &nbsp +49 (0) 7031 / 616 2437</a>&nbsp;
+                            <br><i class="fas fa-print"></i><a href="tel://1234567920"> &nbsp +49 (0) 7031 / 616 2036</a>&nbsp;
+                            <br><i class="fas fa-envelope"></i><a href="mailto:info@breuninger.com"> &nbsp wareneingang.logistik@breuninger.de</a>
+                            <br><a href="https://www.breuninger.com/de/"> www.breuninger.com</a>
+                        </p>
+                    </div>
+
+                </div>
+                <div class="row copyright">
+                    <div class="col-md-12 text-center">
+                        <p>
+                            <small class="block">&copy; 2020 Breuninger. All Rights Reserved.</small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div><!-- END container-wrap -->
+</div>
+</div>
+<script>
+
+    // DataTable
+    $(document).ready(function () {
+        $('#tabelle').DataTable({
+            searching: false,
+            bInfo: false,
+            paging: false,
+            ordering: false,
+            "columnDefs": [
+                { "width": "100px", "targets": 0,
+                    "width": "600px", "targets": 1,}
+
+            ]
+        });
+    });
+
+
+</script>
+</body>
+</html>
