@@ -85,6 +85,8 @@
                                 <label for="password2" class="password2" style="padding-top: 10px;">Passwort wiederholen *</label>
                                 <input type="password" required minlength="8" class="form-control password2" id="password2" name="password2" style="border-radius: 10px; height: 35px; width: 300px;" placeholder="Passwort wiederholen">
 
+                                <label class="required" id="required" style="font-size: x-small; padding-top: 20px">*Pflichtfelder</label>
+
                                 <!-- <label for="submit" class="submit" style="padding-top: 10px;"></label>
                                 <input type="submit" class="btn btn-primary" id="submit" style="; height: 40px; width: 150px; font-weight: bold; margin-top: 10px;" value="Speichern"><br>
                                 <label> -->
@@ -97,8 +99,8 @@
                                              </span>
 				                         </span>
                                     </button>
+
                             </div>
-                                <label class="required" style="font-size: x-small">*Pflichtfelder</label>
                             </div>
                             <label class="leer" style="padding-top: 350px"></label>
                         </div>
@@ -140,18 +142,18 @@
                         paging: false,
                     });
 
-                    $('.name, .zugehoerigkeit,.division, .strasse,.PLZ, .stadt, .username, .vorname, .land, .telefon, .email, .password, .password2, .submit,.torauswahl').hide();
+                    $('.name, .zugehoerigkeit,.division, .strasse,.PLZ, .stadt, .username, .vorname, .land, .telefon, .email, .password, .password2, .submit,.torauswahl, .required').hide();
                     $('#pick').change(function () {
                         if($('#pick').val() == "spediteur"){
-                            $('.username, .vorname, .land, .telefon, .email, .password, .password2,.torauswahl, .submit,.division').show();
+                            $('.username, .vorname, .land, .telefon, .email, .password, .password2,.torauswahl, .submit,.division, .required').show();
                             $('.name, .zugehoerigkeit, .strasse,.PLZ, .stadt,.leer').hide();
                         }
                         else if($('#pick').val() == "breuninger"){
-                            $('.username, .vorname, .name, .zugehoerigkeit, .division, .strasse, .PLZ, .stadt, .telefon ,.email, .password, .password2,.torauswahl, .submit').show();
+                            $('.username, .vorname, .name, .zugehoerigkeit, .division, .strasse, .PLZ, .stadt, .telefon ,.email, .password, .password2,.torauswahl, .submit, .required').show();
                             $('.leer,.land').hide();
                         }
                         else {
-                            $('.name, .zugehoerigkeit,.division, .strasse,.PLZ, .stadt, .username, .vorname, .land, .telefon, .email, .password, .password2,.torauswahl .submit').hide();
+                            $('.name, .zugehoerigkeit,.division, .strasse,.PLZ, .stadt, .username, .vorname, .land, .telefon, .email, .password, .password2,.torauswahl .submit, .required').hide();
                             $('.leer').show();
                         }
                     });
