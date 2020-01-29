@@ -7,6 +7,8 @@ const Tor = require('../DB/models/Tor');
 const { ensureAuthenticated } = require('../DB/config/auth');
 const db = require('../DB/config/keys').MongoURI;
 var MongoClient = require('mongodb').MongoClient;
+var ObjectID = require('mongodb').ObjectID;
+
 
 //Startseite Breuninger
 router.get ('/startseite_breuninger', ensureAuthenticated, (req, res) => {
@@ -16,7 +18,7 @@ router.get ('/startseite_breuninger', ensureAuthenticated, (req, res) => {
             return res.send(err);
 
         res.render('startseite_breuninger',{
-            vorname: req.user.vorname,
+            user: req.user,
             buchungen: buchungen || []
         });
     });
@@ -44,7 +46,14 @@ router.get('/neueBuchung_spediteur', (req, res) => res.render('neueBuchung_spedi
 router.get('/buchungsinfo_mitarbeiter', (req, res) => res.render('buchungsinfo_mitarbeiter'));
 
 //Buchuhungsinfo spediteur
-router.get('/buchungsinfo_spediteur', (req, res) => res.render('buchungsinfo_spediteur'));
+// Detailansicht Mitarbeiter
+router.post('/showBuchung', (req, res) => {
+    //here it is
+    const id = req.body.anzeigen1;
+    Buchung.findOne({_id: ObjectID(id)}, function (err, buchung) {
+            res.render('buchungsinfo_spediteur', { buchung: buchung });
+    });
+});
 
 //torauswahl spedi
 router.get ('/torauswahl', (req, res) => {
@@ -99,9 +108,8 @@ router.post('/torsperren',(req,res) =>{
 
 
 
-router.post('/neueBuchung_spediteur',ensureAuthenticated,(req, res) => {
+router.post('/neueBuchung_spediteur', (req, res,) => {
     const {sendungsstruktur, datepicker, timepicker1, timepicker2, sendungen, EUP, EWP, pakete, bemerkung, teile } = req.body;
-    var user = req.user;
     if (errors.length > 0) {
         User.findOne({username: "spedi2"}, function (err, user) {
             console.log(JSON.stringify(req.user));
@@ -124,7 +132,6 @@ router.post('/neueBuchung_spediteur',ensureAuthenticated,(req, res) => {
         pakete,
         bemerkung,
         teile,
-
     });
     newBuchung.save()
         .then(buchung =>{
@@ -133,6 +140,21 @@ router.post('/neueBuchung_spediteur',ensureAuthenticated,(req, res) => {
         .catch(err=>console.log(err));
     console.log(newBuchung)
 
+});
+
+//Buchung löschen
+router.post('/deleteBuchung',(req,res) =>{
+    var id = req.body.loeschen1;
+    MongoClient.connect(db, function(err, db) {
+        if (err) throw err;
+        var dbo = db.db("test");
+        dbo.collection("buchungs").deleteOne({"_id": ObjectID(id)}, function(err, res) {
+            if (err) throw err;
+            console.log("1 document deleted");
+            db.close();
+        });
+        res.redirect('back');
+    });
 });
 
 //torauswahl spedi
@@ -148,21 +170,6 @@ router.get ('/neueBuchung_spediteur', (req, res) => {
         });
     });
 });
-
-//get Data
-/*
-router.get('/Buchung', (req, res) => {
-    Buchung.getBuchung((err, buchung) => {
-        if(err){
-            throw err;
-        }
-        res.json(buchung);
-    });
-});
-*/
-
-//buchung.js einbinden
-//Buchung = require('../DB/models/buchung_mitarbeiter');
 
 
 

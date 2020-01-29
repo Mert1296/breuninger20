@@ -68,6 +68,8 @@
                     <th>Datum</th>
                     <th>Von</th>
                     <th>Bis</th>
+                    <th>Buchung anzeigen</th>
+                    <th>Buchung löschen</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -75,22 +77,21 @@
                     var monat = 1 + buchungen[i].datepicker.getMonth();
                 %>
                 <tr>
-                    <td><%=buchungen[i].user%></td>
-                    <td><%=buchungen[i].tor%></td>
+                    <td style="width: 50px;"><%=buchungen[i].sendungsstruktur%></td>
+                    <td><%=buchungen[i].gate%></td>
                     <td><%=buchungen[i].datepicker.getDate()+"."+monat+"."+buchungen[i].datepicker.getFullYear()%></td>
                     <td><%= buchungen[i].timepicker1%></td>
                     <td><%=buchungen[i].timepicker2%></td>
-                    <form action="username" method="POST">
-                        <input type="hidden" name="" value="">
-                        <td><button id="buttonAnzeigen" type="submit" name="username" data-toggle="tooltip" title="Benutzer anzeigen"><a href="/users/benutzerinfo_breuninger"><i class="fas fa-search"></i></a></button></td>
+                    <form action="showBuchung" method="POST">
+                        <input type="hidden" name="anzeigen1" value="<%=buchungen[i]._id%>">
+                        <td style="width: 50px;"><button id="buttonAnzeigen" type="submit" name="buchung" data-toggle="tooltip" title="Buchung anzeigen"><a href="/buchungen/benutzerinfo"><i class="fas fa-search"></i></a></button></td>
                     </form>
-                    <form action="delete" method="POST">
+                    <form action="deleteBuchung" method="POST">
                         <td style="width: 40px;">
-                            <button type="submit" id="buttonLöschen" data-toggle="tooltip" class="submit"name="loeschen" title="Benutzer löschen"><i class="fas fa-trash-alt"></i></button>
-                            <input type="hidden" name="" value="">
+                            <button type="submit" id="buttonLöschen" data-toggle="tooltip" class="submit" title="Buchung löschen"><i class="fas fa-trash-alt"></i></button>
+                            <input type="hidden" name="loeschen1" value="<%=buchungen[i]._id%>">
                         </td>
                     </form>
-                    <td><form action=""><button id="buttonAnzeigen" type="submit" name="buchung" href=""data-toggle="tooltip" title="Anzeigen"><i class="fas fa-search"></i></button></form></td>
                 </tr>
                 <% monat ++;
                     if(monat == 13){
