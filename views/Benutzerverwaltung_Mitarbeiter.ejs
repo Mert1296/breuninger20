@@ -41,6 +41,14 @@
         }
 
         #buttonAnzeigen{
+             background-color: transparent;
+             border: white;
+         }
+        ::selection{
+            background-color:white!important;
+            color:black;
+        }
+        #buttonLöschen{
             background-color: transparent;
             border: white;
         }
@@ -48,7 +56,6 @@
             background-color:white!important;
             color:black;
         }
-
     </style>
 </head>
 <body>
@@ -82,8 +89,8 @@
                     <tr>
                         <th style="text-align: center">User-ID</th>
                         <th style="text-align: center">Rolle</th>
-                        <th style="text-align: center">Benutzer anzeigen</th>
-                        <th style="text-align: center">Benutzer Löschen</th>
+                        <th style="text-align: center">Anzeigen</th>
+                        <th style="text-align: center">Löschen</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -97,7 +104,7 @@
                     </form>
                         <form action="delete" method="POST">
                             <td style="width: 40px;">
-                            <button type="submit"data-toggle="tooltip" class="submit"name="loeschen" title="Benutzer löschen"><i class="fas fa-trash-alt"></i></button>
+                            <button type="submit" id="buttonLöschen" data-toggle="tooltip" class="submit"name="loeschen" title="Benutzer löschen"><i class="fas fa-trash-alt"></i></button>
                                 <input type="hidden" name="nutzername" value="<%=users[i].username%>">
                             </td>
                         </form>
@@ -185,7 +192,7 @@
         var table = $('#tabelle').DataTable({
             bInfo: false,
             paging:false,
-            searching: true,
+            searching: false,
             scrollY:"300px",
             ScrollCollapse: true,
             "columnDefs": [
