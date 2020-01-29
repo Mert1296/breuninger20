@@ -70,7 +70,7 @@ router.post('/torverwaltung', (req, res) => {
     //here it is
     const tor = req.body.gate;
     Tor.findOne({gate: tor}, function (err, gate) {
-            res.render('torsperren', { gate: gate });
+        res.render('torsperren', { gate: gate });
     });
 });
 
