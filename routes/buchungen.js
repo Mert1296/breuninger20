@@ -1,12 +1,14 @@
 const express = require('express');
 const router = express.Router();
-// Load Buchung model
-const Buchung = require('../DB/models/Buchung');
+const bcrypt = require('bcryptjs');
+const passport = require('passport');
+// Load User model
 const User = require('../DB/models/User');
-const Tor = require('../DB/models/Tor');
+const Buchung = require('../DB/models/Buchung');
 const { ensureAuthenticated } = require('../DB/config/auth');
-const db = require('../DB/config/keys').MongoURI;
+const bodyParser = require('body-parser');
 var MongoClient = require('mongodb').MongoClient;
+const db = require('../DB/config/keys').MongoURI;
 
 //Startseite Breuninger
 router.get ('/startseite_breuninger', ensureAuthenticated, (req, res) => {
@@ -16,7 +18,6 @@ router.get ('/startseite_breuninger', ensureAuthenticated, (req, res) => {
             return res.send(err);
 
         res.render('startseite_breuninger',{
-            vorname: req.user.vorname,
             buchungen: buchungen || []
         });
     });
@@ -42,21 +43,7 @@ router.get('/buchungsuebersicht', (req, res) => res.render('buchungsuebersicht')
 router.get('/neueBuchung_spediteur', function(req, res, next) {
     var user = req.user;
     //you probably also want to pass this to your view
-    Buchung.find(function (err, buchungen) {
-        if (err)
-            return res.send(err);
-
-        res.render('neueBuchung_spediteur', {
-            user: user,
-            buchungen: buchungen || []
-        });
-    });
-});
-
-//torauswahl spedi
-router.get ('/neueBuchung_spediteur', (req, res) => {
-
-
+    res.render('neueBuchung_spediteur', { user: user });
 });
 
 //torauswahl spedi
@@ -113,18 +100,11 @@ router.post('/torsperren',(req,res) =>{
 
 
 router.post('/neueBuchung_spediteur',ensureAuthenticated,(req, res) => {
-    const {sendungsstruktur, datepicker, timepicker1, timepicker2, sendungen, EUP, EWP, pakete, bemerkung, teile } = req.body;
+    const {gate, username, sendungsstruktur, datepicker, timepicker1, timepicker2, sendungen, EUP, EWP, pakete, bemerkung, teile } = req.body;
     var user = req.user;
-        User.findOne({username: "spedi2"}, function (err, user) {
-            console.log(JSON.stringify(req.user));
-            if (err) { throw err; }
-            if (user) {
-                res.render('neueBuchung_spediteur', {
-                    gate: user.gate
-                });
-            }
-        });
     const newBuchung = new Buchung({
+        gate,
+        username,
         sendungsstruktur,
         datepicker,
         timepicker1,
@@ -139,13 +119,11 @@ router.post('/neueBuchung_spediteur',ensureAuthenticated,(req, res) => {
     });
     newBuchung.save()
         .then(buchung =>{
-            res.send('saved')
+            res.render('startseite_spediteur')
         })
         .catch(err=>console.log(err));
     console.log(newBuchung)
 
 });
-
-
 
 module.exports = router;
