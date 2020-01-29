@@ -65,7 +65,7 @@ router.get ('/torverwaltung', (req, res) =>{
 });
 
 
-//Tor updaten
+//Tor updatenn
 router.post('/torverwaltung', (req, res) => {
     //here it is
     const tor = req.body.gate;
