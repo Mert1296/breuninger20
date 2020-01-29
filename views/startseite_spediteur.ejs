@@ -72,24 +72,25 @@
                 </thead>
                 <tbody>
                 <%for (var i = 0; i < buchungen.length; i++) {
-                    var monat = 1 + buchungen[i].from.getMonth();
-                    var von = -1 + buchungen[i].from.getHours();
-                    var vonMin = buchungen[i].from.getMinutes();
-                    var bis = -1 + buchungen[i].to.getHours();
-                    var bisMin = buchungen[i].to.getMinutes();
-                    if(bisMin == 00){
-                        bisMin = bisMin + "0";
-                    }
-                    if(vonMin == 00){
-                        vonMin = vonMinn + "0";
-                    }
+                    var monat = 1 + buchungen[i].datepicker.getMonth();
                 %>
                 <tr>
-                    <td><%=buchungen[i].sendungsstruktur%></td>
+                    <td><%=buchungen[i].user%></td>
                     <td><%=buchungen[i].tor%></td>
-                    <td><%=buchungen[i].from.getDate()+"."+monat+"."+buchungen[i].from.getFullYear()%></td>
-                    <td><%= von +":"+vonMin%></td>
-                    <td><%= bis+":"+bisMin%></td>
+                    <td><%=buchungen[i].datepicker.getDate()+"."+monat+"."+buchungen[i].datepicker.getFullYear()%></td>
+                    <td><%= buchungen[i].timepicker1%></td>
+                    <td><%=buchungen[i].timepicker2%></td>
+                    <form action="username" method="POST">
+                        <input type="hidden" name="" value="">
+                        <td><button id="buttonAnzeigen" type="submit" name="username" data-toggle="tooltip" title="Benutzer anzeigen"><a href="/users/benutzerinfo_breuninger"><i class="fas fa-search"></i></a></button></td>
+                    </form>
+                    <form action="delete" method="POST">
+                        <td style="width: 40px;">
+                            <button type="submit" id="buttonLöschen" data-toggle="tooltip" class="submit"name="loeschen" title="Benutzer löschen"><i class="fas fa-trash-alt"></i></button>
+                            <input type="hidden" name="" value="">
+                        </td>
+                    </form>
+                    <td><form action=""><button id="buttonAnzeigen" type="submit" name="buchung" href=""data-toggle="tooltip" title="Anzeigen"><i class="fas fa-search"></i></button></form></td>
                 </tr>
                 <% monat ++;
                     if(monat == 13){
