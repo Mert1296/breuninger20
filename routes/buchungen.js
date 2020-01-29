@@ -83,7 +83,7 @@ router.get ('/torverwaltung', (req, res) =>{
 });
 */
 
-//new Gate
+//new Gate asd
 router.post('/torverwaltung', (req, res) => {
     const {gate, disabled, bemerkung } = req.body;
     let errors = [];
