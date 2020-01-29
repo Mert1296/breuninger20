@@ -269,11 +269,10 @@
 						{ name: 'description', type: 'string' },
 						{ name: 'subject', type: 'string' },
 						{ name: 'calendar', type: 'string' },
-						{ name: 'start', type: 'date' },
-						{ name: 'end', type: 'date' }
+						{ name: 'from', type: 'date' },
+						{ name: 'to', type: 'date' }
 					],
 					id: 'id',
-
 				};
 		var adapter = new $.jqx.dataAdapter(source);
 		var d = new $.jqx.date('todayDate');
@@ -285,7 +284,7 @@
 			dayNameFormat: "abbr",
 			source: adapter,
 			view: 'dayView',
-			showLegend: false,
+			showLegend: true,
 			ready: function () {
 				$("#scheduler").jqxScheduler('ensureAppointmentVisible', 'id1');
 			},

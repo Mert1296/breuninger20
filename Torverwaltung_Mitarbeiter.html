@@ -296,14 +296,13 @@
 			// get index from `tr`
 			var index = $(this).parents('tr').data().index;
 			if (e.target.checked) {
-				var modalinstance = $('#exampleModal');
 				// assign index
-				modalinstance.find('.torsperren').attr('data-index', index);
-				modalinstance.find('.abbrechen').attr('data-index', index);
+				$('#exampleModal').find('.torsperren').attr('data-index', index);
+				$('#exampleModal').find('.abbrechen').attr('data-index', index);
 				// open modal
-				modalinstance.modal('show');
+				$('#exampleModal').modal('show');
 				// reset value
-				modalinstance.find('.torbemerkung').val('');
+				$('#exampleModal').find('.torbemerkung').val('');
 			} else {
 				// clear data by selecting the row with the given index
 				$('#tore').find('tr[data-index="' + index + '"]').find('.bemerkung').text("");

@@ -51,69 +51,68 @@
     <div class="container-wrap">
         <div class="flexslider">
             <h1>Buchungsinformation</h1>
-            <form action="" method="post">
-                <table id="tabelle" class="cell-border"  class="table table-striped" cellspacing="0" >
-                    <thead>
-                    <tr>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>Spediteur</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Tor</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Datum</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Von</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Bis</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Sendungsstruktur</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Anzahl der geladenen Sendungen</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Anzahl der geladenen EUP</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Anzahl der geladenen EWP</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Anzahl der geladenen Pakete (lose)</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Anzahl der Teile</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Referenz</td>
-                        <td></td>
-                    </tr>
-                    </tbody>
-                </table>
+            <table id="tabelle" class="cell-border"  class="table table-striped" cellspacing="0" >
+                <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Spediteur</td>
+                    <td><%=buchung.user%></td>
+                </tr>
+                <tr>
+                    <td>Tor</td>
+                    <td><%=buchung.gate%></td>
+                </tr>
+                <tr>
+                    <td>Datum</td>
+                    <td><%=buchung.datepicker.getDate()+"."+buchung.datepicker.getMonth()+"."+buchung.datepicker.getFullYear()%></td>
+                </tr>
+                <tr>
+                    <td>Von</td>
+                    <td><%=buchung.timepicker1%></td>
+                </tr>
+                <tr>
+                    <td>Bis</td>
+                    <td><%=buchung.timepicker2%></td>
+                </tr>
+                <tr>
+                    <td>Sendungsstruktur</td>
+                    <td><<%=buchung.sendungsstruktur%>/td>
+                </tr>
+                <tr>
+                    <td>Anzahl der geladenen Sendungen</td>
+                    <td><%=buchung.sendungen%></td>
+                </tr>
+                <tr>
+                    <td>Anzahl der geladenen EUP</td>
+                    <td><%=buchung.EUP%></td>
+                </tr>
+                <tr>
+                    <td>Anzahl der geladenen EWP</td>
+                    <td><%=buchung.EWP%></td>
+                </tr>
+                <tr>
+                    <td>Anzahl der geladenen Pakete (lose)</td>
+                    <td><%=buchung.pakete%></td>
+                </tr>
+                <tr>
+                    <td>Anzahl der Teile</td>
+                    <td><%=buchung.teile%></td>
+                </tr>
+                <tr>
+                    <td>Referenz</td>
+                    <td><%=buchung.bemerkung%></td>
+                </tr>
+                </tbody>
+            </table>
                 <br>
                 <input type="hidden" name="username" value="">
                 <button class="btn btn-primary" type="submit">Buchung stornieren</button>
-            </form>
+
         </div>
     </div><!-- END container-wrap -->
     <div class="container-wrap">

@@ -5,14 +5,20 @@ const passport = require('passport');
 const flash = require('connect-flash');
 const session = require('express-session');
 const bodyParser = require('body-parser');
+const graphqlHttp = require('express-graphql');
+const { buildSchema } = require('graphql');
+
+const events = [];
 
 const app = express();
-
+app.use(bodyParser.json());
 // Passport Config
 require('./DB/config/passport')(passport);
 
 // DB Config
 const db = require('./DB/config/keys').MongoURI;
+const Buchung = require('./DB/models/Buchung');
+const User = require('./DB/models/User');
 
 // Connect to MongoDB
 mongoose.connect(
@@ -54,6 +60,8 @@ app.use(function(req, res, next) {
     res.locals.error = req.flash('error');
     next();
 });
+
+
 
 //Routes
 app.use('/', require('./routes/index.js'));

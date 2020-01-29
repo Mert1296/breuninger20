@@ -51,7 +51,7 @@ const UserSchema = new mongoose.Schema({
         required: false
     },
     gate: {
-        type: [String],
+        type: [Number],
         required: false
     },
    /* createdEvents: [{
