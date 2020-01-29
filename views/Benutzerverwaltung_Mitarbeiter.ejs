@@ -82,7 +82,8 @@
                     <tr>
                         <th style="text-align: center">User-ID</th>
                         <th style="text-align: center">Rolle</th>
-                        <th style="text-align: center"></th>
+                        <th style="text-align: center">Benutzer anzeigen</th>
+                        <th style="text-align: center">Benutzer Löschen</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -94,6 +95,13 @@
                         <input type="hidden" name="username" value="<%=users[i].username%>">
                         <td><button id="buttonAnzeigen" type="submit" name="username" data-toggle="tooltip" title="Benutzer anzeigen"><a href="/users/benutzerinfo_breuninger"><i class="fas fa-search"></i></a></button></td>
                     </form>
+                        <form action="delete" method="POST">
+                            <td style="width: 40px;">
+                            <button type="submit"data-toggle="tooltip" class="submit"name="loeschen" title="Benutzer löschen"><i class="fas fa-trash-alt"></i></button>
+                                <input type="hidden" name="nutzername" value="<%=users[i].username%>">
+                            </td>
+                        </form>
+
                     </tr>
                     <!-- hallo -->
                     <%}%>
@@ -185,6 +193,7 @@
                 "width": "90px", "targets": 2}
             ]
         });
+
 
         $('#tabelle tbody').on( 'click', 'tr', function () {
             if ( $(this).hasClass('selected') ) {

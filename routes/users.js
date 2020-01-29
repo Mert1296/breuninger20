@@ -6,6 +6,8 @@ const passport = require('passport');
 const User = require('../DB/models/User');
 const { ensureAuthenticated } = require('../DB/config/auth');
 const bodyParser = require('body-parser');
+var MongoClient = require('mongodb').MongoClient;
+const db = require('../DB/config/keys').MongoURI;
 
 // Login Page
 router.get('/login', (req, res) => res.render('login'));
@@ -28,7 +30,6 @@ router.post('/username', (req, res) => {
     //here it is
     const username = req.body.username;
     User.findOne({username: username}, function (err, user) {
-        console.log(user);
         if (user.admin == "spediteur") {
             res.render('detailansicht_spediteur', { user: user });
         } else {
@@ -39,12 +40,51 @@ router.post('/username', (req, res) => {
 
 //Update Benutzerdaten Breuni
 router.post('/update_detailansicht_breuninger',(req,res) =>{
-    const username = req.body.username;
-    const telefon = req.body.telefon;
-    const email = req.body.email;
-    User.update({username: username}, telefon);
-    res.render('detailansicht_breuninger');
+    var myquery = { username: req.body.username };
+    var newvalues = { $set: {telefon: req.body.telefon, email: req.body.email } };
+    MongoClient.connect(db, function(err, db) {
+        if (err) throw err;
+        var dbo = db.db("test");
+        dbo.collection("users").updateOne(myquery, newvalues, function(err, res) {
+            if (err) throw err;
+            console.log("1 document updated");
+            db.close();
 
+        });
+        res.redirect('/users/benutzerverwaltung_Mitarbeiter');
+    });
+});
+
+//Update Benutzerdaten Spedi
+router.post('/update_detailansicht_spediteur',(req,res) =>{
+    var myquery = { username: req.body.username };
+    var newvalues = { $set: {telefon: req.body.telefon, email: req.body.email } };
+    MongoClient.connect(db, function(err, db) {
+        if (err) throw err;
+        var dbo = db.db("test");
+        dbo.collection("users").updateOne(myquery, newvalues, function(err, res) {
+            if (err) throw err;
+            console.log("1 document updated");
+            db.close();
+
+        });
+        res.redirect('/users/benutzerverwaltung_mitarbeiter');
+    });
+});
+
+//User löschen
+router.post('/delete',(req,res) =>{
+    var myquery = { username: req.body.nutzername };
+    MongoClient.connect(db, function(err, db) {
+        if (err) throw err;
+        var dbo = db.db("test");
+        dbo.collection("users").deleteOne(myquery, function(err, res) {
+            if (err) throw err;
+            console.log("1 document deleted");
+            db.close();
+        });
+        res.redirect('/users/benutzerverwaltung_Mitarbeiter');
+    });
 });
 
 //Benutzerverwaltung_MA
