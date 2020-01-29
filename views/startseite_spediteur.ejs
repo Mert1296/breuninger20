@@ -34,6 +34,30 @@
             color: black !important;
             background-color: #E6D1D2!important;
         }
+
+        ::selection{
+            background-color:white!important;
+            color:black;
+        }
+        #buttonAnzeigen:hover{
+            color:#861a22;
+            background-color:transparent ;
+        }
+
+        #buttonAnzeigen{
+            background-color: transparent;
+            border: white;
+        }
+        #buttonLöschen:hover{
+            color:#861a22;
+            background-color:transparent ;
+        }
+
+        #buttonLöschen{
+            background-color: transparent;
+            border: white;
+        }
+
     </style>
 </head>
 <body>
@@ -60,7 +84,8 @@
 
     <div class="container-wrap" style="background-color: lightgray">
         <div class="flexslider">
-            <table id="example" class="display">
+            <h1>Buchungsübersicht</h1>
+            <table id="example" class="display table-hover" style="text-align: center">
                 <thead>
                 <tr>
                     <th>Sendungsstruktur</th>
@@ -68,8 +93,8 @@
                     <th>Datum</th>
                     <th>Von</th>
                     <th>Bis</th>
-                    <th>Buchung anzeigen</th>
-                    <th>Buchung löschen</th>
+                    <th>Anzeigen</th>
+                    <th>Löschen</th>
                 </tr>
                 </thead>
                 <tbody>
