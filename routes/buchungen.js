@@ -40,6 +40,12 @@ router.get('/buchungsuebersicht', (req, res) => res.render('buchungsuebersicht')
 //Buhchungsübersicht spedi
 router.get('/neueBuchung_spediteur', (req, res) => res.render('neueBuchung_spediteur'));
 
+//Buchuhungsinfo mitarbeiter
+router.get('/buchungsinfo_mitarbeiter', (req, res) => res.render('buchungsinfo_mitarbeiter'));
+
+//Buchuhungsinfo spediteur
+router.get('/buchungsinfo_spediteur', (req, res) => res.render('buchungsinfo_spediteur'));
+
 //torauswahl spedi
 router.get ('/torauswahl', (req, res) => {
 
