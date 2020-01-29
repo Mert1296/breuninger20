@@ -30,15 +30,7 @@
         .button:hover .button__inner-wrapper {
             transform: translateX(0);
         }
-       table.dataTable tbody tr.selected {
-            color: black !important;
-            background-color: #E6D1D2!important;
-        }
 
-        ::selection{
-            background-color:white!important;
-            color:black;
-        }
         #buttonAnzeigen:hover{
             color:#861a22;
             background-color:transparent ;
@@ -88,13 +80,13 @@
             <table id="example" class="display table-hover" style="text-align: center">
                 <thead>
                 <tr>
-                    <th>Sendungsstruktur</th>
-                    <th>Tor</th>
-                    <th>Datum</th>
-                    <th>Von</th>
-                    <th>Bis</th>
-                    <th>Anzeigen</th>
-                    <th>Löschen</th>
+                    <th style="text-align: center">Sendungsstruktur</th>
+                    <th style="text-align: center">Tor</th>
+                    <th style="text-align: center">Datum</th>
+                    <th style="text-align: center">Von</th>
+                    <th style="text-align: center">Bis</th>
+                    <th style="text-align: center">Anzeigen</th>
+                    <th style="text-align: center">Löschen</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -177,19 +169,6 @@
             aaSortingFixed: [[2,'asc'],[3,'asc']]
         });
 
-        $('#example tbody').on( 'click', 'tr', function () {
-            if ( $(this).hasClass('selected') ) {
-                $(this).removeClass('selected');
-            }
-            else {
-                table.$('tr.selected').removeClass('selected');
-                $(this).addClass('selected');
-            }
-        });
-
-        $('#button').click( function () {
-            table.row('.selected').remove().draw( false );
-        });
         $('[data-toggle="tooltip"]').tooltip();
     });
 </script>
