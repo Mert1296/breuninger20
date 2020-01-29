@@ -1,10 +1,10 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Breuninger</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Breuninger</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         tr.selected {
             color: black !important;
@@ -50,7 +50,7 @@
     </nav>
     <div class="container-wrap">
         <div class="flexslider">
-        <h1>Buchungsübersicht</h1>
+            <h1>Buchungsübersicht</h1>
             <table id="example" class="display table-hover" style="text-align: center">
                 <thead>
                 <tr>
@@ -60,12 +60,12 @@
                     <th style="text-align: center">Von</th>
                     <th style="text-align: center">Bis</th>
                     <th style="text-align: center">Anzeigen</th>
-                    <th style="text-align: center">Löschen</th>
+                    <th style="text-align: center">Stornieren</th>
                 </tr>
                 </thead>
                 <tbody>
                 <%for (var i = 0; i < buchungen.length; i++) {
-                var monat = 1 + buchungen[i].datepicker.getMonth();
+                    var monat = 1 + buchungen[i].datepicker.getMonth();
                 %>
                 <tr>
                     <td><%=buchungen[i].user%></td>
@@ -73,8 +73,8 @@
                     <td><%=buchungen[i].datepicker.getDate()+"."+monat+"."+buchungen[i].datepicker.getFullYear()%></td>
                     <td><%= buchungen[i].timepicker1%></td>
                     <td><%=buchungen[i].timepicker2%></td>
-                    <td><form action=""><button id="buttonAnzeigen" type="submit" name="buchung" href=""data-toggle="tooltip" title="Buchung anzeigen"><i class="fas fa-search"></i></button></form></td>
-                    <td><form action=""><button id="buttonLöschen" type="submit" name="" href=""data-toggle="tooltip" title="Buchung löschen"><i class="fas fa-trash-alt"></i></button></form></td>
+                    <td><form action="zeigBuchung" method="post"><input type="hidden" name="zeigen" value="<%=buchungen[i]._id%>"><button  type="submit" data-toggle="tooltip" title="Buchung anzeigen"><i class="fas fa-search"></i></button></form></td>
+                    <td><form action="loeschBuchung" method="post"><input type="hidden" name="loeschen" value="<%=buchungen[i]._id%>"><button  type="submit" data-toggle="tooltip" title="Buchung Löschen"><i class="fas fa-trash-alt"></i></button></form></td>
                 </tr>
                 <%
                 }%>
@@ -138,7 +138,19 @@
             ]
         });
 
+        $('#example tbody').on( 'click', 'tr', function () {
+            if ( $(this).hasClass('selected') ) {
+                $(this).removeClass('selected');
+            }
+            else {
+                table.$('tr.selected').removeClass('selected');
+                $(this).addClass('selected');
+            }
+        } );
 
+        $('#button').click( function () {
+            table.row('.selected').remove().draw( false );
+        } );
         $('[data-toggle="tooltip"]').tooltip();
     } );
 </script>
