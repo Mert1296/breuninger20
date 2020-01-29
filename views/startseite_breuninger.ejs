@@ -60,6 +60,7 @@
                     <th style="text-align: center">Von</th>
                     <th style="text-align: center">Bis</th>
                     <th style="text-align: center">Anzeigen</th>
+                    <th style="text-align: center">Löschen</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -73,6 +74,7 @@
                     <td><%= buchungen[i].timepicker1%></td>
                     <td><%=buchungen[i].timepicker2%></td>
                     <td><form action=""><button id="buttonAnzeigen" type="submit" name="buchung" href=""data-toggle="tooltip" title="Buchung anzeigen"><i class="fas fa-search"></i></button></form></td>
+                    <td><form action=""><button id="buttonLöschen" type="submit" name="" href=""data-toggle="tooltip" title="Buchung löschen"><i class="fas fa-trash-alt"></i></button></form></td>
                 </tr>
                 <%
                 }%>
