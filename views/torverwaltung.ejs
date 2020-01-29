@@ -98,11 +98,25 @@
                     <th>Speichern</th>
                 </tr>
                 </thead>
+                <form action="/torverwaltung" method="POST">
+                    gate:<input type="text" name="gate">
+                    disabled:<input type="text" name="disabled">
+                    bemerkung:<input type="text" name="bemerkung">
+                    <br>
+                    <div class="submit">
+                        <button class="btn btn-primary">
+                                        <span class="button__inner-wrapper">
+                                            <span class="button__label button__content">
+       					                             Speichern
+                                             </span>
+				                         </span>
+                        </button>
+                    </div>
                 <tbody>
                 <%for (var i = 0; i < tor.length; i++) { %>
                 <tr data-index="0">
                     <td><%=tor[i].gate%></td>
-                    <input type="hidden" value="<%=tor[i].gate%>" name="gate">
+                    <input type="hidden" value="<%=tor[i].id%>" name="gate">
                     <td class="sperren">
                         <label class="switch">
                             <input type="checkbox" class="sperrung" value="<%=tor[i].disabled%>" name="disabled">
@@ -110,10 +124,11 @@
                         </label>
                     </td>
                     <td class="bemerkung"><input type="text" value="<%=tor[i].bemerkung%>" id="tor<%=tor[i].gate%>"name="bemerkung"></td>
-                    <td><button id="submit" type="submit" name="save" data-toggle="tooltip" title="Speichern"><i class="fas fa-save"></i></button></td>
+                    <td><button type="submit" id="submit" name="save" data-toggle="tooltip" title="Speichern"><i class="fas fa-save"></i></button></td>
                 </tr>
                 <%}%>
                 </tbody>
+                </form>
             </table>
             <label class="leer" style="padding-top: 50px"></label>
         </div>

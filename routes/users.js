@@ -25,7 +25,6 @@ router.get('/benutzerinfo_spediteur', function(req, res, next) {
 
 // Detailansicht Mitarbeiter
 router.post('/username', (req, res) => {
-
     //here it is
     const username = req.body.username;
     User.findOne({username: username}, function (err, user) {
@@ -35,9 +34,7 @@ router.post('/username', (req, res) => {
         } else {
             res.render('detailansicht_breuninger', { user: user });
         }
-
     });
-
 });
 
 //Update Benutzerdaten Breuni
