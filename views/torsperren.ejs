@@ -88,7 +88,7 @@
     <div class="container-wrap">
         <div class="flexslider">
             <h1>Tor sperren</h1>
-            <form action="" method="post">
+            <form action="torsperren" method="post">
                 <table id="tabelle" class="cell-border"  class="table table-striped" cellspacing="0" >
                     <thead>
                     <tr>
@@ -99,13 +99,13 @@
                     <tbody>
                     <tr>
                         <td>Tor ID</td>
-                        <td></td>
+                        <td><%=gate.gate%></td>
                     </tr>
                     <tr>
                         <td><b style="color:yellowgreen">Freigeben</b>/<b style="color:red">Sperren</b>
                         <td class="sperren">
                             <label class="switch">
-                                <input type="checkbox" class="sperrung" value="" name="disabled">
+                                <input type="checkbox" class="sperrung" value="<%=gate.disabled%>" name="disabled">
                                 <span class="slider round"></span>
                             </label>
                         </td>
@@ -113,11 +113,12 @@
                     </tr>
                     <tr>
                         <td class="bemerkung">Bemerkung</td>
-                        <td><input type="text" style="height: 30px; width: 100%; text-align: left;" value="" id=""name="bemerkung"></td>
+                        <td><input type="text" style="height: 30px; width: 100%; text-align: left;" value="<%=gate.bemerkung%>" name="bemerkung"></td>
                     </tr>
                     </tbody>
                 </table>
                 <br>
+                <input type="hidden" value="<%=gate.gate%>" name="gate">
                 <button class="btn btn-primary" type="submit">Speichern</button>
             </form>
         </div>
@@ -164,6 +165,20 @@
                     "width": "600px", "targets": 1,}
 
             ]
+        });
+        $('[data-toggle="tooltip"]').tooltip();
+
+        $('input:checkbox[value="false"]').prop('checked', false);
+        $('input:checkbox[value="true"]').prop('checked', true);
+
+        $('input:checkbox').change(function () {
+            if($(this).is(":checked")){
+                $(this).val('true');
+            }
+            else{
+                $(this).val('false');
+            }
+            console.log($(this).val());
         });
     });
 

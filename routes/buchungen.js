@@ -3,8 +3,10 @@ const router = express.Router();
 // Load Buchung model
 const Buchung = require('../DB/models/Buchung');
 const User = require('../DB/models/User');
-const Tor = require(('../DB/models/Tor'));
+const Tor = require('../DB/models/Tor');
 const { ensureAuthenticated } = require('../DB/config/auth');
+const db = require('../DB/config/keys').MongoURI;
+var MongoClient = require('mongodb').MongoClient;
 
 //Startseite Breuninger
 router.get ('/startseite_breuninger', ensureAuthenticated, (req, res) => {
@@ -62,99 +64,70 @@ router.get ('/torverwaltung', (req, res) =>{
     });
 });
 
-// Login Page
-router.get('/torsperren', (req, res) => res.render('torsperren'));
 
-//Update Torverwaltung
-/*router.post('/update/:id', (req, res) => {
-    let tor = {};
-
-    const gate = req.body.gate;
-
-     let query = {_id: req.params.id}
-
-    Tor.findOne({gate: gate}, function (err, tor) {
-        Tor.update(query, tor, function (err) {
-            if (err) {
-                console.log(err);
-                return;
-            } else {
-                res.redirect('/buchungen/torverwaltung');
-            }
-        })
+//Tor updaten
+router.post('/torverwaltung', (req, res) => {
+    //here it is
+    const tor = req.body.gate;
+    Tor.findOne({gate: tor}, function (err, gate) {
+            res.render('torsperren', { gate: gate });
     });
 });
-*/
 
-//new Gate
-router.post('/torverwaltung', (req, res) => {
-    const {gate, disabled, bemerkung } = req.body;
-    let errors = [];
-    var tor = req.tor;
-    const newTor = new Tor({
-        gate,
-        disabled,
-        bemerkung,
+//Torsperrung
+router.post('/torsperren',(req,res) =>{
+    var myquery = { gate: req.body.gate };
+    var newvalues = { $set: {disabled: req.body.disabled, bemerkung: req.body.bemerkung } };
+    MongoClient.connect(db, function(err, db) {
+        if (err) throw err;
+        var dbo = db.db("test");
+        dbo.collection("tor").updateOne(myquery, newvalues, function(err, res) {
+            if (err) throw err;
+            console.log("1 document updated");
+            db.close();
+
+        });
+        res.redirect('back');
     });
-    newTor.save()
-        .then(tor =>{
+});
+
+
+
+router.post('/neueBuchung_spediteur',ensureAuthenticated,(req, res) => {
+    const {sendungsstruktur, datepicker, timepicker1, timepicker2, sendungen, EUP, EWP, pakete, bemerkung, teile } = req.body;
+    var user = req.user;
+    if (errors.length > 0) {
+        User.findOne({username: "spedi2"}, function (err, user) {
+            console.log(JSON.stringify(req.user));
+            if (err) { throw err; }
+            if (user) {
+                res.render('neueBuchung_spediteur', {
+                    gate: user.gate
+                });
+            }
+        });
+    }
+    const newBuchung = new Buchung({
+        sendungsstruktur,
+        datepicker,
+        timepicker1,
+        timepicker2,
+        sendungen,
+        EUP,
+        EWP,
+        pakete,
+        bemerkung,
+        teile,
+
+    });
+    newBuchung.save()
+        .then(buchung =>{
             res.send('saved')
         })
         .catch(err=>console.log(err));
-    console.log(newTor)
+    console.log(newBuchung)
+
 });
-
-//Update Benutzerdaten Breuni
-/*router.post('/update_detailansicht_breuninger',(req,res) =>{
-    const username = req.body.username;
-    const telefon = req.body.telefon;
-    const email = req.body.email;
-    User.update({username: username}, telefon);
-    res.render('detailansicht_breuninger');
-
-});*/
-
-//insert
-    router.post('/neueBuchung_spediteur', (req, res) => {
-        const {sendungsstruktur, datepicker, timepicker1, timepicker2, sendungen, EUP, EWP, pakete, bemerkung, teile } = req.body;
-        let errors = [];
-        var user = req.user;
-        if (errors.length > 0) {
-            res.render('neueBuchung_spediteur', {
-                errors,
-                sendungsstruktur,
-                datepicker,
-                timepicker1,
-                timepicker2,
-                sendungen,
-                EUP,
-                EWP,
-                pakete,
-                bemerkung,
-                teile,
-                gate
-            });
-        }  else {
-            const newBuchung = new Buchung({
-                sendungsstruktur,
-                datepicker,
-                timepicker1,
-                timepicker2,
-                sendungen,
-                EUP,
-                EWP,
-                pakete,
-                bemerkung,
-                teile
-            });
-            newBuchung.save()
-                .then(buchung =>{
-                    res.send('saved')
-                })
-                .catch(err=>console.log(err));
-            console.log(newBuchung)
-        }
-    });
 
 //torauswahl spedi
 router.get ('/neueBuchung_spediteur', (req, res) => {
@@ -169,5 +142,22 @@ router.get ('/neueBuchung_spediteur', (req, res) => {
         });
     });
 });
+
+//get Data
+/*
+router.get('/Buchung', (req, res) => {
+    Buchung.getBuchung((err, buchung) => {
+        if(err){
+            throw err;
+        }
+        res.json(buchung);
+    });
+});
+*/
+
+//buchung.js einbinden
+//Buchung = require('../DB/models/buchung_mitarbeiter');
+
+
 
 module.exports = router;

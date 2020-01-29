@@ -108,11 +108,12 @@
                     <th style="text-align: center">Anzeigen</th>
                 </tr>
                 </thead>
+
                 <tbody>
                 <%for (var i = 0; i < tor.length; i++) { %>
                 <tr data-index="0">
                     <td><%=tor[i].gate%></td>
-                    <input type="hidden" value="<%=tor[i].gate%>" name="gate">
+
                     <td class="sperren">
                         <label class="switch">
                             <input type="checkbox" class="sperrung" value="<%=tor[i].disabled%>" name="disabled">
@@ -120,10 +121,14 @@
                         </label>
                     </td>
                     <td class="bemerkung"><input type="text" style="height: 30px; width: 100%; text-align: left;" value="<%=tor[i].bemerkung%>" id="tor<%=tor[i].gate%>"name="bemerkung"></td>
-                    <td><button id="show" type="" name="show" data-toggle="tooltip" title="Tor anzeigen"><i class="fas fa-search"></i></button></td>
+                    <form action="torverwaltung" method="post">
+                        <input type="hidden" value="<%=tor[i].gate%>" name="gate">
+                    <td><button id="show" type="submit"  data-toggle="tooltip" title="Tor anzeigen"><i class="fas fa-search"></i></button></td>
+                    </form>
                 </tr>
                 <%}%>
                 </tbody>
+
             </table>
             <label class="leer" style="padding-top: 50px"></label>
         </div>
