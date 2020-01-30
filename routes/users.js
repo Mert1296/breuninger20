@@ -58,7 +58,7 @@ router.post('/detailansicht', (req, res) => {
 router.post('/update_detailansicht_breuninger',(req,res) =>{
     var timeout = 1000;
     var myquery = { username: req.body.username };
-    var newvalues = { $set: {telefon: req.body.telefon, email: req.body.email } };
+    var newvalues = { $set: {telefon: req.body.telefon, email: req.body.email, strasse: req.body.strasse, plz: req.body.plz, stadt: req.body.stadt } };
     MongoClient.connect(db, function(err, db) {
         if (err) throw err;
         var dbo = db.db("test");
@@ -66,7 +66,6 @@ router.post('/update_detailansicht_breuninger',(req,res) =>{
             if (err) throw err;
             console.log("1 document updated");
             db.close();
-
         });
         setTimeout(function (err) {
             console.log('finished');
