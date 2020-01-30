@@ -119,8 +119,34 @@
                         <input type="hidden" name="username" value="<%=user.username%>">
                     </tr>
                     <tr>
+                        <td>Name</td>
+                        <td contenteditable="false"></td>
+                    </tr>
+                    <tr>
+                        <td>Nachname</td>
+                        <td contenteditable="false"></td>
+                    </tr>
+                    <tr>
                         <td>Division</td>
                         <td contenteditable="false"><%=user.division%></td>
+                    </tr>
+                    <tr>
+                        <td>Straße</td>
+                        <td><label class="text_label3"></label>
+                            <div class="edit"></div>
+                            <input type="text" name="strasse" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td>PLZ</td>
+                        <td><label class="text_label4"></label>
+                            <div class="edit"></div>
+                            <input type="text" name="plz" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td>Stadt</td>
+                        <td><label class="text_label4"></label>
+                            <div class="edit"></div>
+                            <input type="text" name="stadt" value="" /></td>
                     </tr>
                     <tr>
                         <td>Telefon</td>
@@ -165,15 +191,14 @@
                             <br><a href="https://www.breuninger.com/de/"> www.breuninger.com</a>
                         </p>
                     </div>
-
-                </div>
                 <div class="row copyright">
-                    <div class="col-md-12 text-center">
+                    <div class="col-md-12 text-center"style="margin-bottom: 10px">
                         <p>
                             <small class="block">&copy; 2020 Breuninger. All Rights Reserved.</small>
                         </p>
                     </div>
                 </div>
+            </div>
             </div>
         </footer>
     </div><!-- END container-wrap -->
@@ -275,6 +300,28 @@
         });
 
         $('input[type="tel"]').keypress(function(event) {
+            if (event.keyCode == '14') {
+                if ($.trim(this.value) == '') {
+                    this.value = (this.defaultValue ? this.defaultValue : '');
+                }
+
+                $(this).hide();
+                $(this).prev().show();
+                $(this).prev().prev().show();
+            }
+        });
+
+        $('input[type="email"]').blur(function() {
+            if ($.trim(this.value) == ''){
+                this.value = (this.defaultValue ? this.defaultValue : '');
+            }
+
+            $(this).hide();
+            $(this).prev().show();
+            $(this).prev().prev().show();
+        });
+
+        $('input[type="email"]').keypress(function(event) {
             if (event.keyCode == '14') {
                 if ($.trim(this.value) == '') {
                     this.value = (this.defaultValue ? this.defaultValue : '');
