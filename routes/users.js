@@ -42,7 +42,7 @@ router.post('/update_benutzerdaten_spedi', function (req,res) {
 });
 
 // Detailansicht Mitarbeiter
-router.post('/username', (req, res) => {
+router.post('/detailansicht', (req, res) => {
     //here it is
     const username = req.body.username;
     User.findOne({username: username}, function (err, user) {
