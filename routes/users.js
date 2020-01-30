@@ -16,7 +16,7 @@ router.get('/login', (req, res) => res.render('login'));
 router.get('/register', (req, res) => res.render('register'));
 
 //Benutzerinfo Spediteur
-router.get('/benutzerinfo_spediteur', function(req, res, next) {
+router.get('/benutzerinfo_spediteur', ensureAuthenticated, function(req, res, next) {
     //here it is
     var user = req.user;
     //you probably also want to pass this to your view
@@ -24,7 +24,7 @@ router.get('/benutzerinfo_spediteur', function(req, res, next) {
 });
 
 
-router.post('/update_benutzerdaten_spedi', function (req,res) {
+router.post('/update_benutzerdaten_spedi', ensureAuthenticated, function (req,res) {
     var myquery = { username: req.body.username };
     var newvalues = { $set: {telefon: req.body.telefon, email: req.body.email } };
     MongoClient.connect(db, function(err, db) {
@@ -42,7 +42,7 @@ router.post('/update_benutzerdaten_spedi', function (req,res) {
 });
 
 // Detailansicht Mitarbeiter
-router.post('/detailansicht', (req, res) => {
+router.post('/detailansicht', ensureAuthenticated, (req, res) => {
     //here it is
     const username = req.body.username;
     User.findOne({username: username}, function (err, user) {
@@ -55,8 +55,7 @@ router.post('/detailansicht', (req, res) => {
 });
 
 //Update Benutzerdaten Breuni
-router.post('/update_detailansicht_breuninger',(req,res) =>{
-    var timeout = 1000;
+router.post('/update_detailansicht_breuninger', ensureAuthenticated,(req,res) =>{
     var myquery = { username: req.body.username };
     var newvalues = { $set: {telefon: req.body.telefon, email: req.body.email, strasse: req.body.strasse, plz: req.body.plz, stadt: req.body.stadt } };
     MongoClient.connect(db, function(err, db) {
@@ -67,19 +66,12 @@ router.post('/update_detailansicht_breuninger',(req,res) =>{
             console.log("1 document updated");
             db.close();
         });
-        setTimeout(function (err) {
-            console.log('finished');
-            if (err)
-                throw err;
-            res.redirect('/users/benutzerverwaltung_Mitarbeiter');
-        }, timeout);
-
+        res.redirect('/users/benutzerverwaltung_Mitarbeiter');
     });
 });
 
 //Update Benutzerdaten Spedi
-router.post('/update_detailansicht_spediteur',(req,res) =>{
-    var timeout = 1000;
+router.post('/update_detailansicht_spediteur', ensureAuthenticated, (req,res) =>{
     var myquery = { username: req.body.username };
     var newvalues = { $set: {telefon: req.body.telefon, email: req.body.email } };
     MongoClient.connect(db, function(err, db) {
@@ -91,18 +83,12 @@ router.post('/update_detailansicht_spediteur',(req,res) =>{
             db.close();
 
         });
-        setTimeout(function (err) {
-            console.log('finished');
-            if (err)
-                throw err;
-            res.redirect('/users/benutzerverwaltung_Mitarbeiter');
-        }, timeout);
-
+        res.redirect('/users/benutzerverwaltung_mitarbeiter');
     });
 });
 
 //User löschen
-router.post('/delete',(req,res) =>{
+router.post('/delete', ensureAuthenticated, (req,res) =>{
     var myquery = { username: req.body.nutzername };
     MongoClient.connect(db, function(err, db) {
         if (err) throw err;
@@ -117,7 +103,7 @@ router.post('/delete',(req,res) =>{
 });
 
 //Benutzerverwaltung_MA
-router.get ('/Benutzerverwaltung_Mitarbeiter', (req, res) =>{
+router.get ('/Benutzerverwaltung_Mitarbeiter', ensureAuthenticated, (req, res) =>{
 
     User.find(function (err, users) {
         if (err)
@@ -131,10 +117,10 @@ router.get ('/Benutzerverwaltung_Mitarbeiter', (req, res) =>{
 
 
 //New User MA
-    router.get('/neuerUser_MA', (req, res) => res.render('neuerUser_MA'));
+    router.get('/neuerUser_MA', ensureAuthenticated, (req, res) => res.render('neuerUser_MA'));
 
 // Register
-    router.post('/neuerUSer_MA', (req, res) => {
+    router.post('/neuerUSer_MA', ensureAuthenticated, (req, res) => {
         const {username, vorname, name, division, strasse, PLZ, stadt, land, telefon, email, admin, gate, password, password2} = req.body;
         let errors = [];
 

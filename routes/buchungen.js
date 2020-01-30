@@ -39,17 +39,17 @@ router.get ('/startseite_spediteur', ensureAuthenticated, (req, res) => {
 });
 
 //Buhchungsübersicht mitarbeiter
-router.get('/buchungsuebersicht', (req, res) => res.render('buchungsuebersicht'));
+router.get('/buchungsuebersicht', ensureAuthenticated, (req, res) => res.render('buchungsuebersicht'));
 
 //Neue Buchung spediteur
-router.get('/neueBuchung_spediteur', function(req, res, next) {
+router.get('/neueBuchung_spediteur', ensureAuthenticated, function(req, res, next) {
     var user = req.user;
     //you probably also want to pass this to your view
     res.render('neueBuchung_spediteur', { user: user });
 });
 
 //torauswahl spedi
-router.get ('/torauswahl', (req, res) => {
+router.get ('/torauswahl', ensureAuthenticated, (req, res) => {
 
     Buchung.find(function (err, buchungen) {
         if (err)
@@ -62,7 +62,7 @@ router.get ('/torauswahl', (req, res) => {
 });
 
 //torverwaltung mitarbeiter
-router.get ('/torverwaltung', (req, res) =>{
+router.get ('/torverwaltung', ensureAuthenticated, (req, res) =>{
     Tor.find(function (err, tor) {
         if (err)
             return res.send(err);
@@ -74,7 +74,7 @@ router.get ('/torverwaltung', (req, res) =>{
 
 
 //Tor updatenn
-router.post('/torverwaltung', (req, res) => {
+router.post('/torverwaltung', ensureAuthenticated, (req, res) => {
     //here it is
     const tor = req.body.gate;
     Tor.findOne({gate: tor}, function (err, gate) {
@@ -83,7 +83,7 @@ router.post('/torverwaltung', (req, res) => {
 });
 
 //Torsperrung
-router.post('/torsperren',(req,res) =>{
+router.post('/torsperren', ensureAuthenticated, (req,res) =>{
     var timeout = 1000;
     var myquery = { gate: req.body.gate };
     var newvalues = { $set: {disabled: req.body.disabled, bemerkung: req.body.bemerkung } };
@@ -107,7 +107,7 @@ router.post('/torsperren',(req,res) =>{
 });
 
 //Buchuhungsinfo mitarbeiter
-router.post('/zeigBuchung', (req, res) => {
+router.post('/zeigBuchung', ensureAuthenticated, (req, res) => {
     //here it is
     const id = req.body.zeigen;
     Buchung.findOne({_id: ObjectID(id)}, function (err, buchung) {
@@ -117,7 +117,7 @@ router.post('/zeigBuchung', (req, res) => {
 
 
 //Buchung löschen Breuni
-router.post('/loeschBuchung',(req,res) =>{
+router.post('/loeschBuchung', ensureAuthenticated, (req,res) =>{
     var id = req.body.loeschen;
     MongoClient.connect(db, function(err, db) {
         if (err) throw err;
@@ -132,7 +132,7 @@ router.post('/loeschBuchung',(req,res) =>{
 });
 
 //Buchuhungsinfo spediteur
-router.post('/showBuchung', (req, res) => {
+router.post('/showBuchung', ensureAuthenticated, (req, res) => {
     //here it is
     const id = req.body.anzeigen1;
     Buchung.findOne({_id: ObjectID(id)}, function (err, buchung) {
@@ -141,7 +141,7 @@ router.post('/showBuchung', (req, res) => {
 });
 
 //Buchung löschen Spedi
-router.post('/deleteBuchung',(req,res) =>{
+router.post('/deleteBuchung', ensureAuthenticated, (req,res) =>{
     var id = req.body.loeschen1;
     MongoClient.connect(db, function(err, db) {
         if (err) throw err;
