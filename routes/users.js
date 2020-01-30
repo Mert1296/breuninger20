@@ -56,6 +56,7 @@ router.post('/detailansicht', (req, res) => {
 
 //Update Benutzerdaten Breuni
 router.post('/update_detailansicht_breuninger',(req,res) =>{
+    var timeout = 1000;
     var myquery = { username: req.body.username };
     var newvalues = { $set: {telefon: req.body.telefon, email: req.body.email } };
     MongoClient.connect(db, function(err, db) {
@@ -67,12 +68,19 @@ router.post('/update_detailansicht_breuninger',(req,res) =>{
             db.close();
 
         });
-        res.redirect('/users/benutzerverwaltung_Mitarbeiter');
+        setTimeout(function (err) {
+            console.log('finished');
+            if (err)
+                throw err;
+            res.redirect('/users/benutzerverwaltung_Mitarbeiter');
+        }, timeout);
+
     });
 });
 
 //Update Benutzerdaten Spedi
 router.post('/update_detailansicht_spediteur',(req,res) =>{
+    var timeout = 1000;
     var myquery = { username: req.body.username };
     var newvalues = { $set: {telefon: req.body.telefon, email: req.body.email } };
     MongoClient.connect(db, function(err, db) {
@@ -84,7 +92,13 @@ router.post('/update_detailansicht_spediteur',(req,res) =>{
             db.close();
 
         });
-        res.redirect('/users/benutzerverwaltung_mitarbeiter');
+        setTimeout(function (err) {
+            console.log('finished');
+            if (err)
+                throw err;
+            res.redirect('/users/benutzerverwaltung_Mitarbeiter');
+        }, timeout);
+
     });
 });
 
