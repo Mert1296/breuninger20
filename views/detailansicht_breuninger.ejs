@@ -119,8 +119,34 @@
                         <input type="hidden" name="username" value="<%=user.username%>">
                     </tr>
                     <tr>
+                        <td>Name</td>
+                        <td contenteditable="false"></td>
+                    </tr>
+                    <tr>
+                        <td>Nachname</td>
+                        <td contenteditable="false"></td>
+                    </tr>
+                    <tr>
                         <td>Division</td>
                         <td contenteditable="false"><%=user.division%></td>
+                    </tr>
+                    <tr>
+                        <td>Straße</td>
+                        <td><label class="text_label3"></label>
+                            <div class="edit"></div>
+                            <input type="text" name="strasse" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td>PLZ</td>
+                        <td><label class="text_label4"></label>
+                            <div class="edit"></div>
+                            <input type="text" name="plz" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td>Stadt</td>
+                        <td><label class="text_label4"></label>
+                            <div class="edit"></div>
+                            <input type="text" name="stadt" value="" /></td>
                     </tr>
                     <tr>
                         <td>Telefon</td>
@@ -275,6 +301,28 @@
         });
 
         $('input[type="tel"]').keypress(function(event) {
+            if (event.keyCode == '14') {
+                if ($.trim(this.value) == '') {
+                    this.value = (this.defaultValue ? this.defaultValue : '');
+                }
+
+                $(this).hide();
+                $(this).prev().show();
+                $(this).prev().prev().show();
+            }
+        });
+
+        $('input[type="email"]').blur(function() {
+            if ($.trim(this.value) == ''){
+                this.value = (this.defaultValue ? this.defaultValue : '');
+            }
+
+            $(this).hide();
+            $(this).prev().show();
+            $(this).prev().prev().show();
+        });
+
+        $('input[type="email"]').keypress(function(event) {
             if (event.keyCode == '14') {
                 if ($.trim(this.value) == '') {
                     this.value = (this.defaultValue ? this.defaultValue : '');
