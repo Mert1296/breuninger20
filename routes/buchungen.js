@@ -177,7 +177,7 @@ router.post('/neueBuchung_spediteur',ensureAuthenticated,(req, res) => {
     });
     newBuchung.save()
         .then(buchung =>{
-            res.render('startseite_spediteur', {buchungen: buchungen || []})
+            res.redirect('/buchungen/startseite_spediteur');
         })
         .catch(err=>console.log(err));
     console.log(newBuchung)

@@ -213,8 +213,8 @@ router.get ('/Benutzerverwaltung_Mitarbeiter', (req, res) =>{
 //Login
     router.post(
         '/login',
-        passport.authenticate('local', {
-            failureRedirect: '/login'
+        passport.authenticate('local',{
+            failureRedirect: '/users/login'
         }), (req, res) => {
             if (req.user.admin == "spediteur") {
                 res.redirect('/buchungen/startseite_spediteur');
