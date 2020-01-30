@@ -213,7 +213,7 @@ router.get ('/Benutzerverwaltung_Mitarbeiter', (req, res) =>{
 //Login
     router.post(
         '/login',
-        passport.authenticate('local', {
+        passport.authenticate('local',{
             failureRedirect: '/users/login'
         }), (req, res) => {
             if (req.user.admin == "spediteur") {
