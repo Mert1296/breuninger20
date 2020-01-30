@@ -214,7 +214,7 @@ router.get ('/Benutzerverwaltung_Mitarbeiter', (req, res) =>{
     router.post(
         '/login',
         passport.authenticate('local', {
-            failureRedirect: '/login'
+            failureRedirect: '/users/login'
         }), (req, res) => {
             if (req.user.admin == "spediteur") {
                 res.redirect('/buchungen/startseite_spediteur');

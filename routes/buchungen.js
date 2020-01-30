@@ -5,6 +5,7 @@ const passport = require('passport');
 // Load User model
 const User = require('../DB/models/User');
 const Buchung = require('../DB/models/Buchung');
+const Tor = require('../DB/models/Tor');
 const { ensureAuthenticated } = require('../DB/config/auth');
 const bodyParser = require('body-parser');
 var MongoClient = require('mongodb').MongoClient;
@@ -169,7 +170,7 @@ router.post('/neueBuchung_spediteur',ensureAuthenticated,(req, res) => {
     });
     newBuchung.save()
         .then(buchung =>{
-            res.render('startseite_spediteur', {buchungen: buchungen || []})
+            res.redirect('/buchungen/startseite_spediteur');
         })
         .catch(err=>console.log(err));
     console.log(newBuchung)
