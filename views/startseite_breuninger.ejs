@@ -6,10 +6,6 @@
     <title>Breuninger</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        tr.selected {
-            color: black !important;
-            background-color: #E6D1D2!important;
-        }
 
         ::selection{
             background-color:white!important;
@@ -21,6 +17,15 @@
         }
 
         #buttonAnzeigen{
+            background-color: transparent;
+            border: white;
+        }
+        #buttonLöschen:hover{
+            color:#861a22;
+            background-color:transparent ;
+        }
+
+        #buttonLöschen{
             background-color: transparent;
             border: white;
         }
@@ -67,13 +72,13 @@
                 <%for (var i = 0; i < buchungen.length; i++) {
                 %>
                 <tr>
-                    <td><%=buchungen[i].username%></td>
+                    <td><%=buchungen[i].user%></td>
                     <td><%=buchungen[i].gate%></td>
                     <td><%=buchungen[i].datepicker%></td>
                     <td><%= buchungen[i].timepicker1%></td>
                     <td><%=buchungen[i].timepicker2%></td>
-                    <td><form action="zeigBuchung" method="post"><input type="hidden" name="zeigen" value="<%=buchungen[i]._id%>"><button  type="submit" data-toggle="tooltip" title="Buchung anzeigen"><i class="fas fa-search"></i></button></form></td>
-                    <td><form action="loeschBuchung" method="post"><input type="hidden" name="loeschen" value="<%=buchungen[i]._id%>"><button  type="submit" data-toggle="tooltip" title="Buchung Löschen"><i class="fas fa-trash-alt"></i></button></form></td>
+                    <td><form action="zeigBuchung" method="post"><input type="hidden" name="zeigen" value="<%=buchungen[i]._id%>"><button  type="submit" data-toggle="tooltip" id="buttonAnzeigen"title="Buchung anzeigen"><i class="fas fa-search"></i></button></form></td>
+                    <td><form action="loeschBuchung" method="post"><input type="hidden" name="loeschen" value="<%=buchungen[i]._id%>"><button  type="submit" data-toggle="tooltip" id="buttonLöschen" title="Buchung stornieren"><i class="fas fa-trash-alt"></i></button></form></td>
                 </tr>
                 <%
                 }%>
@@ -137,22 +142,8 @@
             ]
         });
 
-        $('#example tbody').on( 'click', 'tr', function () {
-            if ( $(this).hasClass('selected') ) {
-                $(this).removeClass('selected');
-            }
-            else {
-                table.$('tr.selected').removeClass('selected');
-                $(this).addClass('selected');
-            }
-        } );
-
-        $('#button').click( function () {
-            table.row('.selected').remove().draw( false );
-        } );
         $('[data-toggle="tooltip"]').tooltip();
     } );
 </script>
 </body>
 </html>
-
