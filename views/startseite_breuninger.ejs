@@ -65,12 +65,11 @@
                 </thead>
                 <tbody>
                 <%for (var i = 0; i < buchungen.length; i++) {
-                    var monat = 1 + buchungen[i].datepicker.getMonth();
                 %>
                 <tr>
                     <td><%=buchungen[i].username%></td>
                     <td><%=buchungen[i].gate%></td>
-                    <td><%=buchungen[i].datepicker.getDate()+"."+monat+"."+buchungen[i].datepicker.getFullYear()%></td>
+                    <td><%=buchungen[i].datepicker%></td>
                     <td><%= buchungen[i].timepicker1%></td>
                     <td><%=buchungen[i].timepicker2%></td>
                     <td><form action="zeigBuchung" method="post"><input type="hidden" name="zeigen" value="<%=buchungen[i]._id%>"><button  type="submit" data-toggle="tooltip" title="Buchung anzeigen"><i class="fas fa-search"></i></button></form></td>

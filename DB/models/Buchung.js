@@ -48,7 +48,7 @@ const BuchungSchema = new mongoose.Schema(
             required: false
         },
         datepicker: {
-            type: Date,
+            type: String,
             required: false
         },
         gate: {
