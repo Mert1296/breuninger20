@@ -5,6 +5,7 @@ const passport = require('passport');
 // Load User model
 const User = require('../DB/models/User');
 const Buchung = require('../DB/models/Buchung');
+const Tor = require('../DB/models/Tor');
 const { ensureAuthenticated } = require('../DB/config/auth');
 const bodyParser = require('body-parser');
 var MongoClient = require('mongodb').MongoClient;
@@ -83,6 +84,7 @@ router.post('/torverwaltung', (req, res) => {
 
 //Torsperrung
 router.post('/torsperren',(req,res) =>{
+    var timeout = 1000;
     var myquery = { gate: req.body.gate };
     var newvalues = { $set: {disabled: req.body.disabled, bemerkung: req.body.bemerkung } };
     MongoClient.connect(db, function(err, db) {
@@ -92,9 +94,15 @@ router.post('/torsperren',(req,res) =>{
             if (err) throw err;
             console.log("1 document updated");
             db.close();
-
         });
-        res.redirect('back');
+        setTimeout(function (err) {
+            console.log('finished');
+            if (err)
+                throw err;
+            console.log('################');
+            res.redirect('back');
+        }, timeout);
+
     });
 });
 
