@@ -19,7 +19,7 @@ router.get('/register', (req, res) => res.render('register'));
 router.get('/benutzerinfo_spediteur', ensureAuthenticated, function(req, res, next) {
     //here it is
     var user = req.user;
-    //you probably also want to pass this to your view
+    //you probably also want to p  ass this to your view
     res.render('benutzerinfo_spediteur', { user: user });
 });
 
