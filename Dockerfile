@@ -1,9 +1,7 @@
 FROM node:13
 
-RUN cd /home \
-    && mkdir breuni \
-    && git clone https://github.com/Mert1296/breuninger20 /home/breuni/ \
-    && cd /home/breuni/breuninger \
+RUN git clone https://github.com/Mert1296/breuninger20 /home/node/ \
+    && cd /home/node/breuninger \
     && npm install
-CMD node /home/breuni/breuninger/app.js
+CMD node /home/node/breuninger/app.js
 EXPOSE 8081
