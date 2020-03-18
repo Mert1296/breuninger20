@@ -1,3 +1,7 @@
-FROM alpine
+FROM node:13
 
-CMD ["echo hello world!"]
+RUN git clone https://github.com/Mert1296/breuninger20 /home/node/ \
+    && cd /home/node/breuninger \
+    && npm install
+CMD node /home/node/breuninger/app.js
+EXPOSE 8081
