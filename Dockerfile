@@ -1,6 +1,6 @@
 FROM node:13
 
-RUN cd home \
+RUN cd /home \
     && mkdir breuni \
     && git clone https://github.com/Mert1296/breuninger20 /home/breuni/ \
     && cd /home/breuni/breuninger \
